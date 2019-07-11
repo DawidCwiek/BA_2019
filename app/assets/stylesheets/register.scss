@@ -2,13 +2,14 @@
 
 .jumbotron {
     position: relative;
-   background-color: #331670;
+   background-color: #FFF;
     max-height: 100vh;
     padding: 1rem;
     }
 
 body {
- background-color: #331670;
+ background-color: #FFF;
+ color: #FFF;
 }
 
 
@@ -32,9 +33,12 @@ body {
 }
 
 .btn-lg {
-    background-color: #331670;
+    background-color: #FFF;
     padding: 5px 30px;
     margin-top: 30px;
+    color: #331670;
+    border: none;
+
 }
 
 .btn-redirect {
@@ -74,6 +78,7 @@ margin-bottom: 30px;
     background-color: white;
     border-radius: 15px;
     padding: 40px 0;
+    background-color: #331670;
 }
 
 .forgot-password {
@@ -86,7 +91,7 @@ margin-bottom: 30px;
    align-items: center;
 }
 
-.col-7 {
+.col-5 {
    position: relative; 
 }
 
@@ -95,9 +100,9 @@ margin-bottom: 30px;
   display: block;
   position: absolute;
   height: 2px;
-  background: black;
+  background: #FFF;
   width: 100%;
-  left: -40%;
+  left: -45%;
   top: calc(50% - 2px);
   transform: rotate(90deg);
 }
