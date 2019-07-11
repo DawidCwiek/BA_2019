@@ -1,0 +1,2 @@
+class ManageIoController < ApplicationController
+end
