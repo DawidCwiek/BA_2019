@@ -1,57 +1,99 @@
 @import "bootstrap";
 
+.jumbotron {
+    position: relative;
+   background-color: #FFF;
+    max-height: 100vh;
+    padding: 1rem;
+    }
+
+<<<<<<< HEAD
 body {
-  background-color: #331670 !important;
+ background-color: #FFF;
+ color: #FFF;
 }
 
-.container {
-  position: relative;
+
+.vertical-center {
+    min-height: 100%;  
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+  }
+
+.form-control {
+    display:inline;
+    width: 50%;
+}
+
+.row-buttons {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    
 }
 
 .btn-lg {
-  background-color: #331670 !important;
-  padding: 5px 30px;
-  margin-top: 30px;
+    background-color: #FFF;
+    padding: 5px 30px;
+    margin-top: 30px;
+    color: #331670;
+    border: none;
+
+}
+
+.btn-redirect {
+    background-color:#1DCBFE;
+    border: none;
+    width: 30%;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 .field {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .input {
-  padding-left: 5px;
+    padding-left: 5px;
 }
 
 .autofocus {
-  padding-left: 5px;
+    padding-left: 5px;
 }
 
 .sign-up {
-  text-align: center;
-  margin-bottom: 30px;
+text-align: center;
+margin-bottom: 30px;
+
 }
+
+
 
 .company-name {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 .row {
-  position: relative;
-  top: 50%;
-  transform: translateY(10%);
-  width: 100%;
-  background-color: white !important;
-  border-radius: 15px;
-  padding: 40px 0;
+    position: relative;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px 0;
+    background-color: #331670;
 }
 
-.col-7,
+.forgot-password {
+    padding: 15% 0;
+}
+
+.col-7, .col-5 {
+   margin: auto;
+   text-align: center;
+   align-items: center;
+}
+
 .col-5 {
-  margin: auto;
-  text-align: center;
-}
-
-.col-7 {
-  position: relative;
+   position: relative; 
 }
 
 .col-5::after {
@@ -59,9 +101,24 @@ body {
   display: block;
   position: absolute;
   height: 2px;
-  background: black !important;
+  background: #FFF;
   width: 100%;
-  left: -40%;
+  left: -45%;
   top: calc(50% - 2px);
   transform: rotate(90deg);
 }
+
+
+
+
+
+
+=======
+
+.company-name {
+  margin-bottom: 30px;
+}
+
+>>>>>>> 6b37c47d8939ee56421f80c21225aa08d8f4d48c
+
+
