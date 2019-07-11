@@ -1,3 +1,4 @@
+<div class="jumbotron vertical-center"></div>
 <div class="container">
   <div class="row">
     <div class="col-7">
@@ -13,12 +14,12 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "placeholder_field", placeholder: "Enter email..." %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "placeholder_field", placeholder: "Enter email...", class: "input form-control mb-2 mr-sm-2" %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "placeholder_field", placeholder: "Password..." %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "placeholder_field", placeholder: "Password...", class: "input form-control mb-2 mr-sm-2" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -39,5 +40,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
