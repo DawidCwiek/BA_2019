@@ -1,11 +1,24 @@
 @import "bootstrap";
 
-body {
-    background-color: #331670;
+.jumbotron {
+    position: relative;
+   background-color: #331670;
+max-height: 100vh;
+padding: 1rem;
 }
 
+body {
+ background-color: #331670;
+}
+
+
 .container {
-    position: relative;
+   
+}
+
+.form-control {
+    display:inline;
+    width: 50%;
 }
 
 .btn-lg {
@@ -37,8 +50,6 @@ margin-bottom: 30px;
 }
 .row {
     position: relative;
-    top: 50%;
-    transform: translateY(10%);
     width: 100%;
     background-color: white;
     border-radius: 15px;

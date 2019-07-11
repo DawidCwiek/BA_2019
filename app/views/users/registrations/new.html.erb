@@ -1,3 +1,4 @@
+<div class="jumbotron vertical-center">
 <div class="container ">
   <div class="row ">
     <div class="col-7">
@@ -15,17 +16,17 @@
 
       <div class="field">
         <%= f.label :name %><br />
-        <%= f.email_field :name, autofocus: true, autocomplete: "Name", placeholder: "Name", class: "input" %>
+        <%= f.email_field :name, autofocus: true, autocomplete: "Name", placeholder: "Name", class: "form-control mb-2 mr-sm-2" %>
       </div>
 
       <div class="field">
         <%= f.label :surname %><br />
-        <%= f.email_field :surname, autofocus: true, autocomplete: "Surname",placeholder: "Surname", class: "input" %>
+        <%= f.email_field :surname, autofocus: true, autocomplete: "Surname",placeholder: "Surname", class: "form-control mb-2 mr-sm-2" %>
       </div>
 
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter Email...", class: "input" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter Email...", class: "input form-control mb-2 mr-sm-2" %>
       </div>
     
       <div class="field">
@@ -33,12 +34,12 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password",placeholder: "Password", class: "input" %>
+        <%= f.password_field :password, autocomplete: "new-password",placeholder: "Password", class: "input form-control mb-2 mr-sm-2" %>
       </div>
 
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password " ,class: "form-control mb-2 mr-sm-2" %>
       </div>
 
       <div class="actions btn">
@@ -51,5 +52,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
