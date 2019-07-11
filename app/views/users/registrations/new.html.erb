@@ -1,6 +1,6 @@
 <div class="jumbotron vertical-center">
 <div class="container ">
-  <div class="row ">
+  <div class="row">
     <div class="col-7">
       <h1 class="company-name">Menage.io</h1>
       <h3>Damian Gronowski</h3>
@@ -21,7 +21,11 @@
 
       <div class="field">
         <%= f.label :surname %><br />
+<<<<<<< HEAD
         <%= f.text_field :surname, autofocus: true, autocomplete: "Last name",placeholder: "Last Name", class: "form-control mb-2 mr-sm-2" %>
+=======
+        <%= f.text_field :surname, autofocus: true, autocomplete: "Last Name",placeholder: "Last Name", class: "form-control mb-2 mr-sm-2" %>
+>>>>>>> 6b37c47d8939ee56421f80c21225aa08d8f4d48c
       </div>
 
       <div class="field">
@@ -48,7 +52,11 @@
 
       <% end %>
       <div class="btn action">
-        <%= render "users/shared/links"  %>
+        <%
+=begin%>
+ <%= render "users/shared/links"  %> 
+<%
+=end%>
       </div>
     </div>
   </div>
