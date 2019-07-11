@@ -10,4 +10,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :surname, presence: true
+
+  def fullname
+    "#{self.name} #{self.surname}"
+  end
 end
