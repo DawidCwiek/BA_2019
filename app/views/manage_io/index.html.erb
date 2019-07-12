@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">\
 <!-- Button trigger modal -->
@@ -39,3 +40,48 @@
 </html>
 =======
 >>>>>>> 66429e3fbb5af85fe6c325924419bf81ff8e723f
+=======
+<%= javascript_pack_tag 'project_form_modal' %>
+
+<% if current_user %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= link_to 'Login', new_user_session_path %>
+<% end %>
+
+<div style="color:black;">
+<p>Projects list:</p>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.title %></td>
+        <td><%= project.desc %></td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>
+
+<div style="color:black;">
+  <br>
+  <p>Task list:</p>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+
+  <% @task.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.desc %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+>>>>>>> a4fc52e78cd762dc5f4b59443e0b254de15c489c
