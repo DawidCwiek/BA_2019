@@ -16,11 +16,17 @@
 }
 
 .btn-redirect {
-  background-color: #1dcbfe;
+  background-color: #007bff;
   border: none;
-  width: 30%;
-  margin-top: 10px;
-  margin-right: 10px;
+}
+
+.white-link {
+  color: #fff;
+}
+
+.white-link:hover {
+  color: #007bff;
+  text-decoration: none;
 }
 
 .autofocus {
