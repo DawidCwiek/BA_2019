@@ -14,8 +14,8 @@
           </div>
         </div>
         <div class="col-5">
-          <h2 class="sign-up">Forgot your password?</h2>
           <div class="form-user">
+            <h2 class="sign-up-bigger-margin">Forgot your password?</h2>
             <%= form_for(resource, as: resource_name, url:
             password_path(resource_name), html: { method: :post }) do |f| %> <%=
             render "devise/shared/error_messages", resource: resource %>
@@ -33,9 +33,9 @@
             </div>
 
             <% end %>
-            
-            <%= render "users/shared/links" %>
-            
+            <div class="sign-up">
+              <%= render "users/shared/links" %>
+            </div>
           </div>
         </div>
       </div>

@@ -16,8 +16,9 @@
         </div>
         <div class="col-5">
 
-            <h2 class="sign-up">Login</h2>
+            
           <div class="form-user">
+              <h2 class="sign-up">Sign In</h2>
               <%= form_for(resource, as: resource_name, url:
               session_path(resource_name)) do |f| %>
           <div class="form-user_fields">
@@ -29,9 +30,7 @@
 
                 <div class="form-user_field">
                     <%= f.label :password %>
-                    <%= f.password_field :password, autocomplete:
-                    "current-password", class: "placeholder_field input form-control mb-2 mr-sm-2", placeholder:
-                    "Password..." %>
+                    <%= f.password_field :password, autocomplete: "new-password",placeholder: "Password", class: "input form-control mb-2 mr-sm-2" %>
                   </div>
 
 
@@ -43,8 +42,10 @@
           </div>
 
           <% end %>
-
+            <div class="sign-up">
               <%= render "users/shared/links" %>
+            </div>
+              
 
 
           </div>
