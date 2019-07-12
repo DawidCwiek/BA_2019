@@ -1,2 +1,43 @@
-<h1>dasdasdas<h1>
 <%= javascript_pack_tag 'project_form_modal' %>
+
+<% if current_user %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= link_to 'Login', new_user_session_path %>
+<% end %>
+
+<div style="color:black;">
+<p>Projects list:</p>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.title %></td>
+        <td><%= project.desc %></td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>
+
+<div style="color:black;">
+  <br>
+  <p>Task list:</p>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+
+  <% @task.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.desc %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
