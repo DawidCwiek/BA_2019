@@ -1,25 +1,26 @@
-@import "bootstrap";
+// @import "bootstrap";
+@import "index";
 
-body {
-  background-color: #331670 !important;
-}
-
-.container {
-  position: relative;
+.row-buttons {
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 .btn-lg {
-  background-color: #331670 !important;
+  background-color: #fff;
   padding: 5px 30px;
   margin-top: 30px;
+  color: #331670;
+  border: none;
 }
 
-.field {
-  margin-bottom: 15px;
-}
-
-.input {
-  padding-left: 5px;
+.btn-redirect {
+  background-color: #1dcbfe;
+  border: none;
+  width: 30%;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .autofocus {
@@ -34,34 +35,7 @@ body {
 .company-name {
   margin-bottom: 30px;
 }
-.row {
-  position: relative;
-  top: 50%;
-  transform: translateY(10%);
-  width: 100%;
-  background-color: white !important;
-  border-radius: 15px;
-  padding: 40px 0;
-}
 
-.col-7,
-.col-5 {
-  margin: auto;
-  text-align: center;
-}
-
-.col-7 {
-  position: relative;
-}
-
-.col-5::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  height: 2px;
-  background: black !important;
-  width: 100%;
-  left: -40%;
-  top: calc(50% - 2px);
-  transform: rotate(90deg);
+.forgot-password {
+  padding: 15% 0;
 }
