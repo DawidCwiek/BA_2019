@@ -4,7 +4,6 @@ class Task < ApplicationRecord
 
   validates :title, presence: true
   validates :desc, presence: true
-  validates :isEpik, presence: true
   validates :user_id, presence: true
   validates :project_id, presence: true
 
