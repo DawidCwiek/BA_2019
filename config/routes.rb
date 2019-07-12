@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :task
   resources :manage_io, only: ['index']
+
   root to: 'manage_io#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

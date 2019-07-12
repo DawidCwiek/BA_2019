@@ -15,6 +15,10 @@
   border: none;
 }
 
+.actions {
+  width: 100%;
+}
+
 .btn-redirect {
   background-color: #007bff;
   border: none;
@@ -23,6 +27,7 @@
 
 .white-link {
   color: #fff;
+  
 }
 
 .white-link:hover {
@@ -37,11 +42,11 @@
 .sign-up {
   text-align: center;
   margin-bottom: 30px;
+  
 }
 
-.company-name {
-  margin-bottom: 30px;
-}
+
+
 
 .forgot-password {
   padding: 15% 0;
