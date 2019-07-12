@@ -6,12 +6,17 @@
     <%= link_to 'Login', new_user_session_path %>
 <% end %>
 
+
+
+<div id="app"></div>
+
 <p>Project list:</p>
   <table style="width:50%">
      <tr>
       <th>Name</th>
       <th>Description</th>
     </tr>
+
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.title %></td>
@@ -40,4 +45,3 @@
   </table>
 </div>
 
->>>>>>> b5d731e494b284e8c201c7f07931c0cdef79379c
