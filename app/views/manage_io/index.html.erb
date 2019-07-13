@@ -1,5 +1,4 @@
-<%= javascript_pack_tag 'project_form_modal' %>
-
+<%= javascript_pack_tag 'modal' %>
 <% if current_user %>
     <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 <% else %>
@@ -44,6 +43,4 @@
   <% end %>
   </table>
 </div>
-<div id="app"></div>
-<button></button>
-<%= javascript_pack_tag 'modal' %>
+

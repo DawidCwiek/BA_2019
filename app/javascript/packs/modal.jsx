@@ -24,6 +24,7 @@ class ModalExample extends React.Component {
     return (
       <div>
         <Button color="danger" onClick={this.toggle}>
+          Create Project
           {this.props.buttonLabel}
         </Button>
         <Modal
