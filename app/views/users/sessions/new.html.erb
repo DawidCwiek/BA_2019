@@ -15,8 +15,9 @@
         
         </div>
         <div class="col-5">
-            <h2 class="sign-up">Log in</h2>
-          <div class="form-user">
+        <div class="form-user">
+            <h2 class="sign-up-header">Login</h2>
+          
               <%= form_for(resource, as: resource_name, url:
               session_path(resource_name)) do |f| %>
           <div class="form-user_fields">
@@ -38,13 +39,15 @@
           
   
           <div class="actions btn">
-            <%= f.submit "Log in!", class: "btn btn-primary btn-lg" %>
+            <%= f.submit "Login!", class: "btn btn-primary btn-lg" %>
           </div>
   
           <% end %>
-         
+        
+         <div class="actions btn">
+          <h5 class="info">Don't have account?</h5>
               <%= render "users/shared/links" %>
-          
+          </div>
   
           </div>
         </div>

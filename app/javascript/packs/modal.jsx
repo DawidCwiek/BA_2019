@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
@@ -47,7 +47,8 @@ class ModalExample extends React.Component {
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>
               Do Something
-            </Button>{" "}
+            </Button>
+            {""}
             <Button color="secondary" onClick={this.toggle}>
               Cancel
             </Button>
@@ -62,7 +63,7 @@ export default ModalExample;
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <ModalExample/>,
+    <ModalExample />,
     document.body.appendChild(document.createElement("div"))
   );
 });
