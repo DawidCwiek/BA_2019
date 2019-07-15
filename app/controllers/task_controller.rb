@@ -46,13 +46,8 @@ end
     @task = Task.find(params[:id])
   end
 
-<<<<<<< HEAD
-      def task_params
-        params.require(:task).permit(:title, :desc, :project_id)
-      end
-=======
   def task_params
     params.require(:task).permit(:title, :desc, :project_id)
   end
->>>>>>> 103838f2399d4a91370d26a545857dc21f12b397
+
 end
