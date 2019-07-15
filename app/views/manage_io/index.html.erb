@@ -4,27 +4,9 @@
 <% else %>
     <%= link_to 'Login', new_user_session_path %>
 <% end %>
+<%= javascript_pack_tag 'projects-list' %>
 
-
-
-
-
-<p>Project list:</p>
-  <table style="width:50%">
-     <tr>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= project.desc %></td>
-      </tr>
-    <% end %>
-  </table>
-
-</div>
+<div class="projects"></div>
 
 <div style="color:black;">
   <br>
