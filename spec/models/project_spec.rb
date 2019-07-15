@@ -1,7 +1,8 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.describe Project, :type => :model do
+require 'rails_helper'
 
+RSpec.describe Project, type: :model do
   describe 'attributes' do
     it { expect(subject.attributes).to include('title', 'desc', 'key') }
   end
