@@ -4,7 +4,7 @@ class ProjectController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy]
 
   def index
-    @projects = Project.where(user_id: current_user)
+    @projects = Project.all
   end
 
   def show; end

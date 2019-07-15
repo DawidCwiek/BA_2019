@@ -1,3 +1,2 @@
-# frozen_string_literal: true
+json.array! @tasks, partial: "task/task", as: :task
 
-json.array! @task, partial: 'task_form', as: :task
