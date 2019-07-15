@@ -1,23 +1,19 @@
+# frozen_string_literal: true
+
 class ProjectController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: %i[show edit update destroy]
 
   def index
     @projects = Project.where(user_id: current_user)
   end
 
-
-  def show
-  end
-
+  def show; end
 
   def new
     @project = Project.new
   end
 
-
-  def edit
-  end
-
+  def edit; end
 
   def create
     @project = Project.new(project_params)
@@ -33,7 +29,6 @@ class ProjectController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @project.update(project_params)
@@ -46,7 +41,6 @@ class ProjectController < ApplicationController
     end
   end
 
-
   def destroy
     @project.destroy
     respond_to do |format|
@@ -55,16 +49,15 @@ class ProjectController < ApplicationController
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def project_params
-      params.require(:project).permit(:title, :desc, :key, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def project_params
+    params.require(:project).permit(:title, :desc, :key, :user_id)
+  end
 end

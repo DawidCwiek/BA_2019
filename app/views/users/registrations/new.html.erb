@@ -11,12 +11,12 @@
               <h3>Adam Kuczyński</h3>
               <h3>Filip Garlak</h3>
             </div>
-          </div>
+          </div>  
       
       </div>
       <div class="col-5">
         <div class="form-user">
-        <h2 class="sign-up">Sign up</h2>
+        <h2 class="sign-up-header">Sign up</h2>
         
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -53,6 +53,11 @@
 
         <div class="actions btn">
           <%= f.submit "Sign up!", class: "btn btn-primary btn-lg" %>
+         
+        </div>
+   <div class="actions btn">
+          <h5 class="info">Already have and account?</h5>
+          <%= render "users/shared/links"  %>
         </div>
 
         <% end %>

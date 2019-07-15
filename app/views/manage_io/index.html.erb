@@ -1,13 +1,20 @@
-<%= javascript_pack_tag 'project_form_modal' %>
-
+<%= javascript_pack_tag 'modal' %>
 <% if current_user %>
     <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 <% else %>
     <%= link_to 'Login', new_user_session_path %>
 <% end %>
 
+
+
+
+
+
+<p>Project list:</p>
+
 <div style="color:black;">
 <p>Projects list:</p>
+
   <table style="width:50%">
     <tr>
       <th>Name</th>
