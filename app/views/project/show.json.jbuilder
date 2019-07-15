@@ -1,1 +1,1 @@
-json.partial! "project/project", post: @project
+json.partial! "project/project", project: @project
