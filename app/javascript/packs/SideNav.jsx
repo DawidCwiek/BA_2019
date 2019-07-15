@@ -1,77 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "../stylesheets/components/sideNav.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-export class SideNav extends React.Component {
-  state = {
-    state: {
-      showNav: false
-    }
-  }
-
-  openNavClick = e => {
-    e.preventDefault()
-    this.openNav()
-  }
-
-  closeNavClick = e => {
-    e.preventDefault()
-    this.closeNav()
-  }
-
-  openNav = () => {
-    this.setState({
-      showNav: true
-    })
-
-    document.addEventListener("keydown", this.handleEscKey)
-  }
-  closeNav = () => {
-    this.setState({
-      showNav: false
-    })
-
-    document.removeEventListener("keydown", this.handleEscKey)
-  }
-
-  handleEscKey = e => {
-    if (e.key === "Escape") {
-      this.closeNav()
-    }
-  }
-
+class SideNav extends React.Component {
   render() {
-    const { showNav } = this.state
-    let navCoverStyle = { width: showNav ? "100%" : "0" }
-    let sideNavStyle = { width: showNav ? "250px" : "0" }
-
     return (
-      <React.Fragment>
-        <span onClick={this.openNavClick} class="open-nav">
-          &#9776; open
-        </span>
-        <div
-          onClick={this.navCoverClick}
-          class="nav-cover"
-          style={navCoverStyle}
-        />
-        <div name="side-nav" class="side-nav" style={sideNavStyle}>
-          <a href="#" onClick={this.closeNavClick} class="close-nav">
-            &times;
-          </a>
-          <a href="#">Kanban</a>
-          <a href="#">Backlog</a>
-          <a href="#">Create task</a>
-          <a href="#">Logout</a>
+      <div className="wrapper">
+      <nav id="sidebar">
+        <div className="sidebar-header">
+            <h1>Manage.io</h1>
         </div>
-      </React.Fragment>
+
+        <ul className="list-unstyled components">
+            <li>
+                <a href="#">Kanban</a>
+            </li>
+            <li>
+                <a href="#">Backlog</a>
+            </li>
+            <li>
+              <a href="#">Create task</a>
+            </li>
+            <li>
+              <a href="#">Logout</a>
+            </li>
+        </ul>
+      </nav>
+    </div>
     )
   }
-}
+};
 
 ReactDOM.render(
-  <SideNav />, document.getElementById('sidenav')
+  <SideNav />, getElementById('sidenav')
 );
-
-export default SideNav
-

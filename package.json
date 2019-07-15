@@ -11,10 +11,7 @@
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
-<<<<<<< HEAD
     "react-sidenav": "^4.0.3",
-=======
->>>>>>> 103838f2399d4a91370d26a545857dc21f12b397
     "reactstrap": "^8.0.1"
   },
   "devDependencies": {

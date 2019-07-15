@@ -1,3 +1,28 @@
+
+<div class="wrapper">
+      <nav id="sidebar">
+        <div class="sidebar-header">
+            <h1>Manage.io</h1>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+              <a href="#">Kanban</a>
+            </li>
+            <li>
+              <a href="#">Backlog</a>
+            </li>
+            <li>
+              <a href="#" class="border_bottom">Create task</a>
+            </li>
+            <li>
+              <a href="#">Logout</a>
+            </li>
+        </ul>
+      </nav>
+
+<div class="content">
+
 <%= javascript_pack_tag 'modal' %>
 <% if current_user %>
     <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
@@ -47,4 +72,5 @@
     </tr>
   <% end %>
   </table>
+</div>
 </div>
