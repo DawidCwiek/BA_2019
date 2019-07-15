@@ -1,3 +1,2 @@
-# frozen_string_literal: true
+json.partial! "project/project", project: @project
 
-json.partial! 'project/project', post: @project
