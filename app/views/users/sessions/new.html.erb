@@ -12,40 +12,56 @@
                 <h3>Filip Garlak</h3>
               </div>
             </div>
-        
+
         </div>
         <div class="col-5">
-            <h2 class="sign-up">Log in</h2>
+
+        <div class="form-user">
+            <h2 class="sign-up-header">Login</h2>
+          
+
+
+            <h2 class="sign-up">Login</h2>
           <div class="form-user">
+
               <%= form_for(resource, as: resource_name, url:
               session_path(resource_name)) do |f| %>
           <div class="form-user_fields">
-          
+
                 <div class="form-user_field">
                   <%= f.label :email %><br />
                   <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter Email...", class: "input form-control mb-2 mr-sm-2" %>
                 </div>
-        
+
                 <div class="form-user_field">
                     <%= f.label :password %>
                     <%= f.password_field :password, autocomplete:
                     "current-password", class: "placeholder_field input form-control mb-2 mr-sm-2", placeholder:
                     "Password..." %>
                   </div>
-        
-             
+
+
           </div>
-          
-  
+
+
           <div class="actions btn">
-            <%= f.submit "Log in!", class: "btn btn-primary btn-lg" %>
+            <%= f.submit "Login!", class: "btn btn-primary btn-lg" %>
+          </div>
+
+          <% end %>
+
+        
+         <div class="actions btn">
+          <h5 class="info">Don't have account?</h5>
+              <%= render "users/shared/links" %>
           </div>
   
-          <% end %>
-         
+
+
               <%= render "users/shared/links" %>
-          
-  
+
+
+
           </div>
         </div>
       </div>
