@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Task < ApplicationRecord
   belongs_to :project
   belongs_to :user
@@ -6,5 +8,4 @@ class Task < ApplicationRecord
   validates :desc, presence: true
   validates :user_id, presence: true
   validates :project_id, presence: true
-
 end
