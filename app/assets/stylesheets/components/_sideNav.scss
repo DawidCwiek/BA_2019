@@ -4,6 +4,11 @@
   width: 100%;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .menu {
   top: 0;
   left: 0;
