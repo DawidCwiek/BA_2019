@@ -9,10 +9,6 @@ class User < ApplicationRecord
   has_many :task
   has_and_belongs_to_many :projects
 
-  validates :name, presence: true
-  validates :surname, presence: true
+  validates :full_name, presence: true
 
-  def fullname
-    "#{name} #{surname}"
-  end
 end
