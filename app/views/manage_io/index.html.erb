@@ -21,15 +21,13 @@
   </nav>
 
   <div class="content">
-    <%= javascript_pack_tag 'modal' %>
-      <% if current_user %>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Login', new_user_session_path %>
-      <% end %>
-    <%= javascript_pack_tag'projects-list' %>
-    <div id="projects"></div>
+    <% if current_user %> <%= link_to 'Logout', destroy_user_session_path,
+    method: :delete %> <% else %> <%= link_to 'Login', new_user_session_path %>
+    <% end %>
 
+    <div id="projects"></div>
+    <div id="modal"></div>
+    <%= javascript_pack_tag'projects-list' %> <%= javascript_pack_tag 'modal' %>
     <div style="color:black;">
       <br />
       <p>Task list:</p>
