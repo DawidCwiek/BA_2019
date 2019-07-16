@@ -1,25 +1,52 @@
-<% if current_user %>
-  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-<% else %> 
-  <%= link_to 'Login', new_user_session_path %>
-<% end %>
-<div id="projects"></div>
-<%= javascript_pack_tag 'projects-list' %>
+<% if current_user %> <%= link_to 'Logout', destroy_user_session_path,
+method: :delete %> <% else %> <%= link_to 'Login', new_user_session_path
+%> <% end %>
+<%= javascript_pack_tag'projects-list' %>
+  <div class="content">
+    <div class="container vertical-center ">
+      <div class="row">
+        <div class="col">
 
-<div style="color:black;">
-  <br />
-  <p>Task list:</p>
-  <table style="width:50%">
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
+          <h3 class="sign-up-header ">My Projects</h3>
+    <div id="col-projects">        
+      </div>
+    </div>
+    <div id="modal"></div>
+    
+  </div>
+  <div class="col">
+   <div style="color:black;">
+    <div class="col">
+      <h3 class="sign-up-header ">Task list</h3>
+      <div class="label-info">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr> 
+      </div>
+     
+        <% @task.each do |task| %>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.desc %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 
-    <% @task.each do |task| %>
-    <tr>
-      <td><%= task.title %></td>
-      <td><%= task.desc %></td>
-    </tr>
-    <% end %>
-  </table>
-</div>
+    <div class="col">
+    <div class="label-info">
+        <% if user_signed_in? %>
+        <%= current_user.full_name %>
+       <% else %>
+      <h3>Please Sign in!</h3>
+        <% end %>
+       
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  
+  
