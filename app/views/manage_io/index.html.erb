@@ -1,5 +1,5 @@
 
-<div class="wrapper">
+<%# <div class="wrapper">
       <nav id="sidebar">
         <div class="sidebar-header">
             <h1>Manage.io</h1>
@@ -21,7 +21,7 @@
         </ul>
       </nav>
 
-<div class="content">
+<div class="content"> %>
 
 <%= javascript_pack_tag 'modal' %>
 <% if current_user %>
@@ -30,7 +30,9 @@
     <%= link_to 'Login', new_user_session_path %>
 <% end %>
 
+<%= javascript_pack_tag 'sidenav' %>
 
+<div id="sidenav"></div>
 
 
 
@@ -73,4 +75,4 @@
   <% end %>
   </table>
 </div>
-</div>
+<%# </div> %>
