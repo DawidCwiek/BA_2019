@@ -18,7 +18,7 @@ export class SideNav extends React.Component {
               <a href="#" className="link-hover">Create task</a>
             </li>
             <li>
-              <a href="localhost:3000/users/sign_out" className="link-hover last-child ">Logout</a>
+              <a href="#" className="link-hover last-child ">Logout</a>
             </li>
           </ul>
         </div>

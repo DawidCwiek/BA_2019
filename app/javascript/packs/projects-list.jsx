@@ -10,7 +10,7 @@ export default class ProjectList extends React.PureComponent {
     fetch("/project.json")
       .then(response => response.json())
       .then(projects => {
-        this.setState({ projects: projects });
+        this.setState({ projects: projects.data });
       });
   }
 
