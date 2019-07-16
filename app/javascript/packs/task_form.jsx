@@ -48,12 +48,12 @@ class ModalExample extends React.Component {
             <Form>
               <FormGroup>
                 <Label className="text-muted" for="taskTitle">Title</Label>
-                <Input type="text" minLength="3" maxLength="30" name="text" id="taskTitle" placeholder="write task title" />
+                <Input type="text" minLength="3" maxLength="30" name="text" id="taskTitle" placeholder="Write task title" />
 
             </FormGroup>
             <FormGroup>
                  <Label className="text-muted" for="exampleText">Description</Label>
-                 <Input type="textarea" maxLength="160" name="text" id="task description" placeholder="write disc" />
+                 <Input type="textarea" maxLength="160" name="text" id="task description" placeholder="Write discription" />
             </FormGroup>
             <FormGroup>
             <Label className="text-muted" for="exampleText">Users to assign</Label>
