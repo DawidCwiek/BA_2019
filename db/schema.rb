@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 2019_07_16_074046) do
     t.string "title"
     t.text "desc"
     t.string "key"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "projects_users", force: :cascade do |t|
