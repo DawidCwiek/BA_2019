@@ -7,18 +7,18 @@ export class SideNav extends React.Component {
         <div>
           <h1 className="sidebar-header">Manage.io</h1>
       
-          <ul className="list-unstyled components">
-            <li>
-              <a href="#">Kanban</a>
+          <ul className="ul-styling">
+            <li className="li-styling">
+              <a href="#" className="link-hover">Kanban</a>
+            </li>
+            <li className="li-styling">
+              <a href="#" className="link-hover">Backlog</a>
+            </li>
+            <li className="li-styling li-last-item">
+              <a href="#" className="link-hover">Create task</a>
             </li>
             <li>
-              <a href="#">Backlog</a>
-            </li>
-            <li>
-              <a href="#" className="border_bottom">Create task</a>
-            </li>
-            <li>
-              <a href="#">Logout</a>
+              <a href="#" className="link-hover last-child ">Logout</a>
             </li>
           </ul>
         </div>
