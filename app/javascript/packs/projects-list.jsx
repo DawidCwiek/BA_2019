@@ -20,7 +20,7 @@ export default class ProjectList extends React.PureComponent {
         {this.state.projects.map(project => {
           return (
             <div key={project.id} className="project">
-             [{project.key}] {project.title} {project.desc} 
+              [{project.key}] {project.title} {project.desc}
             </div>
           );
         })}
@@ -29,9 +29,4 @@ export default class ProjectList extends React.PureComponent {
   }
 }
 
-
-  ReactDOM.render(
-    <ProjectList />,
-    document.getElementById("projects"));
-  
-
+ReactDOM.render(<ProjectList />, document.getElementById("projects"));
