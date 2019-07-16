@@ -1,3 +1,4 @@
+
 <nav id="sidebar">
     <div class="sidebar-header">
       <h1>Manage.io</h1>
@@ -67,4 +68,90 @@
   </div>
   </div>
   </div>
-  
+
+      
+      <% if current_user %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path %>
+      <% end %>
+      <%= javascript_pack_tag'projects-list' %>
+      <div id="projects">
+      </div>
+
+      <div style="color:black;">
+        <br />
+        <p>Task list:</p>
+        <table style="width:50%">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+
+    <ul class="list-unstyled components">
+      <li>
+        <a href="#">Kanban</a>
+      </li>
+      <li>
+        <a href="#">Backlog</a>
+      </li>
+      <li>
+        <a href="#" class="border_bottom">Create task</a>
+      </li>
+      <li>
+        <a href="#">Logout</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <% if current_user %> <%= link_to 'Logout', destroy_user_session_path,
+    method: :delete %> <% else %> <%= link_to 'Login', new_user_session_path %>
+    <% end %>
+
+    <div id="projects"></div>
+    <div id="modal"></div>
+    <%= javascript_pack_tag'projects-list' %> <%= javascript_pack_tag 'modal' %>
+    <div style="color:black;">
+      <br />
+      <p>Task list:</p>
+      <table style="width:50%">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+
+        <% @task.each do |task| %>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.desc %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<div style="color:black;">
+  <br>
+  <p>Task list:</p>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+
+  <% @task.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.desc %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<div id="app"></div>
+<button></button>
+<%= javascript_pack_tag 'task_form' %>

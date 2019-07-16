@@ -64,6 +64,6 @@ export default ModalExample;
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     <ModalExample />,
-    document.body.appendChild(document.createElement("div"))
+    document.getElementById('modal')
   );
 });
