@@ -2,10 +2,13 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :project
+  defaults format: :json do
+    resources :project, except: [:new, :edit]
+    resources :task, except: [:new, :edit, :destroy]
+  end
 
-  resources :task
-  resources :manage_io, only: ['index']
+
+  resources :manage_io, only: [:index]
 
   root to: 'manage_io#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

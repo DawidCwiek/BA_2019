@@ -41,6 +41,7 @@
             <th>Description</th>
           </tr>
 
+<<<<<<< HEAD
           <% @task.each do |task| %>
           <tr>
             <td><%= task.title %></td>
@@ -52,3 +53,28 @@
     </div>
   </div>
 </div>
+=======
+
+
+<div style="color:black;">
+  <br>
+  <p>Task list:</p>
+  <table style="width:50%">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+
+  <% @task.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.desc %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<div id="app"></div>
+<button></button>
+<%= javascript_pack_tag 'task_form' %>
+>>>>>>> 3fcd66bdaef29a7c7276669c390dff74d438055f

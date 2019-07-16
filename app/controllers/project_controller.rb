@@ -12,30 +12,24 @@ class ProjectController < ApplicationController
   def create
     @project = Project.new(project_params)
 
-    respond_to do |format|
-      if @project.save
-        format.json { render :show, status: :created, location: @project }
-      else
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    if @project.save
+      render :show, status: :created, location: @project
+    else
+      render json: @project.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.json { render :show, status: :ok, location: @project }
-      else
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    if @project.update(project_params)
+      render :show, status: :ok, location: @project
+    else
+      render json: @project.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
     @project.destroy
-    respond_to do |format|
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
