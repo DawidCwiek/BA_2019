@@ -41,44 +41,42 @@ class ModalExample extends React.Component {
           modalTransition={{ timeout: 700 }}
           backdropTransition={{ timeout: 1300 }}
           toggle={this.toggle}
-          toggle_drop={this.toggle_drop}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>Create Task</ModalHeader>
+          <ModalHeader className="text-muted" toggle={this.toggle}>Create Task</ModalHeader>
           <ModalBody>
             <Form>
               <FormGroup>
-                <Label for="taskTitle">Title</Label>
+                <Label className="text-muted" for="taskTitle">Title</Label>
                 <Input type="text" minLength="3" maxLength="30" name="text" id="taskTitle" placeholder="write task title" />
 
             </FormGroup>
             <FormGroup>
-                 <Label for="exampleText">Description</Label>
+                 <Label className="text-muted" for="exampleText">Description</Label>
                  <Input type="textarea" maxLength="160" name="text" id="task description" placeholder="write disc" />
             </FormGroup>
             <FormGroup>
-            <Label for="exampleText">Users to assign</Label>
+            <Label className="text-muted" for="exampleText">Users to assign</Label>
             </FormGroup>
             <FormGroup>
-              <ButtonDropdown isOpen={this.state.dropdownOpen} toggle_drop={this.toggle_drop}>
-                <DropdownToggle caret>
+              <ButtonDropdown 
+              isOpen={this.state.dropdownOpen}
+              toggle={this.toggle_drop}
+              modalTransition={{ timeout: 700 }}
+              backdropTransition={{ timeout: 1300 }}
+              className={this.props.className}>
+                <DropdownToggle  caret>
                   List of Users
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem header>Header</DropdownItem>
-                  <DropdownItem disabled>Action</DropdownItem>
-                  <DropdownItem>Another Action</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Another Action</DropdownItem>
+                  <DropdownItem disabled>Users available</DropdownItem>
+                  <DropdownItem>Place for future users</DropdownItem>
                 </DropdownMenu>
               </ButtonDropdown>
             </FormGroup>
             </Form>
             <Button color="primary" onClick={this.toggle}>
               Confirm
-            </Button>
-            <Button color="secondary" onClick={this.toggle}>
-              Cancel
             </Button>
           </ModalBody>
         </Modal>
