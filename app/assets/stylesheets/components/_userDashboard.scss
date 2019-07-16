@@ -1,0 +1,21 @@
+.userViewContainer {
+  margin-top: 40px;
+}
+
+.label-info {
+  display: flex;
+  flex-direction: column;
+  border: 4px solid #331670;
+  border-radius: 10px;
+  min-width: 400px;
+}
+
+.myProjects {
+  flex-direction: column;
+}
+
+.project {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+}
