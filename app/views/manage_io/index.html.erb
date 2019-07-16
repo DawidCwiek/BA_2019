@@ -4,10 +4,10 @@
 <% else %>
     <%= link_to 'Login', new_user_session_path %>
 <% end %>
-<%= javascript_pack_tag 'projects-list' %>
 
 
-<div class="projects"></div>
+
+<div id="projects"></div>
 
 
 
@@ -29,3 +29,4 @@
   <% end %>
   </table>
 </div>
+<%= javascript_pack_tag 'projects-list' %>

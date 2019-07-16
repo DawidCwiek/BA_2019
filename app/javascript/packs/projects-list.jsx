@@ -29,9 +29,9 @@ export default class ProjectList extends React.PureComponent {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+
   ReactDOM.render(
     <ProjectList />,
-    document.body.appendChild(document.createElement("div"))
+    document.getElementById("projects")
   );
-});
+
