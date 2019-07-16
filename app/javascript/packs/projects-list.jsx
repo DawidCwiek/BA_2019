@@ -16,11 +16,11 @@ export default class ProjectList extends React.PureComponent {
 
   render() {
     return (
-      <div className="projects">
+      <div className="label-info">
         {this.state.projects.map(project => {
           return (
             <div key={project.id} className="project">
-             [{project.key}] {project.title} {project.desc} 
+              [{project.key}] {project.title}
             </div>
           );
         })}
@@ -29,9 +29,4 @@ export default class ProjectList extends React.PureComponent {
   }
 }
 
-
-  ReactDOM.render(
-    <ProjectList />,
-    document.getElementById("projects")
-  );
-
+ReactDOM.render(<ProjectList />, document.getElementById("col-projects"));
