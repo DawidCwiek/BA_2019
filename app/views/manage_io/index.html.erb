@@ -1,53 +1,50 @@
-
 <div class="wrapper">
-      <nav id="sidebar">
-        <div class="sidebar-header">
-            <h1>Manage.io</h1>
-        </div>
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h1>Manage.io</h1>
+    </div>
 
-        <ul class="list-unstyled components">
-            <li>
-              <a href="#">Kanban</a>
-            </li>
-            <li>
-              <a href="#">Backlog</a>
-            </li>
-            <li>
-              <a href="#" class="border_bottom">Create task</a>
-            </li>
-            <li>
-              <a href="#">Logout</a>
-            </li>
-        </ul>
-      </nav>
+    <ul class="list-unstyled components">
+      <li>
+        <a href="#">Kanban</a>
+      </li>
+      <li>
+        <a href="#">Backlog</a>
+      </li>
+      <li>
+        <a href="#" class="border_bottom">Create task</a>
+      </li>
+      <li>
+        <a href="#">Logout</a>
+      </li>
+    </ul>
+  </nav>
 
-<div class="content"> %>
+  <div class="content">
+    <%= javascript_pack_tag 'modal' %>
+      <% if current_user %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path %>
+      <% end %>
+    <%= javascript_pack_tag'projects-list' %>
 
-<%= javascript_pack_tag 'modal' %>
-<% if current_user %>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to 'Login', new_user_session_path %>
-<% end %>
-<%= javascript_pack_tag 'projects-list' %>
+    <div style="color:black;">
+      <br />
+      <p>Task list:</p>
+      <table style="width:50%">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
 
-
-
-<div style="color:black;">
-  <br>
-  <p>Task list:</p>
-  <table style="width:50%">
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-
-  <% @task.each do |task| %>
-    <tr>
-      <td><%= task.title %></td>
-      <td><%= task.desc %></td>
-    </tr>
-  <% end %>
-  </table>
-</div>
+        <% @task.each do |task| %>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.desc %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
