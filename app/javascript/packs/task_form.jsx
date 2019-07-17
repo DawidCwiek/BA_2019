@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, 
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input,
   FormText,ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem  } from "reactstrap";
 
 class Task_form extends React.Component {
@@ -68,7 +68,7 @@ class Task_form extends React.Component {
     }));
   }
 
-  
+
   render() {
     return (
       <div>
@@ -99,9 +99,14 @@ class Task_form extends React.Component {
             <Label className="text-muted" for="exampleText">Users to assign</Label>
             </FormGroup>
             <FormGroup>
-              <ButtonDropdown 
+              <ButtonDropdown
               isOpen={this.state.dropdownOpen}
               toggle={this.toggle_drop}
+<<<<<<< HEAD
+=======
+              modalTransition={{ timeout: 700 }}
+              backdropTransition={{ timeout: 700 }}
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
               className={this.props.className}>
                 <DropdownToggle  caret>
                   List of Users

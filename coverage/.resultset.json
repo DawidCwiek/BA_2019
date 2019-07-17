@@ -45,30 +45,47 @@
         1,
         1,
         null,
+<<<<<<< HEAD
         1,
         1,
         2,
         null,
         0,
+=======
+        4,
+        2,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
-        null,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
+        2,
         null,
         null,
         null,
         1,
+<<<<<<< HEAD
         0,
         0,
         0,
         null,
+        0,
+=======
+        4,
+        2,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
+        null,
+        2,
+        null,
+        null,
+        null,
+        1,
+<<<<<<< HEAD
+        0,
+        0,
+        0,
+        null,
+=======
+        1,
+        1,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
         null,
         1,
@@ -97,26 +114,32 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/timedar/Desktop/File/3/BA_2019/app/models/project.rb": [
+=======
+      "/Users/dawidcwiek/Desktop/BA/project/pik/app/controllers/task_controller.rb": [
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
         null,
         1,
         1,
-        1,
         null,
         1,
+<<<<<<< HEAD
         1,
         1,
         null
       ],
       "/home/timedar/Desktop/File/3/BA_2019/app/models/task.rb": [
+=======
+        2,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
         null,
         1,
-        1,
-        1,
         null,
         1,
+<<<<<<< HEAD
         1,
         1,
         null
@@ -126,17 +149,34 @@
         null,
         0,
         0,
+=======
+        4,
+        4,
+        2,
+        null,
+        2,
+        null,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
         0,
         0,
         0,
         null,
+<<<<<<< HEAD
         0,
+=======
+        1,
+        4,
+        2,
+        null,
+        2,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
         0,
         0,
         0,
         null,
+<<<<<<< HEAD
         0,
         null,
         0,
@@ -163,9 +203,38 @@
         0,
         0,
         0,
+=======
+        null,
+        1,
+        null,
+        1,
+        7,
+        null,
+        null,
+        1,
+        8,
+        null,
+        null,
+        null
+      ],
+      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/project.rb": [
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/task.rb": [
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
         0,
         null,
+<<<<<<< HEAD
         0,
         0,
         0,
@@ -175,6 +244,16 @@
         0,
         null,
         0
+=======
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
       ],
       "/home/timedar/Desktop/File/3/BA_2019/app/controllers/manage_io_controller.rb": [
         null,
@@ -217,6 +296,10 @@
         0
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1563288070
+=======
+    "timestamp": 1563275412
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
   }
 }
