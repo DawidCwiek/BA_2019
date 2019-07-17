@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, 
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input,
   FormText,ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem  } from "reactstrap";
 
 class ModalExample extends React.Component {
@@ -30,7 +30,7 @@ class ModalExample extends React.Component {
     }));
   }
 
-  
+
   render() {
     return (
       <div>
@@ -60,11 +60,11 @@ class ModalExample extends React.Component {
             <Label className="text-muted" for="exampleText">Users to assign</Label>
             </FormGroup>
             <FormGroup>
-              <ButtonDropdown 
+              <ButtonDropdown
               isOpen={this.state.dropdownOpen}
               toggle={this.toggle_drop}
               modalTransition={{ timeout: 700 }}
-              backdropTransition={{ timeout: 1300 }}
+              backdropTransition={{ timeout: 700 }}
               className={this.props.className}>
                 <DropdownToggle  caret>
                   List of Users
