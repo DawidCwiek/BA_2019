@@ -10,17 +10,17 @@ export default class ProjectList extends React.PureComponent {
     fetch("/project.json")
       .then(response => response.json())
       .then(projects => {
-        this.setState({ projects: projects });
+        this.setState({ projects: projects.data });
       });
   }
 
   render() {
     return (
-      <div className="projects">
+      <div className="label-info">
         {this.state.projects.map(project => {
           return (
             <div key={project.id} className="project">
-             [{project.key}] {project.title} {project.desc} 
+              [{project.key}] {project.title}
             </div>
           );
         })}
@@ -29,9 +29,4 @@ export default class ProjectList extends React.PureComponent {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(
-    <ProjectList />,
-    document.body.appendChild(document.createElement("div"))
-  );
-});
+ReactDOM.render(<ProjectList />, document.getElementById("col-projects"));

@@ -1,0 +1,102 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+.wrapper {
+  width: 100%;
+}
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.width-fix {
+  padding: 0px;
+  padding-right: 0px;
+}
+
+.container {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.menu {
+  left: 0;
+  height: 100vh;
+  background: #331670;
+  color: #fff;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.width-change {
+  max-width: 250px;
+  background-color: #331670;
+  padding-right: 0px;
+  padding-left: 0px;
+  height: 100vh;
+  position: fixed;
+}
+
+.link-hover {
+  color: inherit;
+  text-decoration: none !important;
+  vertical-align: middle;
+}
+
+.sidebar-header {
+  padding-bottom: 40px;
+  padding-top: 40px;
+  background: #331670;
+  text-align:center;
+  padding-left: 10px;
+  color: #fff;
+}
+
+.ul-styling {
+  color: #fff;
+  padding-left: 0px;
+  background-color: #331670;
+}
+
+.li-styling:hover {
+  color: #331670;
+  background: #fff;
+}
+
+.a-styling:hover {
+  background: #fff;
+  color: #331670;
+}
+
+.li-styling {
+  border-top: 1px solid #fff;
+  text-align: center;
+  font-size: 1.6em;
+  display: block;
+  height: 50px;
+  width: 100%;
+  padding-left:10px;
+}
+
+.last-child:hover {
+  color: #331670;
+  background: #fff;
+  text-decoration: none !important;
+}
+
+.last-child {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: 50px;
+  width: 100%;
+  border-top: 1px solid #fff;
+  padding-top: 5px;
+  text-align: center;
+  font-size: 1.3em;
+  
+}
+
+.li-last-item {
+  border-bottom: 1px solid #fff;
+}
