@@ -7,12 +7,10 @@
 body {
   max-width: 100%;
   overflow-x: hidden;
-  height: 200vh;
 }
 
 .width-fix {
   padding: 0px;
-  margin: 0px;
   padding-right: 0px;
 }
 
@@ -36,6 +34,7 @@ body {
   padding-right: 0px;
   padding-left: 0px;
   height: 100vh;
+  position: fixed;
 }
 
 .link-hover {
