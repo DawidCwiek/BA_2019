@@ -7,13 +7,23 @@
 body {
   max-width: 100%;
   overflow-x: hidden;
+  height: 200vh;
+}
+
+.width-fix {
+  padding: 0px;
+  margin: 0px;
+  padding-right: 0px;
+}
+
+.container {
+  padding-right: 0px;
+  // padding-left: 0px;
 }
 
 .menu {
-  // top: 0;
   left: 0;
   height: 100vh;
-  z-index: 999;
   background: #331670;
   color: #fff;
   padding-right: 0px;
@@ -52,6 +62,11 @@ body {
 .li-styling:hover {
   color: #331670;
   background: #fff;
+}
+
+.a-styling:hover {
+  background: #fff;
+  color: #331670;
 }
 
 .li-styling {
