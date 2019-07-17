@@ -10,7 +10,7 @@ body {
 }
 
 .menu {
-  top: 0;
+  // top: 0;
   left: 0;
   height: 100vh;
   z-index: 999;
@@ -67,6 +67,7 @@ body {
 .last-child:hover {
   color: #331670;
   background: #fff;
+  text-decoration: none !important;
 }
 
 .last-child {
@@ -78,7 +79,7 @@ body {
   border-top: 1px solid #fff;
   padding-top: 5px;
   text-align: center;
-  font-size: 1.6em;
+  font-size: 1.3em;
   
 }
 

@@ -19,8 +19,22 @@
     <div class="wrapper">
       <div class="row">
         <div id="sidebar" class="col-3 width-change">
-          <div id="sidenav"></div>
-          <%= javascript_pack_tag 'SideNav' %>
+          <h1 class="sidebar-header">Manage.io</h1>
+      
+          <ul class="ul-styling">
+            <li class="li-styling">
+              <a href="#" class="link-hover">Kanban</a>
+            </li>
+            <li class="li-styling">
+              <a href="#" class="link-hover">Backlog</a>
+            </li>
+            <li class="li-styling li-last-item">
+              <a href="#" class="link-hover">Create task</a>
+            </li>
+            <li class="last-child link-hover">
+              <a class="link-hover last-child" rel="nofollow" data-method="delete" href="/users/sign_out">Logout</a>
+            </li>
+          </ul>
         </div>
         <div class="col-9">
           <%= yield %>
