@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
 import PropTypes from "prop-types";
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, 
@@ -10,12 +11,39 @@ class ModalExample extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      dropdownOpen: false
+      dropdownOpen: false,
     };
 
     this.toggle = this.toggle.bind(this);
     this.toggle_drop = this.toggle_drop.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    
+    // fetch('/task.json', {
+    //   method: 'POST',
+    //   body: data,
+    // });
+    this.setState({
+      res: stringifyFormData(data),
+    });
+
+    axios
+    .post(
+      "/task.json",
+      { post: { res: this.state.res } },
+      {
+        headers: {
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+            .content
+        }
+      }
+    )
+  }
+
 
 
   toggle() {
@@ -46,15 +74,15 @@ class ModalExample extends React.Component {
         >
           <ModalHeader className="text-muted" toggle={this.toggle}>Create Task</ModalHeader>
           <ModalBody>
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label className="text-muted" for="taskTitle">Title</Label>
-                <Input type="text" minLength="3" maxLength="30" name="text" id="taskTitle" placeholder="Write task title" />
-
+                <Label className="text-muted" for="title">Title</Label>
+                <Input type="text" minLength="3" maxLength="30" name="title" id="title" placeholder="Write task title"  />
             </FormGroup>
             <FormGroup>
                  <Label className="text-muted" for="exampleText">Description</Label>
-                 <Input type="textarea" maxLength="160" name="text" id="task description" placeholder="Write discription" />
+                 <Input type="textarea" maxLength="160" name="desc" id="desc" placeholder="Write discription" />
+                 <Input type="text" maxLength="160" name="project_id" id="project_id"/>
             </FormGroup>
             <FormGroup>
             <Label className="text-muted" for="exampleText">Users to assign</Label>
@@ -63,8 +91,6 @@ class ModalExample extends React.Component {
               <ButtonDropdown 
               isOpen={this.state.dropdownOpen}
               toggle={this.toggle_drop}
-              modalTransition={{ timeout: 700 }}
-              backdropTransition={{ timeout: 1300 }}
               className={this.props.className}>
                 <DropdownToggle  caret>
                   List of Users
@@ -75,12 +101,18 @@ class ModalExample extends React.Component {
                 </DropdownMenu>
               </ButtonDropdown>
             </FormGroup>
-            </Form>
-            <Button color="primary" onClick={this.toggle}>
+            <Button color="primary" >
               Confirm
             </Button>
+            </Form>
           </ModalBody>
         </Modal>
+         {this.state.res && (
+        	<div className="res-block">
+            <h3>Data to be sent:</h3>
+            <pre>FormData {this.state.res}</pre>
+        	</div>
+        )}
       </div>
     );
   }
@@ -94,3 +126,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(document.createElement("div"))
   );
 });
+// json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
+function stringifyFormData(fd) {
+  const data = {};
+	for (let key of fd.keys()) {
+  	data[key] = fd.get(key);
+  }
+  return JSON.stringify(data, null, 2);
+}
