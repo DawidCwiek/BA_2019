@@ -6,43 +6,53 @@ import PropTypes from "prop-types";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, 
   FormText,ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem  } from "reactstrap";
 
-class ModalExample extends React.Component {
+class Task_form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
       dropdownOpen: false,
+      data: {
+        title: "",
+        desc: "",
+        user_id: "",
+        project_id: ""
+			}
     };
 
     this.toggle = this.toggle.bind(this);
     this.toggle_drop = this.toggle_drop.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    
-    // fetch('/task.json', {
-    //   method: 'POST',
-    //   body: data,
-    // });
-    this.setState({
-      res: stringifyFormData(data),
-    });
+  setFromValue = (attribute, value) => {
+		this.setState(prev => ({ data: {...prev.data, [attribute]: value} }))
+	}
 
-    axios
-    .post(
-      "/task.json",
-      { post: { res: this.state.res } },
-      {
-        headers: {
-          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-            .content
-        }
-      }
-    )
-  }
+
+	handleSubmit = e => {
+	    this.setState({
+	      data: {
+					title: "",
+					desc: "",
+          user_id: "",
+          project_id: ""
+				}
+	    });
+	    e.preventDefault();
+
+  axios
+	      .post(
+	        "task.json",
+	        { task: this.state.data },
+	        {
+	          headers: {
+	            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+	              .content
+	          }
+	        }
+	      )
+	  };
+
 
 
 
@@ -74,15 +84,16 @@ class ModalExample extends React.Component {
         >
           <ModalHeader className="text-muted" toggle={this.toggle}>Create Task</ModalHeader>
           <ModalBody>
-            <Form onSubmit={this.handleSubmit}>
+            <Form>
               <FormGroup>
                 <Label className="text-muted" for="title">Title</Label>
-                <Input type="text" minLength="3" maxLength="30" name="title" id="title" placeholder="Write task title"  />
+                <Input type="text" minLength="3" maxLength="30" name="title" id="title" placeholder="Write task title" 
+                value={this.state.data.title} onChange={e => { this.setFromValue('title', e.target.value) } }/>
             </FormGroup>
             <FormGroup>
                  <Label className="text-muted" for="exampleText">Description</Label>
-                 <Input type="textarea" maxLength="160" name="desc" id="desc" placeholder="Write discription" />
-                 <Input type="text" maxLength="160" name="project_id" id="project_id"/>
+                 <Input type="textarea" maxLength="160" name="desc" id="desc" placeholder="Write discription"
+                 value={this.state.data.desc} onChange={e => { this.setFromValue('desc', e.target.value) } } />
             </FormGroup>
             <FormGroup>
             <Label className="text-muted" for="exampleText">Users to assign</Label>
@@ -107,30 +118,17 @@ class ModalExample extends React.Component {
             </Form>
           </ModalBody>
         </Modal>
-         {this.state.res && (
-        	<div className="res-block">
-            <h3>Data to be sent:</h3>
-            <pre>FormData {this.state.res}</pre>
-        	</div>
-        )}
       </div>
     );
   }
 }
 
-export default ModalExample;
+export default Task_form;
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <ModalExample/>,
+    <Task_form/>,
     document.body.appendChild(document.createElement("div"))
   );
 });
 // json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
-function stringifyFormData(fd) {
-  const data = {};
-	for (let key of fd.keys()) {
-  	data[key] = fd.get(key);
-  }
-  return JSON.stringify(data, null, 2);
-}
