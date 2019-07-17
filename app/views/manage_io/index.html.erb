@@ -14,23 +14,24 @@ method: :delete %> <% else %> <%= link_to 'Login', new_user_session_path
     <div id="modal"></div>
     
   </div>
-  <div class="col">
+  <div class="col ">
    <div style="color:black;">
     <div class="col">
       <h3 class="sign-up-header ">Task list</h3>
       <div class="label-info">
         <tr>
-          <th>Name</th>
-          <th>Description</th>
+          <% @task.each do |task| %>
+          <tr>
+            <div class="project">
+            <td><%= task.title %></td>
+            <td><%= task.desc %></td>
+          </div>
+          </tr>
+          <% end %>
         </tr> 
       </div>
      
-        <% @task.each do |task| %>
-        <tr>
-          <td><%= task.title %></td>
-          <td><%= task.desc %></td>
-        </tr>
-        <% end %>
+       
       </table>
     </div>
   </div>
@@ -38,7 +39,8 @@ method: :delete %> <% else %> <%= link_to 'Login', new_user_session_path
     <div class="col label-margin">
     <div class="label-info">
         <% if user_signed_in? %>
-        <%= current_user.full_name %>
+       Full Name:  <%= current_user.full_name %></br>
+       Your email: <%= current_user.email %>
        <% else %>
       <h3>Please Sign in!</h3>
         <% end %>
