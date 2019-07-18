@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import PropTypes from "prop-types";
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input,
-  FormText,ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem  } from "reactstrap";
+
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input
+  ,ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem  } from "reactstrap";
 
 class Task_form extends React.Component {
   constructor(props) {
@@ -15,9 +15,9 @@ class Task_form extends React.Component {
       data: {
         title: "",
         desc: "",
-        user_id: "",
-        project_id: ""
-			}
+        project_id: 1,
+      },
+      users_data: []
     };
 
     this.toggle = this.toggle.bind(this);
@@ -29,32 +29,60 @@ class Task_form extends React.Component {
 	}
 
 
-	handleSubmit = e => {
-	    this.setState({
-	      data: {
-					title: "",
-					desc: "",
-          user_id: "",
-          project_id: ""
-				}
-	    });
-	    e.preventDefault();
+    handleSubmit = e => {
+            this.setState({
+            data: {
+              title: "",
+              desc: "",
+              user_id: "",
+              project_id: 1
+            }
+            
+          });
+          e.preventDefault();
+          
 
-  axios
-	      .post(
-	        "task.json",
-	        { task: this.state.data },
-	        {
-	          headers: {
-	            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-	              .content
-	          }
-	        }
-	      )
-	  };
+      axios
+        .post(
+          "task.json",
+          { task: this.state.data },
+        {
+            headers: {
+              "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+                .content
+            }
+          }
+        );
+      }
+
+    consolShow = () =>{
+ 
+       axios
+        .get(
+          "single_project/id/users.json",
+        {
+            headers: {
+              "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+                .content
+            }
+          })
+          .then(response => {
+          this.setState({ users_data: response.data });
+        });
+      }
 
 
 
+  showMyLittleConsole=()=>
+  {
+    console.log("a moze tu nic nie ma?")
+    console.log(this.state.users_data)
+ 
+  }
+
+  componentDidMount() {
+    this.consolShow();
+  }
 
   toggle() {
     this.setState(prevState => ({
@@ -72,16 +100,16 @@ class Task_form extends React.Component {
   render() {
     return (
       <div>
+        <Button onClick={this.showMyLittleConsole}>
+         Magic Consol
+       </Button>
         <Button color="danger" onClick={this.toggle}>
-         Create Task{this.props.buttonLabel}
-          </Button>
+         Create Task
+       </Button>
         <Modal
           isOpen={this.state.modal}
-          modalTransition={{ timeout: 700 }}
-          backdropTransition={{ timeout: 1300 }}
           toggle={this.toggle}
-          className={this.props.className}
-        >
+          className={this.props.className}>
           <ModalHeader className="text-muted" toggle={this.toggle}>Create Task</ModalHeader>
           <ModalBody>
             <Form>
@@ -102,11 +130,6 @@ class Task_form extends React.Component {
               <ButtonDropdown
               isOpen={this.state.dropdownOpen}
               toggle={this.toggle_drop}
-<<<<<<< HEAD
-=======
-              modalTransition={{ timeout: 700 }}
-              backdropTransition={{ timeout: 700 }}
->>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
               className={this.props.className}>
                 <DropdownToggle  caret>
                   List of Users
@@ -117,7 +140,7 @@ class Task_form extends React.Component {
                 </DropdownMenu>
               </ButtonDropdown>
             </FormGroup>
-            <Button color="primary" >
+            <Button color="primary" onClick={this.handleSubmit}>
               Confirm
             </Button>
             </Form>
@@ -132,7 +155,7 @@ export default Task_form;
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <Task_form/>,
+    <Task_form />,
     document.body.appendChild(document.createElement("div"))
   );
 });

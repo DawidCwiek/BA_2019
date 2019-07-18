@@ -74,7 +74,6 @@ class ProjectFormModal extends React.Component {
 			          <Label for="key" className="text-muted">Key</Label>
 			          <Input type="text" name="key" id="key" placeholder="Key" value={this.state.data.key} onChange={e => { this.setFromValue('key', e.target.value) }}/>
 			        </FormGroup>
-
 						</ModalBody>
 	          <ModalFooter>
 	            <Button color="primary" onClick={this.handleSubmit}>Save</Button>{' '}
