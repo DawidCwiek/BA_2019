@@ -7,17 +7,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def logged_and_no_logged
-    if user_signed_in? 
-      # byebug
-      if current_user.admin?
-        
-        "admin"
-      else 
-        "logged"
-      end
-    else  
-      "no_logged"
-    end
+    user_signed_in? ? current_user.admin? ?  "admin" : "logged" : "no_logged"
   end
 
 
