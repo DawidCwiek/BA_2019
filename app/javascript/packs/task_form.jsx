@@ -6,6 +6,9 @@ import axios from "axios";
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input
   ,ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem  } from "reactstrap";
 
+
+
+
 class Task_form extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +31,7 @@ class Task_form extends React.Component {
 		this.setState(prev => ({ data: {...prev.data, [attribute]: value} }))
 	}
 
-
+ 
     handleSubmit = e => {
             this.setState({
             data: {
@@ -55,7 +58,7 @@ class Task_form extends React.Component {
         );
       }
 
-    consolShow = () =>{
+    userDataTaker = () =>{
  
        axios
         .get(
@@ -67,21 +70,26 @@ class Task_form extends React.Component {
             }
           })
           .then(response => {
-          this.setState({ users_data: response.data });
+          this.setState({ users_data: response.data.data });
         });
       }
 
-
+  showUsers=()=>{
+    return this.state.users_data.map(userData => 
+    <DropdownItem key={userData.id}>
+        {userData.full_name}
+     </DropdownItem>)
+  }
 
   showMyLittleConsole=()=>
   {
-    console.log("a moze tu nic nie ma?")
+    console.log("A to zawiera nasze dane ktore przychodza z jsona")
     console.log(this.state.users_data)
  
   }
 
   componentDidMount() {
-    this.consolShow();
+    this.userDataTaker();
   }
 
   toggle() {
@@ -136,7 +144,7 @@ class Task_form extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem disabled>Users available</DropdownItem>
-                  <DropdownItem>Place for future users</DropdownItem>
+                  {this.showUsers()}
                 </DropdownMenu>
               </ButtonDropdown>
             </FormGroup>

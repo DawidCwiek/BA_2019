@@ -23,6 +23,7 @@
 
   <% @task.each do |task| %>
     <tr>
+      <td><%= task.user_id %></td>
       <td><%= task.title %></td>
       <td><%= task.desc %></td>
     </tr>
