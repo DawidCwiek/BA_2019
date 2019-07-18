@@ -10,9 +10,9 @@ RSpec.describe 'project/index', type: :view do
   subject { JSON.parse(rendered) }
 
   describe 'data' do
-    it { expect(subject.first.keys).to include('title', 'desc', 'key') }
-    it { expect(subject.first['title']).to eq(project.title) }
-    it { expect(subject.first['desc']).to eq(project.desc) }
-    it { expect(subject.first['key']).to eq(project.key) }
+    it { expect(subject["data"].first.keys).to include('title', 'desc', 'key') }
+    it { expect(subject["data"].first['title']).to eq(project.title) }
+    it { expect(subject["data"].first['desc']).to eq(project.desc) }
+    it { expect(subject["data"].first['key']).to eq(project.key) }
   end
 end

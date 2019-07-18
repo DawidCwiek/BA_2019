@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_074046) do
+ActiveRecord::Schema.define(version: 2019_07_18_111026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "columns", force: :cascade do |t|
+    t.bigint "project_id"
+    t.integer "tasks_order", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_columns_on_project_id"
+    t.index ["tasks_order"], name: "index_columns_on_tasks_order", using: :gin
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
@@ -22,6 +31,8 @@ ActiveRecord::Schema.define(version: 2019_07_16_074046) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.integer "columns_order", default: [], array: true
+    t.index ["columns_order"], name: "index_projects_on_columns_order", using: :gin
   end
 
   create_table "projects_users", force: :cascade do |t|
@@ -39,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_07_16_074046) do
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "column_id"
+    t.index ["column_id"], name: "index_tasks_on_column_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
@@ -64,4 +77,5 @@ ActiveRecord::Schema.define(version: 2019_07_16_074046) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "tasks", "columns"
 end

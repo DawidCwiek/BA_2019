@@ -47,6 +47,8 @@
         null,
         4,
         2,
+        2,
+        2,
         null,
         2,
         null,
@@ -83,8 +85,13 @@
         null,
         1,
         1,
+        1,
         null,
         1,
+        null,
+        1,
+        18,
+        null,
         null,
         1,
         0,
@@ -132,16 +139,41 @@
         null,
         null
       ],
+      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/column.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        21,
+        21,
+        null,
+        null
+      ],
       "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/project.rb": [
         null,
         null,
         1,
         1,
         1,
+        1,
         null,
         1,
         1,
         1,
+        null,
+        1,
+        21,
+        21,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
         null
       ],
       "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/task.rb": [
@@ -150,7 +182,9 @@
         1,
         1,
         1,
+        1,
         null,
+        1,
         1,
         1,
         1,
@@ -197,6 +231,6 @@
         0
       ]
     },
-    "timestamp": 1563275412
+    "timestamp": 1563453500
   }
 }

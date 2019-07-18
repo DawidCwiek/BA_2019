@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TaskController, type: :controller do
   render_views
+  login_user
 
   describe '#index' do
     subject { get :index, format: :json }
@@ -31,11 +32,14 @@ RSpec.describe TaskController, type: :controller do
 
   describe '#create' do
     let(:project) { create(:project) }
-    let(:valid_attributes) { { task: attributes_for(:task, project_id: project.id) } }
-    let(:invalid_attributes) { { task: attributes_for(:task, title: nil, project_id: project.id) } }
+    let(:column) { create(:column, project_id: project.id) }
+    let(:valid_attributes) { { task: attributes_for(:task, project_id: project.id, column_id: column.id) } }
+    let(:invalid_attributes) { { task: attributes_for(:task, title: nil, project_id: project.id, column_id: column.id) } }
 
     context 'valid attributes' do
       subject { post :create, params: valid_attributes, format: :json }
+      #before {subject}
+      #it {byebug}
       it { expect(subject).to render_template('show') }
       it { expect { subject }.to change(Task, :count).by(1) }
     end

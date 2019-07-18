@@ -3,5 +3,6 @@ FactoryBot.define do
     project
     title { Faker::Games::Pokemon.name }
     desc { Faker::Name.last_name }
+    column
   end
 end
