@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class ProjectController < ApplicationController
-  before_action :set_project, only: %i[show edit update destroy]
+  before_action :set_project, only: %i[show edit update destroy archive]
 
   def index
     @projects = Project.all
   end
 
-  def show; end
+  def show
+  end
 
   def create
     @project = Project.new(project_params)
@@ -29,6 +30,11 @@ class ProjectController < ApplicationController
 
   def destroy
     @project.destroy
+    head :no_content
+  end
+
+  def archive
+    @project.update_attribute(:archived, true)
     head :no_content
   end
 

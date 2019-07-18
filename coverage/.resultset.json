@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/user.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/models/user.rb": [
         null,
         null,
         1,
@@ -17,70 +17,77 @@
         null,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/application_record.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/models/application_record.rb": [
         null,
         null,
         1,
         1,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/helpers/application_helper.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/helpers/application_helper.rb": [
         null,
         null,
         1,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/controllers/project_controller.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/controllers/project_controller.rb": [
         null,
         null,
         1,
         1,
         null,
         1,
-        2,
-        null,
-        null,
-        1,
-        null,
-        1,
-        4,
-        null,
-        4,
-        2,
-        null,
-        2,
-        null,
-        null,
-        null,
-        1,
-        4,
-        2,
-        null,
-        2,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
+        0,
         null,
         null,
         1,
         null,
         null,
         1,
-        8,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
         null,
         null,
         null,
         1,
-        8,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        0,
         null,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/controllers/application_controller.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/controllers/application_controller.rb": [
         null,
         null,
+        1,
         1,
         1,
         null,
@@ -89,50 +96,14 @@
         1,
         0,
         null,
-        null
-      ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/controllers/task_controller.rb": [
-        null,
         null,
         1,
-        1,
-        null,
-        1,
-        2,
-        null,
-        null,
-        1,
-        null,
-        1,
-        4,
-        4,
-        2,
-        null,
-        2,
-        null,
-        null,
-        null,
-        1,
-        4,
-        2,
-        null,
-        2,
-        null,
-        null,
-        null,
-        1,
-        null,
-        1,
-        7,
-        null,
-        null,
-        1,
-        8,
+        0,
         null,
         null,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/project.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/models/project.rb": [
         null,
         null,
         1,
@@ -144,19 +115,7 @@
         1,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/task.rb": [
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/mailers/application_mailer.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/mailers/application_mailer.rb": [
         null,
         null,
         0,
@@ -164,13 +123,25 @@
         0,
         0
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/jobs/application_job.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/models/task.rb": [
+        null,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/jobs/application_job.rb": [
         null,
         null,
         0,
         0
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/controllers/manage_io_controller.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/controllers/manage_io_controller.rb": [
         null,
         null,
         0,
@@ -180,7 +151,48 @@
         0,
         0
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/channels/application_cable/connection.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/controllers/task_controller.rb": [
+        null,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0
+      ],
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/channels/application_cable/connection.rb": [
         null,
         null,
         0,
@@ -188,7 +200,7 @@
         0,
         0
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/channels/application_cable/channel.rb": [
+      "/Users/kucziii/Desktop/Projects/BA_2019/app/channels/application_cable/channel.rb": [
         null,
         null,
         0,
@@ -197,6 +209,6 @@
         0
       ]
     },
-    "timestamp": 1563275412
+    "timestamp": 1563442657
   }
 }
