@@ -7,8 +7,19 @@ class ApplicationController < ActionController::Base
   protected
 
   def logged_and_no_logged
-    user_signed_in? ? "logged" : "no_logged"
+    if user_signed_in? 
+      # byebug
+      if current_user.admin?
+        
+        "admin"
+      else 
+        "logged"
+      end
+    else  
+      "no_logged"
+    end
   end
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[full_name email password])
