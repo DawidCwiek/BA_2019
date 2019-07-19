@@ -10,8 +10,8 @@ RSpec.describe 'task/show', type: :view do
   subject { JSON.parse(rendered) }
 
   describe 'data' do
-    it { expect(subject.keys).to include('title', 'desc', 'isEpik') }
-    it { expect(subject['title']).to eq(task.title) }
-    it { expect(subject['desc']).to eq(task.desc) }
+    it { expect(subject["data"].keys).to include('title', 'desc', 'isEpik') }
+    it { expect(subject["data"]['title']).to eq(task.title) }
+    it { expect(subject["data"]['desc']).to eq(task.desc) }
   end
 end

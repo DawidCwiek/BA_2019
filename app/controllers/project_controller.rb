@@ -13,9 +13,11 @@ class ProjectController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
+      2.times {@project.columns.create}
+      
       render :show, status: :created, location: @project
     else
-      render json: @project.errors, status: :unprocessable_entity
+      render json: { errors: @project.errors }, status: :unprocessable_entity
     end
   end
 
@@ -23,7 +25,7 @@ class ProjectController < ApplicationController
     if @project.update(project_params)
       render :show, status: :ok, location: @project
     else
-      render json: @project.errors, status: :unprocessable_entity
+      render json: { errors: @project.errors }, status: :unprocessable_entity
     end
   end
 
