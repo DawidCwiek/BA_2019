@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :manage_io, only: [:index]
-  resources :list_users, only: [:index]
+  resources :users_list, only: [:index]
   resources :administrators, only: [:index]
 
   root to: 'manage_io#index'

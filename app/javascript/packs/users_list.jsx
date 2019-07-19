@@ -9,7 +9,7 @@ import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input
 
 
 
-class users_list extends React.Component {
+class UsersList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,10 +18,6 @@ class users_list extends React.Component {
 
 
   }
-
-    
-
-
  
     // handleSubmit = e => {
     //         this.setState({
@@ -64,7 +60,7 @@ class users_list extends React.Component {
  
        axios
         .get(
-          "list_users.json",
+          "users_list.json",
         {
             headers: {
               "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -98,12 +94,12 @@ class users_list extends React.Component {
   }
 }
 
-export default Task_Form;
+export default UsersList;
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <users_list />,
-    document.getElementById('create-task-modal'))
+    <UsersList />,
+    document.getElementById('users_list'))
   
 });
 // json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
