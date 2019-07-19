@@ -3,11 +3,15 @@
 Rails.application.routes.draw do
   devise_for :users
   defaults format: :json do
-    resources :project, except: [:new, :edit]
+    resources :project do
+        resources :users, only: [:index]
+      end
     resources :task, except: [:new, :edit, :destroy]
   end
 
   resources :manage_io, only: [:index]
+
+  resources :administrators, only: [:index]
 
   root to: 'manage_io#index'
   get '/project/archive/:id' => 'project#archive', :defaults => { :format => :json }

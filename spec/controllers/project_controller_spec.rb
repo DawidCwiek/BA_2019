@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProjectController, type: :controller do
   render_views
+  login_user
 
   describe '#index' do
     subject { get :index, format: :json }

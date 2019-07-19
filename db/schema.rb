@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_114830) do
+ActiveRecord::Schema.define(version: 2019_07_18_111026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
+  create_table "columns", force: :cascade do |t|
+    t.bigint "project_id"
+    t.integer "tasks_order", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_columns_on_project_id"
+    t.index ["tasks_order"], name: "index_columns_on_tasks_order", using: :gin
   end
 
   create_table "projects", force: :cascade do |t|
@@ -29,6 +32,8 @@ ActiveRecord::Schema.define(version: 2019_07_17_114830) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "archived", default: false
+    t.integer "columns_order", default: [], array: true
+    t.index ["columns_order"], name: "index_projects_on_columns_order", using: :gin
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -47,6 +52,8 @@ ActiveRecord::Schema.define(version: 2019_07_17_114830) do
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "column_id"
+    t.index ["column_id"], name: "index_tasks_on_column_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
@@ -66,10 +73,13 @@ ActiveRecord::Schema.define(version: 2019_07_17_114830) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
+    t.boolean "super_admin"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "tasks", "columns"
 end
