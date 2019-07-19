@@ -7,10 +7,11 @@ Rails.application.routes.draw do
         resources :users, only: [:index]
       end
     resources :task, except: [:new, :edit, :destroy]
+    resources :users_list, only: [:index]
   end
 
   resources :manage_io, only: [:index]
-  resources :users_list, only: [:index]
+  
   resources :administrators, only: [:index]
 
   root to: 'manage_io#index'
