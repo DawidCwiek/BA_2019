@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/user.rb": [
+      "/home/timedar/Desktop/File/3/BA_2019/app/models/user.rb": [
         null,
         null,
         1,
@@ -17,20 +17,20 @@
         null,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/application_record.rb": [
+      "/home/timedar/Desktop/File/3/BA_2019/app/models/application_record.rb": [
         null,
         null,
         1,
         1,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/helpers/application_helper.rb": [
+      "/home/timedar/Desktop/File/3/BA_2019/app/helpers/application_helper.rb": [
         null,
         null,
         1,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/controllers/project_controller.rb": [
+      "/home/timedar/Desktop/File/3/BA_2019/app/controllers/project_controller.rb": [
         null,
         null,
         1,
@@ -43,44 +43,70 @@
         1,
         null,
         1,
-        4,
-        null,
-        4,
-        2,
-        2,
-        2,
-        null,
-        2,
-        null,
-        null,
-        null,
         1,
+        null,
+<<<<<<< HEAD
+        1,
+        1,
+        2,
+        null,
+        0,
+=======
         4,
         2,
+<<<<<<< HEAD
+        2,
+        2,
+=======
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
+>>>>>>> 3616c63cb6293272b88b812336a4e1c468eb7d07
         null,
         2,
         null,
         null,
         null,
         1,
+<<<<<<< HEAD
+        0,
+        0,
+        0,
+        null,
+        0,
+=======
+        4,
+        2,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
+        null,
+        2,
+        null,
+        null,
+        null,
+        1,
+<<<<<<< HEAD
+        0,
+        0,
+        0,
+        null,
+=======
         1,
         1,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
         null,
         1,
         null,
         null,
         1,
-        8,
+        3,
         null,
         null,
         null,
         1,
-        8,
+        1,
         null,
         null
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/controllers/application_controller.rb": [
+      "/home/timedar/Desktop/File/3/BA_2019/app/controllers/application_controller.rb": [
         null,
         null,
         1,
@@ -98,34 +124,96 @@
         null,
         null
       ],
+<<<<<<< HEAD
+      "/home/timedar/Desktop/File/3/BA_2019/app/models/project.rb": [
+=======
       "/Users/dawidcwiek/Desktop/BA/project/pik/app/controllers/task_controller.rb": [
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
         null,
         1,
         1,
         null,
         1,
+<<<<<<< HEAD
+        1,
+        1,
+        null
+      ],
+      "/home/timedar/Desktop/File/3/BA_2019/app/models/task.rb": [
+=======
         2,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
         null,
         1,
         null,
         1,
+<<<<<<< HEAD
+        1,
+        1,
+        null
+      ],
+      "/home/timedar/Desktop/File/3/BA_2019/app/controllers/task_controller.rb": [
+        null,
+        null,
+        0,
+        0,
+=======
         4,
         4,
         2,
         null,
         2,
         null,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
+        0,
+        0,
+        0,
         null,
+<<<<<<< HEAD
+        0,
+=======
         1,
         4,
         2,
         null,
         2,
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
+        0,
+        0,
+        0,
         null,
+<<<<<<< HEAD
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+=======
         null,
         1,
         null,
@@ -177,8 +265,21 @@
         null
       ],
       "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/task.rb": [
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
         null,
+        0,
         null,
+<<<<<<< HEAD
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0
+=======
         1,
         1,
         1,
@@ -189,22 +290,9 @@
         1,
         1,
         null
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/mailers/application_mailer.rb": [
-        null,
-        null,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/jobs/application_job.rb": [
-        null,
-        null,
-        0,
-        0
-      ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/controllers/manage_io_controller.rb": [
+      "/home/timedar/Desktop/File/3/BA_2019/app/controllers/manage_io_controller.rb": [
         null,
         null,
         0,
@@ -214,7 +302,7 @@
         0,
         0
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/channels/application_cable/connection.rb": [
+      "/home/timedar/Desktop/File/3/BA_2019/app/channels/application_cable/channel.rb": [
         null,
         null,
         0,
@@ -222,7 +310,21 @@
         0,
         0
       ],
-      "/Users/dawidcwiek/Desktop/BA/project/pik/app/channels/application_cable/channel.rb": [
+      "/home/timedar/Desktop/File/3/BA_2019/app/channels/application_cable/connection.rb": [
+        null,
+        null,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/timedar/Desktop/File/3/BA_2019/app/jobs/application_job.rb": [
+        null,
+        null,
+        0,
+        0
+      ],
+      "/home/timedar/Desktop/File/3/BA_2019/app/mailers/application_mailer.rb": [
         null,
         null,
         0,
@@ -231,6 +333,14 @@
         0
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1563453500
+=======
+<<<<<<< HEAD
+    "timestamp": 1563288070
+=======
+    "timestamp": 1563275412
+>>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
+>>>>>>> 3616c63cb6293272b88b812336a4e1c468eb7d07
   }
 }
