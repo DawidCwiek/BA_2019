@@ -9,7 +9,7 @@ import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input
 
 
 
-class Task_form extends React.Component {
+class Task_Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,13 +20,34 @@ class Task_form extends React.Component {
         desc: "",
         project_id: 1,
       },
-      users_data: []
+      users_data: [],
+      errors: {}
     };
 
     this.toggle = this.toggle.bind(this);
     this.toggle_drop = this.toggle_drop.bind(this);
   }
+  handleValidation(){
+    let project = this.state.data;
+    let errors = {};
+    let formIsValid = true;
 
+    //title
+    if(!project["title"]){
+       formIsValid = false;
+       errors["title"] = "Cannot be empty";
+    }
+
+    if(typeof project["title"] !== "undefined"){
+       if(project["title"].length > 30){
+          formIsValid = false;
+          errors["title"] = "Must have less than 30 characters";
+       }
+      }
+      this.setState({errors: errors});
+      return formIsValid;
+    }
+    
   setFromValue = (attribute, value) => {
 		this.setState(prev => ({ data: {...prev.data, [attribute]: value} }))
 	}
@@ -42,6 +63,7 @@ class Task_form extends React.Component {
             }
             
           });
+          if(this.handleValidation()){
           e.preventDefault();
           
 
@@ -55,14 +77,20 @@ class Task_form extends React.Component {
                 .content
             }
           }
-        );
+        )
+        .catch(e => {
+					if(e.response.data.errors["key"] !== "undefined"){
+						this.setState({errors: {key: "The key must be unique"}});
+					}
+				})
       }
+    }
 
     userDataTaker = () =>{
  
        axios
         .get(
-          "single_project/id/users.json",
+          "/project/users.json",
         {
             headers: {
               "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -79,13 +107,6 @@ class Task_form extends React.Component {
     <DropdownItem key={userData.id}>
         {userData.full_name}
      </DropdownItem>)
-  }
-
-  showMyLittleConsole=()=>
-  {
-    console.log("A to zawiera nasze dane ktore przychodza z jsona")
-    console.log(this.state.users_data)
- 
   }
 
   componentDidMount() {
@@ -108,12 +129,7 @@ class Task_form extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={this.showMyLittleConsole}>
-         Magic Consol
-       </Button>
-        <Button color="danger" onClick={this.toggle}>
-         Create Task
-       </Button>
+          <a onClick={this.toggle} className="link-hover a-styling">Create task</a>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
@@ -125,6 +141,7 @@ class Task_form extends React.Component {
                 <Label className="text-muted" for="title">Title</Label>
                 <Input type="text" minLength="3" maxLength="30" name="title" id="title" placeholder="Write task title" 
                 value={this.state.data.title} onChange={e => { this.setFromValue('title', e.target.value) } }/>
+                <span style={{color: "red"}}>{this.state.errors["title"]}</span>
             </FormGroup>
             <FormGroup>
                  <Label className="text-muted" for="exampleText">Description</Label>
@@ -148,7 +165,7 @@ class Task_form extends React.Component {
                 </DropdownMenu>
               </ButtonDropdown>
             </FormGroup>
-            <Button color="primary" onClick={this.handleSubmit}>
+            <Button color="primary" onClick={this.handleSubmit} toggle={this.toggle}>
               Confirm
             </Button>
             </Form>
@@ -159,12 +176,12 @@ class Task_form extends React.Component {
   }
 }
 
-export default Task_form;
+export default Task_Form;
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <Task_form />,
-    document.body.appendChild(document.createElement("div"))
-  );
+    <Task_Form />,
+    document.getElementById('create-task-modal'))
+  
 });
 // json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
