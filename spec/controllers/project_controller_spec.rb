@@ -86,4 +86,11 @@ RSpec.describe ProjectController, type: :controller do
       expect { subject }.to change(Project, :count).by(-1)
     end
   end
+
+  describe '#archive' do
+    let(:project) { create(:project) }
+    before { get :archive, params: { id: project.id } }
+
+    it { expect(project.reload.archived).to eq(true) }
+  end
 end
