@@ -1,7 +1,15 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-.wrapper {
-  width: 100%;
+@media screen and (max-width: 1280px) {
+  .manageIo-text {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .manageIo-text {
+    font-size: 1.8em;
+  }
 }
 
 body {
