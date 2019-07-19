@@ -137,6 +137,6 @@ class ProjectFormModal extends React.Component {
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     <ProjectFormModal />,
-    document.body.appendChild(document.createElement("div"))
+    document.getElementById('project-form-modal')
   );
 });
