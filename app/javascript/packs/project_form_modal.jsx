@@ -12,7 +12,8 @@ class ProjectFormModal extends React.Component {
 				title: "",
 				desc: "",
 				key: ""
-			}
+			},
+			errors: {}
     };
 
     this.toggle = this.toggle.bind(this);
@@ -30,13 +31,8 @@ class ProjectFormModal extends React.Component {
 
 
 	handleSubmit = e => {
-	    this.setState({
-	      data: {
-					title: "",
-					desc: "",
-					key: ""
-				}
-	    });
+		if(this.handleValidation()){
+
 	    e.preventDefault();
 
 	    axios
@@ -49,9 +45,57 @@ class ProjectFormModal extends React.Component {
 	              .content
 	          }
 	        }
-	      )
-			console.log("Hello world!");
-	  };
+	      ).catch(e => {
+					if(e.response.data.errors["key"] !== "undefined"){
+						this.setState({errors: {key: "The key must be unique"}});
+					}
+
+				})
+		};
+	};
+
+		handleValidation(){
+        let project = this.state.data;
+        let errors = {};
+        let formIsValid = true;
+
+        //title
+        if(!project.title){
+           formIsValid = false;
+           errors["title"] = "Cannot be empty";
+        }else{
+           if(project.title.length > 30){
+              formIsValid = false;
+              errors.title = "Must have less than 30 characters";
+           }
+        }
+
+				//desc
+        if(!project.desc){
+           formIsValid = false;
+           errors.desc = "Cannot be empty";
+        } else {
+           if(project.desc.length > 160){
+              formIsValid = false;
+              errors.desc = "Must have less than 160 characters";
+           }
+        }
+
+				//key
+        if(!project.key){
+           formIsValid = false;
+           errors.key = "Cannot be empty";
+        } else {
+           if(project.key.length > 3){
+              formIsValid = false;
+              errors.key = "Must have less than 3 characters";
+           }
+        }
+
+       this.setState({errors: errors});
+       return formIsValid;
+   }
+
 
   render() {
     return (
@@ -65,15 +109,19 @@ class ProjectFormModal extends React.Component {
 							<FormGroup>
 			          <Label for="title" className="text-muted">Title</Label>
 			          <Input type="text" name="title" id="title" placeholder="Title" value={this.state.data.title} onChange={e => { this.setFromValue('title', e.target.value) }}/>
+								<span style={{color: "red"}}>{this.state.errors["title"]}</span>
 			        </FormGroup>
 							<FormGroup>
 			          <Label for="desc" className="text-muted" >Description</Label>
 			            <Input type="textarea" name="desc" id="desc" placeholder="Description" value={this.state.data.desc} onChange={e => { this.setFromValue('desc', e.target.value) }}/>
-			        </FormGroup>
+									<span style={{color: "red"}}>{this.state.errors["desc"]}</span>
+							</FormGroup>
 							<FormGroup>
 			          <Label for="key" className="text-muted">Key</Label>
 			          <Input type="text" name="key" id="key" placeholder="Key" value={this.state.data.key} onChange={e => { this.setFromValue('key', e.target.value) }}/>
-			        </FormGroup>
+								<span style={{color: "red"}}>{this.state.errors["key"]}</span>
+							</FormGroup>
+
 						</ModalBody>
 	          <ModalFooter>
 	            <Button color="primary" onClick={this.handleSubmit}>Save</Button>{' '}
@@ -89,6 +137,6 @@ class ProjectFormModal extends React.Component {
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     <ProjectFormModal />,
-    document.body.appendChild(document.createElement("div"))
+    document.getElementById('project-form-modal')
   );
 });

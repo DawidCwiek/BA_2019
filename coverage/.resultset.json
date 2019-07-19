@@ -54,7 +54,12 @@
 =======
         4,
         2,
+<<<<<<< HEAD
+        2,
+        2,
+=======
 >>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
+>>>>>>> 3616c63cb6293272b88b812336a4e1c468eb7d07
         null,
         2,
         null,
@@ -106,8 +111,13 @@
         null,
         1,
         1,
+        1,
         null,
         1,
+        null,
+        1,
+        18,
+        null,
         null,
         1,
         0,
@@ -217,16 +227,41 @@
         null,
         null
       ],
+      "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/column.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        21,
+        21,
+        null,
+        null
+      ],
       "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/project.rb": [
         null,
         null,
         1,
         1,
         1,
+        1,
         null,
         1,
         1,
         1,
+        null,
+        1,
+        21,
+        21,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
         null
       ],
       "/Users/dawidcwiek/Desktop/BA/project/pik/app/models/task.rb": [
@@ -248,7 +283,9 @@
         1,
         1,
         1,
+        1,
         null,
+        1,
         1,
         1,
         1,
@@ -297,9 +334,13 @@
       ]
     },
 <<<<<<< HEAD
+    "timestamp": 1563453500
+=======
+<<<<<<< HEAD
     "timestamp": 1563288070
 =======
     "timestamp": 1563275412
 >>>>>>> 96cfd7d6e83a07d0b139a473c78a0047b40d69e5
+>>>>>>> 3616c63cb6293272b88b812336a4e1c468eb7d07
   }
 }
