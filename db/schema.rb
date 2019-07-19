@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2019_07_18_111026) do
     t.index ["tasks_order"], name: "index_columns_on_tasks_order", using: :gin
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "desc"
