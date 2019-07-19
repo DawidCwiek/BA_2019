@@ -7,9 +7,6 @@ class ProjectController < ApplicationController
     @projects = Project.all
   end
 
-  def show
-  end
-
   def create
     @project = Project.new(project_params)
 
@@ -34,7 +31,7 @@ class ProjectController < ApplicationController
   end
 
   def archive
-    @project.update_attribute(:archived, true)
+    @project.update(:archived => true)
     head :no_content
   end
 

@@ -90,6 +90,6 @@ RSpec.describe ProjectController, type: :controller do
     let(:project) { create(:project) }
     before { get :archive, params: { id: project.id } }
 
-    it { expect(Project.find(project.id).archived).to eq(true) }
+    it { expect(project.reload.archived).to eq(true) }
   end
 end
