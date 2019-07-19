@@ -60,7 +60,7 @@ class ProjectFormModal extends React.Component {
         let formIsValid = true;
 
         //title
-        if(!project["title"]){
+        if(!project.title){
            formIsValid = false;
            errors["title"] = "Cannot be empty";
         }
