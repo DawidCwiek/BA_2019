@@ -100,7 +100,7 @@ class ProjectFormModal extends React.Component {
   render() {
     return (
       <div>
-        <Button color="danger" onClick={this.toggle}>Create New Project</Button>
+        <a onClick={this.toggle} className="link-hover a-styling">Create project</a>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle} className="text-muted">Create New Project</ModalHeader>
 					<Form onSubmit={this.handleSubmit}>
