@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
-class ListDawid extends React.Component {
+class List extends React.Component {
   state = {
     projects: [],
   };
@@ -52,7 +52,7 @@ class ListDawid extends React.Component {
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <ListDawid />,
+    <List />,
     document.getElementById("list")
   );
 });
