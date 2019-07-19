@@ -60,41 +60,35 @@ class ProjectFormModal extends React.Component {
         let formIsValid = true;
 
         //title
-        if(!project["title"]){
+        if(!project.title){
            formIsValid = false;
            errors["title"] = "Cannot be empty";
-        }
-
-        if(typeof project["title"] !== "undefined"){
-           if(project["title"].length > 30){
+        }else{
+           if(project.title.length > 30){
               formIsValid = false;
-              errors["title"] = "Must have less than 30 characters";
+              errors.title = "Must have less than 30 characters";
            }
         }
 
 				//desc
-        if(!project["desc"]){
+        if(!project.desc){
            formIsValid = false;
-           errors["desc"] = "Cannot be empty";
-        }
-
-        if(typeof project["desc"] !== "undefined"){
-           if(project["desc"].length > 160){
+           errors.desc = "Cannot be empty";
+        } else {
+           if(project.desc.length > 160){
               formIsValid = false;
-              errors["desc"] = "Must have less than 160 characters";
+              errors.desc = "Must have less than 160 characters";
            }
         }
 
 				//key
-        if(!project["key"]){
+        if(!project.key){
            formIsValid = false;
-           errors["key"] = "Cannot be empty";
-        }
-
-        if(typeof project["key"] !== "undefined"){
-           if(project["key"].length > 3){
+           errors.key = "Cannot be empty";
+        } else {
+           if(project.key.length > 3){
               formIsValid = false;
-              errors["key"] = "Must have less than 3 characters";
+              errors.key = "Must have less than 3 characters";
            }
         }
 
