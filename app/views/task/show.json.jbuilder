@@ -1,1 +1,3 @@
-json.partial! "task/task", post: @task
+json.data do
+  json.partial! "task/task", task: @task
+end

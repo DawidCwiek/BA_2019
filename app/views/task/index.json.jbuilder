@@ -1,1 +1,3 @@
-json.array! @task, partial: "task_form", as: :task
+json.data do
+  json.array! @tasks, partial: "task/task", as: :task
+end

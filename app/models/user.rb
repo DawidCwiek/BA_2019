@@ -1,17 +1,14 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
-  has_many :project
   has_many :task
   has_and_belongs_to_many :projects
 
-  validates :name, presence: true
-  validates :surname, presence: true
+  validates :full_name, presence: true
 
-  def fullname
-    "#{self.name} #{self.surname}"
-  end
 end

@@ -1,43 +1,53 @@
-<%= javascript_pack_tag 'project_form_modal' %>
 
-<% if current_user %>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to 'Login', new_user_session_path %>
-<% end %>
+<%= javascript_pack_tag'task_form' %>
+  <div class="content">
+    <div class="container vertical-center ">
+      <div class="row">
+        <div class="col">
 
-<div style="color:black;">
-<p>Projects list:</p>
-  <table style="width:50%">
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
+          <h3 class="sign-up-header ">My Projects</h3>
+    <div id="col-projects">
+      </div>
+    </div>
+    <div id="modal"></div>
 
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= project.desc %></td>
-      </tr>
-    <% end %>
-  </table>
+  </div>
+  <div class="col ">
+   <div style="color:black;">
+    <div class="col">
+      <h3 class="sign-up-header ">Task list</h3>
+      <div class="label-info">
+        <tr>
+          <% @task.each do |task| %>
+          <tr>
+            <div class="project">
+            <td><%= task.title %></td>
+            <td><%= task.desc %></td>
+          </div>
+          </tr>
+          <% end %>
+        </tr>
+      </div>
 
-</div>
 
-<div style="color:black;">
-  <br>
-  <p>Task list:</p>
-  <table style="width:50%">
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
+      </table>
+    </div>
+  </div>
 
-  <% @task.each do |task| %>
-    <tr>
-      <td><%= task.title %></td>
-      <td><%= task.desc %></td>
-    </tr>
-  <% end %>
-  </table>
-</div>
+    <div class="col label-margin">
+    <div class="label-info">
+        <% if user_signed_in? %>
+       Full Name:  <%= current_user.full_name %></br>
+       Your email: <%= current_user.email %>
+       <% else %>
+      <h3>Please Sign in!</h3>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+  <%= javascript_pack_tag'projects-list' %>

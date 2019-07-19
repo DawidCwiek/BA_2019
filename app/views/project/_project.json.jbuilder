@@ -1,2 +1,4 @@
-json.extract! project, :id, :title, :desc, :key, :user_id, :users, :created_at, :updated_at
+# frozen_string_literal: true
+
+json.extract! project, :id, :title, :desc, :key, :users, :created_at, :updated_at
 json.url project_url(project, format: :json)

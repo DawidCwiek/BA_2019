@@ -9,10 +9,19 @@
     "bootstrap": "^4.3.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-autobind": "^1.0.6",
     "react-bootstrap": "^1.0.0-beta.9",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-sidenav": "^4.0.3",
+    "reactstrap": "^8.0.1"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.2",
     "webpack-dev-server": "^3.7.2"
   }
 }
