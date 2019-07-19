@@ -15,42 +15,22 @@ export default class ProjectList extends React.PureComponent {
         this.setState({ projects: projects.data });
       });
 
-    axios
-      .get("http://localhost:3000/api/v1/user.json")
-      .then(response => {
-        console.log(response);
-        this.setState({ user: response.data });
-      })
-      .catch(error => console.log(error));
+    axios.get("/api/v1/user.json").then(response => {
+      this.setState({ user: response.data });
+    });
   }
 
   render() {
-    if (this.state.user == true) {
-      return (
-        <div className="label-info">
-          {this.state.projects.map(project => {
-            return (
-              <div key={project.id} className="project">
-                [{project.key}] {project.title}{" "}
-                <ConfirmationModal projectId={this.project.id} />
-              </div>
-            );
-          })}
-        </div>
-      );
-    } else {
-      return (
-        <div className="label-info">
-          {this.state.projects.map(project => {
-            return (
-              <div key={project.id} className="project">
-                [{project.key}] {project.title}/>
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
+    <div className="label-info">
+      {this.state.projects.map(project => {
+        return (
+          <div key={project.id} className="project">
+            [{project.key}] {project.title} {" "} 
+            { this.state.user ? <ConfirmationModal projectId={this.project.id} /> : null }
+          </div>
+        );
+      })}
+    </div>;
   }
 }
 
