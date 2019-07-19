@@ -9,9 +9,9 @@ class Project < ApplicationRecord
   validates :desc, presence: true, length: { maximum: 160 }
   validates :key, presence: true, uniqueness: true, length: { maximum: 3 }
 
-  def add_columns_to_columns_order(value)
-    self.columns_order.push(value)
-    self.save
+  def add_new_column!(column_id)
+    columns_order.push(column_id)
+    save
   end
 
   def move_column!(column_id, new_position)

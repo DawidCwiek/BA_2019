@@ -38,8 +38,6 @@ RSpec.describe TaskController, type: :controller do
 
     context 'valid attributes' do
       subject { post :create, params: valid_attributes, format: :json }
-      #before {subject}
-      #it {byebug}
       it { expect(subject).to render_template('show') }
       it { expect { subject }.to change(Task, :count).by(1) }
     end

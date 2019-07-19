@@ -4,7 +4,6 @@ class Column < ApplicationRecord
   has_many :task
 
   def add_to_columns_order
-    project = Project.find(self.project_id)
-    project.add_columns_to_columns_order(self.id)
+    project.add_new_column!(id)
   end
 end
