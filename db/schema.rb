@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2019_07_18_111026) do
     t.index ["tasks_order"], name: "index_columns_on_tasks_order", using: :gin
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "desc"
@@ -31,8 +37,8 @@ ActiveRecord::Schema.define(version: 2019_07_18_111026) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "archived", default: false
     t.integer "columns_order", default: [], array: true
+    t.boolean "archived", default: false
     t.index ["columns_order"], name: "index_projects_on_columns_order", using: :gin
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
