@@ -7,6 +7,7 @@ ruby '2.6.3'
 
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
+gem 'ed25519'
 
 group :production do
   gem 'unicorn-rails'
@@ -52,6 +53,8 @@ gem 'prettier'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'brakeman'
+  gem 'bundler-audit'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'

@@ -75,5 +75,4 @@ RSpec.describe TaskController, type: :controller do
       it { expect { subject }.not_to change(task, :title) }
     end
   end
-
 end

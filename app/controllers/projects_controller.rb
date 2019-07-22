@@ -1,9 +1,5 @@
-# frozen_string_literal: true
-
-
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[show edit update destroy archive]
-
+  before_action :set_project, only: %i[show update destroy archive]
   def index
     @projects = Project.all
   end
@@ -14,8 +10,7 @@ class ProjectsController < ApplicationController
     @projects = Project.new(projects_params)
 
     if @projects.save
-      2.times {@projects.columns.create}
-      
+      2.times { @projects.columns.create }
       render :show, status: :created, location: @projects
     else
       render json: { errors: @projects.errors }, status: :unprocessable_entity
@@ -36,7 +31,7 @@ class ProjectsController < ApplicationController
   end
 
   def archive
-    @projects.update(:archived => true)
+    @projects.update(archived: true)
     head :no_content
   end
 
