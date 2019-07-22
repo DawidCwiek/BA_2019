@@ -102,11 +102,12 @@ class Task_Form extends React.Component {
             }
           })
           .then(response => {
-          this.setState({ users_data: response.data });
+          this.setState({ users_data: response.data.data });
         });
       }
 
   showUsers=()=>{
+    console.log(this.state.users_data)
     return this.state.users_data.map(userData => 
     <DropdownItem key={userData.id}>
         {userData.full_name}
