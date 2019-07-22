@@ -3,3 +3,4 @@ class UsersListController < ApplicationController
         @userslist=User.all
     end
 end
+    

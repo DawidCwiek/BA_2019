@@ -88,7 +88,10 @@ class UsersList extends React.Component {
   render() {
     return (
       <div>
-          <a className="link-hover a-styling">{this.showUsers()}</a>
+         <div>{this.state.users_data.map(userData => <div key={userData.id}> {userData.full_name}</div>)}</div>
+         <div>{this.state.users_data.map(userData => <div key={userData.id}> {userData.email}</div>)}</div>
+         <div>{this.state.users_data.map(userData => <div key={userData.id}> {userData.admin}</div>)}</div>
+         <div>{this.state.users_data.map(userData => <div key={userData.id}> {userData.id}</div>)}</div>
       </div>
     );
   }
