@@ -6,9 +6,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  has_many :task
+  has_many :task, dependent: :nullify
+
+  # rubocop:disable Rails/HasAndBelongsToMany
   has_and_belongs_to_many :projects
+  # rubocop:enable Rails/HasAndBelongsToMany
 
   validates :full_name, presence: true
-
 end
