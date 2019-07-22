@@ -14,5 +14,12 @@ Rails.application.routes.draw do
   resources :administrators, only: [:index]
 
   root to: 'manage_io#index'
+
+  get '/project/archive/:id' => 'project#archive'
+  namespace :api do
+     namespace :v1 do
+       resources :users, except: [:new, :edit, :update, :destroy, :create, :show]
+     end
+   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
