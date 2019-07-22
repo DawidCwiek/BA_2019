@@ -2,21 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  ButtonDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
-
 class UsersList extends React.Component {
   constructor(props) {
     super(props);
@@ -24,43 +9,6 @@ class UsersList extends React.Component {
       users_data: []
     };
   }
-
-  // handleSubmit = e => {
-  //         this.setState({
-  //         data: {
-  //           title: "",
-  //           desc: "",
-  //           user_id: "",
-  //           project_id: 1
-  //         }
-
-  //       });
-
-  //       if(this.handleValidation()){
-  //       e.preventDefault();
-
-  //       this.setState(prevState => ({
-  //         modal: !prevState.modal,
-  //       }));
-
-  //   axios
-  //     .post(
-  //       "task.json",
-  //       { task: this.state.data },
-  //     {
-  //         headers: {
-  //           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-  //             .content
-  //         }
-  //       }
-  //     )
-  //     .catch(e => {
-  // 				if(e.response.data.errors["key"] !== "undefined"){
-  // 					this.setState({errors: {key: "The key must be unique"}});
-  // 				}
-  // 			})
-  //   }
-  // }
 
   userDataTaker = () => {
     axios
@@ -90,12 +38,10 @@ class UsersList extends React.Component {
       <>
         {this.state.users_data.map(userData => (
           <tr key={userData.id}>
-            {" "}
             <th>{userData.id}</th> <td>{userData.full_name}</td>
             <td>{userData.email}</td>
-            <td>{userData.admin}</td>
+            <td>{String(userData.admin)}</td>
             <td>
-              {" "}
               <button class="btn btn-danger">Add Admin</button>
             </td>
           </tr>
