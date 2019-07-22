@@ -12,7 +12,7 @@ class List extends React.Component {
   projectData = () => {
      axios
       .get(
-        "/project.json",
+        "/projects.json",
       {
           headers: {
             "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
