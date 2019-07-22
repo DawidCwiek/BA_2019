@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root to: 'manage_io#index'
 
   get '/project/archive/:id' => 'project#archive'
+  get '/manage_io/:id' => 'manage_io#project'
   namespace :api do
      namespace :v1 do
        resources :users, except: [:new, :edit, :update, :destroy, :create, :show]
