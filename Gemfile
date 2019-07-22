@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-
+gem 'bcrypt_pbkdf'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'ed25519'
