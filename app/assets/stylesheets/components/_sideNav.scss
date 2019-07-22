@@ -1,7 +1,15 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-.wrapper {
-  width: 100%;
+@media screen and (max-width: 1280px) {
+  .manageIo-text {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .manageIo-text {
+    font-size: 1.8em;
+  }
 }
 
 body {
@@ -14,11 +22,6 @@ body {
   padding-right: 0px;
 }
 
-.container {
-  padding-right: 0px;
-  padding-left: 0px;
-}
-
 .menu {
   left: 0;
   height: 100vh;
@@ -29,7 +32,6 @@ body {
 }
 
 .width-change {
-  max-width: 250px;
   background-color: #331670;
   padding-right: 0px;
   padding-left: 0px;
