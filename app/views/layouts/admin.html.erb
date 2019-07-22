@@ -6,6 +6,7 @@
     <%=stylesheet_link_tag'application', media: 'all' %>
     <%=javascript_include_tag 'application' %>
     <%= javascript_pack_tag'list' %>
+    <%= javascript_pack_tag'users_list' %>
   </head>
 
   <body>
@@ -48,7 +49,7 @@
                         <th scope="col"></th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody">
                       <tr>
                         <th scope="row">1</th>
                         <td>Mark Otto</td>
