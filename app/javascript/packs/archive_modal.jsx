@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 export class ConfirmationModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      projects: [],
+      isLoading: false,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -16,6 +19,25 @@ export class ConfirmationModal extends React.Component {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
+  }
+
+  projectData = () => {
+    axios
+     .get(
+       "/projects.json",
+     {
+         headers: {
+           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+             .content
+         }
+       })
+       .then(response => {
+        this.setState({ projects: response.data.data, isLoading: false });
+      });
+   }
+
+   componentDidMount() {
+    this.projectData();
   }
 
   render() {

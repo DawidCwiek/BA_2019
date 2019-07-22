@@ -7,7 +7,6 @@ import ConfirmationModal from './archive_modal';
 class List extends React.Component {
   state = {
     projects: [],
-    user: [],
   };
 
   
@@ -24,10 +23,6 @@ class List extends React.Component {
         })
         .then(response => {
         this.setState({ projects: response.data.data });
-        console.log(response.data.data);
-      });
-      axios.get("/api/v1/user.json").then(response => {
-        this.setState({ user: response.data });
       });
     }
 
