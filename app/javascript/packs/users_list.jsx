@@ -88,10 +88,10 @@ class UsersList extends React.Component {
   render() {
     return (
       <div>
-         <div>{this.state.users_data.map(userData => <div key={userData.id}> {userData.full_name}</div>)}</div>
-         <div>{this.state.users_data.map(userData => <div key={userData.id}> {userData.email}</div>)}</div>
-         <div>{this.state.users_data.map(userData => <div key={userData.id}> {userData.admin}</div>)}</div>
-         <div>{this.state.users_data.map(userData => <div key={userData.id}> {userData.id}</div>)}</div>
+         <div className="Id">{this.state.users_data.map(userData => <div key={userData.id}> {userData.id}</div>)}</div>
+         <div className="Full_Name">{this.state.users_data.map(userData => <div key={userData.id}> {userData.full_name}</div>)}</div>
+         <div className="Email">{this.state.users_data.map(userData => <div key={userData.id}> {userData.email}</div>)}</div>
+         <div className="IsAdmin">{this.state.users_data.map(userData => <div key={userData.id}> {userData.admin}</div>)}</div>
       </div>
     );
   }
