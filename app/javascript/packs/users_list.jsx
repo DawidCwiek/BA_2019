@@ -2,6 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
+
 class UsersList extends React.Component {
   constructor(props) {
     super(props);
@@ -72,28 +87,20 @@ class UsersList extends React.Component {
 
   render() {
     return (
-      <tr>
-        <th className="Id">
-          {this.state.users_data.map(userData => (
-            <div key={userData.id}> {userData.id}</div>
-          ))}
-        </th>
-        <td className="Full_Name">
-          {this.state.users_data.map(userData => (
-            <div key={userData.id}> {userData.full_name}</div>
-          ))}
-        </td>
-        <td className="Email">
-          {this.state.users_data.map(userData => (
-            <div key={userData.id}> {userData.email}</div>
-          ))}
-        </td>
-        <td className="IsAdmin">
-          {this.state.users_data.map(userData => (
-            <div key={userData.id}> {userData.admin}</div>
-          ))}
-        </td>
-      </tr>
+      <>
+        {this.state.users_data.map(userData => (
+          <tr key={userData.id}>
+            {" "}
+            <th>{userData.id}</th> <td>{userData.full_name}</td>
+            <td>{userData.email}</td>
+            <td>{userData.admin}</td>
+            <td>
+              {" "}
+              <button class="btn btn-danger">Add Admin</button>
+            </td>
+          </tr>
+        ))}
+      </>
     );
   }
 }
