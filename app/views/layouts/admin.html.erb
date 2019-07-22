@@ -5,45 +5,78 @@
     <%= csrf_meta_tags %> <%= csp_meta_tag %>
     <%=stylesheet_link_tag'application', media: 'all' %>
     <%=javascript_include_tag 'application' %>
+    <%= javascript_pack_tag'list' %>
   </head>
 
   <body>
-      <div class="row">
-        <div id="sidebar" class="col-2 width-change">
-          <h1 class="sidebar-header">Manage.io</h1>
-          <%= javascript_pack_tag'project_form_modal' %>
-          <ul class="ul-styling">
-            <li class="li-styling li-last-item">
-              <a id="project_form_modal"></a>
-            </li>
-            <li class="last-child link-hover">
-              <a
-                class="link-hover last-child a-styling"
-                rel="nofollow"
-                data-method="delete"
-                href="/users/sign_out"
-                >Logout</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="col-10 width-fix offset-2">
-          <% flash.each do |key, value| %>
-            <div class="alert alert-<%= key %> alert-dismissable">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="alert"
-                aria-hidden="true"
-              >
-              ×
-              </button>
-              <%= value %>
-              </div>
-            <% end %>
-          <%= yield %>
-          <h1>YOU ARE ADMIN, YOU ARE GOD</h1>
+    <div class="row">
+      <div id="sidebar" class="col-2 width-change">
+        <h1 class="sidebar-header">Manage.io</h1>
+        <%= javascript_pack_tag'project_form_modal' %>
+        <ul class="ul-styling">
+          <li class="li-styling li-last-item">
+            <a id="project_form_modal"></a>
+          </li>
+          <li class="last-child link-hover">
+            <a
+              class="link-hover last-child a-styling"
+              rel="nofollow"
+              data-method="delete"
+              href="/users/sign_out"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+      <div class="col-10 width-fix offset-2">
+        <div class="container">
+          <div class="row">
+            <div class="col admin">
+              <div id="list"></div>
+            </div>
+            <div class="col admin">
+              <h2 class="sign-up-header">Users list</h2>
+              <div class="users">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Admin?</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark Otto</td>
+                        <td>dupa@interia.pl</td>
+                        <td>No</td>
+                       <td> <button class="btn btn-danger">Add Admin</button></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Mark Otto</td>
+                        <td>dupa@interia.pl</td>
+                        <td>No</td>
+                        <td> <button class="btn btn-danger">Add Admin</button></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Mark Otto</td>
+                        <td>dupa@interia.pl</td>
+                        <td>No</td>
+                        <td> <button class="btn btn-danger">Add Admin</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
   </body>
 </html>
