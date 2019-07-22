@@ -1,3 +1,3 @@
 json.data do
-  json.array! @listusers, :id, :full_name, :email
+  json.array! @userslist, :id, :full_name, :email, :admin
 end
