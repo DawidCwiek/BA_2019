@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { ListGroup, ListGroupItem } from 'reactstrap';
@@ -10,11 +10,10 @@ class List extends React.Component {
     user: [],
   };
 
-
   projectData = () => {
      axios
       .get(
-        "/project.json",
+        "/projects.json",
       {
           headers: {
             "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -23,7 +22,7 @@ class List extends React.Component {
         })
         .then(response => {
         this.setState({ projects: response.data.data });
-        console.log(response.data.data)
+        console.log(response.data.data);
       });
       axios.get("/api/v1/user.json").then(response => {
         this.setState({ user: response.data });
@@ -52,22 +51,14 @@ class List extends React.Component {
 
 
   componentDidMount() {
-    this.projectData()
+    this.projectData();
   }
 
   render() {
-    return (
-      <div>
-        {this.numberList()}
-      </div>
-    );
+    return <div>{this.numberList()}</div>;
   }
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(
-    <List />,
-    document.getElementById("list")
-  );
+  ReactDOM.render(<List />, document.getElementById("list"));
 });

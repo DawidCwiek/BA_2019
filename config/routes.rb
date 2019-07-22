@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users
   defaults format: :json do
-    resources :project do
+    resources :projects do
         resources :users, only: [:index]
       end
     resources :task, except: [:new, :edit, :destroy]
@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   end
 
   resources :manage_io, only: [:index]
-  
   resources :administrators, only: [:index]
 
   root to: 'manage_io#index'

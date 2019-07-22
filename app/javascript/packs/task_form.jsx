@@ -94,7 +94,7 @@ class Task_Form extends React.Component {
  
        axios
         .get(
-          "project/1/users.json",
+          "projects/1/users.json",
         {
             headers: {
               "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -102,7 +102,7 @@ class Task_Form extends React.Component {
             }
           })
           .then(response => {
-          this.setState({ users_data: response.data.data });
+          this.setState({ users_data: response.data });
         });
       }
 
