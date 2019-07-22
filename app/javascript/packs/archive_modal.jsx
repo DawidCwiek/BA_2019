@@ -21,10 +21,7 @@ export class ConfirmationModal extends React.Component {
   render() {
     return (
       <div>
-        <Button color="danger" onClick={this.toggle}>
-          {this.props.buttonLabel}
-          Archivise
-        </Button>
+        <a onClick={this.toggle} className="archive-modal">x</a>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
@@ -34,19 +31,14 @@ export class ConfirmationModal extends React.Component {
           <ModalBody>Are you sure you want to archive this project?</ModalBody>
           <ModalFooter>
             <Button
-              color="primary"
               onClick={this.toggle}
+              color="primary"
               className="archive-button"
+              rel="nofollow"
             >
-              <a
-                rel="nofollow"
-                data-method="get"
-                href={`/project/archive/${this.props.projectId}`}
-                className="archive-button"
-              >
-                Confirm
-              </a>
-            </Button>{" "}
+              <a className="archive-link" href={`/project/archive/${this.props.projectId}`}>Archive</a>
+            </Button>
+            {""}
             <Button color="secondary" onClick={this.toggle}>
               Cancel
             </Button>
@@ -54,10 +46,8 @@ export class ConfirmationModal extends React.Component {
         </Modal>
       </div>
     );
-  }
+  };
 }
 
-ReactDOM.render(
-  <ConfirmationModal />,
-  document.getElementById("archive-confirm")
-);
+export default ConfirmationModal;
+

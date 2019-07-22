@@ -1,0 +1,28 @@
+.non-archived {
+  background-color: #fff !important;
+  color: #331670 !important;
+  text-decoration: none !important;
+}
+
+.archived {
+  background-color: grey !important;
+  color: black !important;
+}
+
+.archive-modal {
+  right: 0;
+}
+
+.list-group-item:last-child {
+  border-bottom: 1px solid #dddddd !important;
+}
+
+.archive-link {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.archive-link:hover {
+  color: #fff;
+  text-decoration: none !important;
+}
