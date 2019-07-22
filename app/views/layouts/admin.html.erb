@@ -7,6 +7,7 @@
     <%=javascript_include_tag 'application' %>
     <%= javascript_pack_tag'list' %>
     <%= javascript_pack_tag'users_list' %>
+
   </head>
 
   <body>
@@ -37,6 +38,8 @@
               <div id="list"></div>
             </div>
             <div class="col admin">
+                <div id="app"></div>
+                <%= javascript_pack_tag'autosugest' %>
               <h2 class="sign-up-header">Users list</h2>
               <div class="users">
                 <table class="table table-striped">
@@ -50,7 +53,6 @@
                       </tr>
                     </thead>
                     <tbody id="tbody">
-                     
                     </tbody>
                   </table>
                 </div>

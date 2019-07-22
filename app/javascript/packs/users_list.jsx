@@ -42,7 +42,7 @@ class UsersList extends React.Component {
             <td>{userData.email}</td>
             <td>{String(userData.admin)}</td>
             <td>
-              <button class="btn btn-danger">Add Admin</button>
+              <button className="btn btn-danger">Add Admin</button>
             </td>
           </tr>
         ))}
