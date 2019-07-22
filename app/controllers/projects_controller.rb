@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy archive]
 
@@ -7,10 +8,12 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def show; end
+
   def create
     @projects = Project.new(projects_params)
 
-    if @project.save
+    if @projects.save
       2.times {@projects.columns.create}
       
       render :show, status: :created, location: @projects

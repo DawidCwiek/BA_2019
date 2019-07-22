@@ -9,14 +9,16 @@ class List extends React.Component {
   };
 
   projectData = () => {
-    axios
-      .get("/project.json", {
-        headers: {
-          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-            .content
-        }
-      })
-      .then(response => {
+     axios
+      .get(
+        "/projects.json",
+      {
+          headers: {
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+              .content
+          }
+        })
+        .then(response => {
         this.setState({ projects: response.data.data });
         console.log(response.data.data);
       });

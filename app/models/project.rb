@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class Project < ApplicationRecord
-  has_many :task
-  has_many :columns
+  has_many :task, dependent: :destroy
+  has_many :columns, dependent: :destroy
+  # rubocop:disable Rails/HasAndBelongsToMany
   has_and_belongs_to_many :users
+  # rubocop:enable Rails/HasAndBelongsToMany
 
   validates :title, presence: true
   validates :desc, presence: true, length: { maximum: 160 }
@@ -15,9 +17,9 @@ class Project < ApplicationRecord
   end
 
   def move_column!(column_id, new_position)
-    old_position = self.columns_order.find_index(column_id)
+    old_position = columns_order.find_index(column_id)
     delete_position_offset = new_position > old_position ? 0 : 1
-    self.columns_order.insert(new_position, column_id).delete_at(old_position + delete_position_offset)
+    columns_order.insert(new_position, column_id).delete_at(old_position + delete_position_offset)
     save
   end
 end
