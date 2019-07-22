@@ -10,16 +10,9 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <%= value %>
-      </div>
-    <% end %>
-    <div class="wrapper">
       <div class="row">
-        <div id="sidebar" class="col-3 width-change">
-          <h1 class="sidebar-header">Manage.io</h1>
+        <div id="sidebar" class="col-2 width-change">
+          <h1 class="sidebar-header manageIo-text">Manage.io</h1>
 
           <ul class="ul-styling">
             <li class="li-styling">
@@ -36,10 +29,15 @@
             </li>
           </ul>
         </div>
-        <div class="col-9 width-fix offset-3">
+        <div class="col-10 width-fix offset-2">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %> alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <%= value %>
+          </div>
+        <% end %>
           <%= yield %>
         </div>
       </div>
-    </div>
   </body>
 </html>

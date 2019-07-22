@@ -63,9 +63,13 @@ class Task_Form extends React.Component {
             }
             
           });
+         
           if(this.handleValidation()){
           e.preventDefault();
           
+          this.setState(prevState => ({
+            modal: !prevState.modal,
+          }));
 
       axios
         .post(
@@ -90,7 +94,7 @@ class Task_Form extends React.Component {
  
        axios
         .get(
-          "/project/users.json",
+          "projects/1/users.json",
         {
             headers: {
               "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
