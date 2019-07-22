@@ -1,4 +1,4 @@
-set :repo_url,     'git@github.com:DawidCwiek/BA_2019.git'
+set :repo_url,     'https://github.com/DawidCwiek/BA_2019.git'
 set :stages,       %w(production)
 
 
