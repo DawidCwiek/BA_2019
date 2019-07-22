@@ -60,7 +60,7 @@ class UsersList extends React.Component {
  
        axios
         .get(
-          "/users_list.json",
+          "users_list.json",
         {
             headers: {
               "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')

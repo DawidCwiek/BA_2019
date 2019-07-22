@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ProjectController < ApplicationController
+class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy archive]
 
   def index
@@ -8,32 +8,32 @@ class ProjectController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @projects = Project.new(projects_params)
 
     if @project.save
-      2.times {@project.columns.create}
+      2.times {@projects.columns.create}
       
-      render :show, status: :created, location: @project
+      render :show, status: :created, location: @projects
     else
-      render json: { errors: @project.errors }, status: :unprocessable_entity
+      render json: { errors: @projects.errors }, status: :unprocessable_entity
     end
   end
 
   def update
-    if @project.update(project_params)
-      render :show, status: :ok, location: @project
+    if @projects.update(projects_params)
+      render :show, status: :ok, location: @projects
     else
-      render json: { errors: @project.errors }, status: :unprocessable_entity
+      render json: { errors: @projects.errors }, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @project.destroy
+    @projects.destroy
     head :no_content
   end
 
   def archive
-    @project.update(:archived => true)
+    @projects.update(:archived => true)
     head :no_content
   end
 
@@ -41,11 +41,11 @@ class ProjectController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_project
-    @project = Project.find(params[:id])
+    @projects = Project.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def project_params
+  def projects_params
     params.require(:project).permit(:title, :desc, :key)
   end
 end
