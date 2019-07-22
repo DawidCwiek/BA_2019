@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   defaults format: :json do
     resources :projects do
-        resources :users, only: [:index]
+        resources :users, only: [:index], member: true, controller: 'projects/users'
       end
     resources :task, except: [:new, :edit, :destroy]
     resources :users_list, only: [:index]
