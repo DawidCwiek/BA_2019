@@ -21,7 +21,7 @@ export class ConfirmationModal extends React.Component {
   render() {
     return (
       <div>
-        <a onClick={this.toggle} className="archive-modal">x</a>
+        <Button onClick={this.toggle} className="btn btn-danger">Archive</Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}

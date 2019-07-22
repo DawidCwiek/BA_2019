@@ -10,6 +10,8 @@ class List extends React.Component {
     user: [],
   };
 
+  
+
   projectData = () => {
      axios
       .get(
@@ -30,17 +32,28 @@ class List extends React.Component {
     }
 
   numberList = () => {
+    this.state.projects.sort((a,b) => {
+      if (a.title > b.title) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+    this.state.projects.sort((a,b) => {
+      if (a.archived > b.archived) {
+        return 1
+      } else {
+        return -1
+      }
+    })
     const projects = this.state.projects;
     const projectsList = projects.map((project) =>
-    // <ListGroupItem key={project.id} tag="a" href="#">
-    //     [{project.key}] {project.title} { project.archived ? null : <ConfirmationModal projectId={project.id} /> }
-    // </ListGroupItem>
     { return project.archived ? 
       (<ListGroupItem key={project.id} className="archived">
         [{project.key}] {project.title}
     </ListGroupItem>) : 
       (<ListGroupItem key={project.id} tag="a" href="#" className="non-archived">
-        [{project.key}] {project.title} { <ConfirmationModal projectId={project.id} /> }
+        <div className="aligning-items">[{project.key}] {project.title} <div className="archive-modal"> { <ConfirmationModal projectId={project.id} /> } </div></div>
       </ListGroupItem>) }
 
     );
@@ -55,7 +68,7 @@ class List extends React.Component {
   }
 
   render() {
-    return <div>{this.numberList()}</div>;
+    return <div><h2 className="title-positioning">Projects list</h2>{this.numberList()}</div>;
   }
 }
 
