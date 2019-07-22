@@ -1,4 +1,4 @@
-const languages = [
+let languages = [
   { full_name: "Damian Gronowski" },
   {
     full_name: "Ciasny Wiesiek"
@@ -27,7 +27,7 @@ function getSuggestions(value) {
 
   const regex = new RegExp("^" + escapedValue, "i");
 
-  return languages.filter(users_data => regex.test(users_data.full_name));
+  return languages.filter(language => regex.test(language.full_name));
 }
 
 function getSuggestionValue(suggestion) {
@@ -88,7 +88,8 @@ class App extends React.Component {
     });
   };
 
-  render() {
+
+  render() {4
     const { value, suggestions } = this.state;
     const inputProps = {
       placeholder: "Search...",
