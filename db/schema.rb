@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_111026) do
+ActiveRecord::Schema.define(version: 2019_07_22_123142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_111026) do
     t.integer "tasks_order", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["project_id"], name: "index_columns_on_project_id"
     t.index ["tasks_order"], name: "index_columns_on_tasks_order", using: :gin
   end
@@ -28,13 +29,12 @@ ActiveRecord::Schema.define(version: 2019_07_18_111026) do
     t.string "title"
     t.text "desc"
     t.string "key"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "archived", default: false
+    t.bigint "user_id"
     t.integer "columns_order", default: [], array: true
+    t.boolean "archived", default: false
     t.index ["columns_order"], name: "index_projects_on_columns_order", using: :gin
-    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "projects_users", force: :cascade do |t|
