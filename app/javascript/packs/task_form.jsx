@@ -94,7 +94,7 @@ class Task_Form extends React.Component {
  
        axios
         .get(
-          "project/1/users.json",
+          "projects/1/users.json",
         {
             headers: {
               "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')

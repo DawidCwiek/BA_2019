@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'project/index', type: :view do
+RSpec.describe 'projects/index', type: :view do
   let!(:project) { create(:project) }
   before do
     @projects = Project.all
-    render template: 'project/index'
+    render template: 'projects/index'
   end
 
   subject { JSON.parse(rendered) }

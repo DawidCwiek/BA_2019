@@ -60,7 +60,7 @@ class UsersList extends React.Component {
  
        axios
         .get(
-          "/users_list.json",
+          "users_list.json",
         {
             headers: {
               "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -88,7 +88,10 @@ class UsersList extends React.Component {
   render() {
     return (
       <div>
-          <a className="link-hover a-styling">{this.showUsers()}</a>
+         <div className="Id">{this.state.users_data.map(userData => <div key={userData.id}> {userData.id}</div>)}</div>
+         <div className="Full_Name">{this.state.users_data.map(userData => <div key={userData.id}> {userData.full_name}</div>)}</div>
+         <div className="Email">{this.state.users_data.map(userData => <div key={userData.id}> {userData.email}</div>)}</div>
+         <div className="IsAdmin">{this.state.users_data.map(userData => <div key={userData.id}> {userData.admin}</div>)}</div>
       </div>
     );
   }
