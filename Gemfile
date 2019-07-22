@@ -8,6 +8,7 @@ ruby '2.6.3'
 
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
+gem 'ed25519'
 
 group :production do
   gem 'unicorn-rails'
