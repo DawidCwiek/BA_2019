@@ -107,7 +107,6 @@ class Task_Form extends React.Component {
       }
 
   showUsers=()=>{
-    console.log(this.state.users_data)
     return this.state.users_data.map(userData => 
     <DropdownItem key={userData.id}>
         {userData.full_name}
