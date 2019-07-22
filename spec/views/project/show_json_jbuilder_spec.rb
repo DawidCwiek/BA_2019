@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'project/show', type: :view do
+RSpec.describe 'projects/show', type: :view do
   let!(:project) { create(:project) }
   before do
-    @project = Project.find(project.id)
-    render template: 'project/show', id: project.id
+    @projects = Project.find(project.id)
+    render template: 'projects/show', id: project.id
   end
 
   subject { JSON.parse(rendered) }

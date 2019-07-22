@@ -45,7 +45,7 @@ class ProjectFormModal extends React.Component {
 
       axios
         .post(
-          "project.json",
+          "projects.json",
           { project: this.state.data },
           {
             headers: {
