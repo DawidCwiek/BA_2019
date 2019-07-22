@@ -45,7 +45,7 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true,
     user_name: 'devdawidcwiek@gmail.com',
-    password: ENV['gmail_pass']
+    password: Rails.application.credentials.gmail_pass
   }
 
   # Print deprecation notices to the Rails logger.
