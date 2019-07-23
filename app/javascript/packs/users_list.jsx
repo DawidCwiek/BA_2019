@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import ConfirmationAdmin from "./accepted_modal";
 
 class UsersList extends React.Component {
   constructor(props) {
@@ -42,7 +43,10 @@ class UsersList extends React.Component {
             <td>{userData.email}</td>
             <td>{String(userData.admin)}</td>
             <td>
-              <button className="btn btn-danger">Add Admin</button>
+              <ConfirmationAdmin
+                user_id={userData.id}
+                user_data={this.userData}
+              />
             </td>
           </tr>
         ))}
