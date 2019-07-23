@@ -13,4 +13,8 @@ class User < ApplicationRecord
   # rubocop:enable Rails/HasAndBelongsToMany
 
   validates :full_name, presence: true
+
+  def admin?
+    admin || super_admin
+  end
 end

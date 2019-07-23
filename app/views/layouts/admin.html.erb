@@ -32,34 +32,7 @@
       </div>
     </div>
       <div class="col-10 width-fix offset-2">
-        <div class="container">
-          <div class="row">
-            <div class="col admin">
-              <div id="list"></div>
-            </div>
-            <div class="col admin">
-                <div id="app"></div>
-                <%= javascript_pack_tag'autosugest' %>
-              <h2 class="sign-up-header">Users list</h2>
-              <div class="users">
-                <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Admin?</th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    </tbody>
-                  </table>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
+       <%= yield %>
     </div>
   </body>
 </html>
