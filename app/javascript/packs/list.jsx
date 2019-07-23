@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { ListGroup, ListGroupItem } from "reactstrap";
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import ConfirmationModal from './archive_modal';
 
 class List extends React.Component {
   state = {
-    projects: []
+    projects: [],
   };
+
+  
 
   projectData = () => {
      axios
@@ -20,27 +23,51 @@ class List extends React.Component {
         })
         .then(response => {
         this.setState({ projects: response.data.data });
-        console.log(response.data.data);
       });
-  };
+    }
 
   numberList = () => {
+    this.state.projects.sort((a,b) => {
+      if (a.title > b.title) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+    this.state.projects.sort((a,b) => {
+      if (a.archived > b.archived) {
+        return 1
+      } else {
+        return -1
+      }
+    })
     const projects = this.state.projects;
-    const projectsList = projects.map(project => (
-      <ListGroupItem key={project.id} tag="a" href="#">
+    const projectsList = projects.map((project) =>
+    { return project.archived ? 
+      (<ListGroupItem key={project.id} className="archived">
         [{project.key}] {project.title}
-      </ListGroupItem>
-    ));
-    <h2 class="sign-up-header">Users list</h2>;
-    return <table className="table striped-list">{projectsList}</table>;
-  };
+    </ListGroupItem>) : 
+      (<ListGroupItem key={project.id} tag="a" href="#" className="non-archived">
+        <div className="aligning-items">[{project.key}] {project.title} 
+          <div className="archive-modal">
+           { <ConfirmationModal projectData={this.projectData} projectId={project.id} /> } 
+           </div>
+         </div>
+      </ListGroupItem>) }
+
+    );
+    return (
+      <ListGroup className="striped-list">{projectsList}</ListGroup>
+    );
+  }
+
 
   componentDidMount() {
     this.projectData();
   }
 
   render() {
-    return <div>{this.numberList()}</div>;
+    return <div><h2 className="title-positioning sign-up-header">Projects list</h2>{this.numberList()}</div>;
   }
 }
 
