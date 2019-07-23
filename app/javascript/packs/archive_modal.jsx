@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 export class ConfirmationModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      projects: [],
+      isLoading: false,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -18,13 +21,29 @@ export class ConfirmationModal extends React.Component {
     }));
   }
 
+  projectData = () => {
+    axios
+     .get(
+       "/projects.json",
+     {
+         headers: {
+           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+             .content
+         }
+       })
+       .then(response => {
+        this.setState({ projects: response.data.data, isLoading: false });
+      });
+   }
+
+   componentDidMount() {
+    this.projectData();
+  }
+
   render() {
     return (
       <div>
-        <Button color="danger" onClick={this.toggle}>
-          {this.props.buttonLabel}
-          Archivise
-        </Button>
+        <Button onClick={this.toggle} className="btn btn-danger">Archive</Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
@@ -34,19 +53,14 @@ export class ConfirmationModal extends React.Component {
           <ModalBody>Are you sure you want to archive this project?</ModalBody>
           <ModalFooter>
             <Button
-              color="primary"
               onClick={this.toggle}
+              color="primary"
               className="archive-button"
+              rel="nofollow"
             >
-              <a
-                rel="nofollow"
-                data-method="get"
-                href={`/project/archive/${this.props.projectId}`}
-                className="archive-button"
-              >
-                Confirm
-              </a>
-            </Button>{" "}
+              <a className="archive-link" href={`/project/archive/${this.props.projectId}`}>Archive</a>
+            </Button>
+            {""}
             <Button color="secondary" onClick={this.toggle}>
               Cancel
             </Button>
@@ -54,10 +68,8 @@ export class ConfirmationModal extends React.Component {
         </Modal>
       </div>
     );
-  }
+  };
 }
 
-ReactDOM.render(
-  <ConfirmationModal />,
-  document.getElementById("archive-confirm")
-);
+export default ConfirmationModal;
+

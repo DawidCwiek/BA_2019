@@ -12,7 +12,6 @@ import {
   Input
 } from "reactstrap";
 import axios from "axios";
-
 class ProjectFormModal extends React.Component {
   constructor(props) {
     super(props);
@@ -25,24 +24,19 @@ class ProjectFormModal extends React.Component {
       },
       errors: {}
     };
-
     this.toggle = this.toggle.bind(this);
   }
-
   toggle() {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
   }
-
   setFromValue = (attribute, value) => {
     this.setState(prev => ({ data: { ...prev.data, [attribute]: value } }));
   };
-
   handleSubmit = e => {
     if (this.handleValidation()) {
       e.preventDefault();
-
       axios
         .post(
           "projects.json",
@@ -61,12 +55,10 @@ class ProjectFormModal extends React.Component {
         });
     }
   };
-
   handleValidation() {
     let project = this.state.data;
     let errors = {};
     let formIsValid = true;
-
     //title
     if (!project.title) {
       formIsValid = false;
@@ -77,7 +69,6 @@ class ProjectFormModal extends React.Component {
         errors.title = "Must have less than 30 characters";
       }
     }
-
     //desc
     if (!project.desc) {
       formIsValid = false;
@@ -88,7 +79,6 @@ class ProjectFormModal extends React.Component {
         errors.desc = "Must have less than 160 characters";
       }
     }
-
     //key
     if (!project.key) {
       formIsValid = false;
@@ -99,11 +89,9 @@ class ProjectFormModal extends React.Component {
         errors.key = "Must have less than 3 characters";
       }
     }
-
     this.setState({ errors: errors });
     return formIsValid;
   }
-
   render() {
     return (
       <div>
@@ -185,7 +173,6 @@ class ProjectFormModal extends React.Component {
     );
   }
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     <ProjectFormModal />,
