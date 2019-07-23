@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import React, { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
+import { DndProvider } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
 
 const ColumnArea = ({ columnName, id, moveColumn }) => {
   const [, drop] = useDrop({
