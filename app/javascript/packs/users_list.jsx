@@ -56,11 +56,12 @@ class UsersList extends React.Component {
   }
 
   render() {
+    let i = 1;
     return (
       <>
         {this.state.users_data.map(userData => (
           <tr key={userData.id}>
-            <th>{userData.id}</th> <td>{userData.full_name}</td>
+            <th>{i++}</th> <td>{userData.full_name}</td>
             <td>{userData.email}</td>
             <td>{String(userData.admin)}</td>
             <td>
