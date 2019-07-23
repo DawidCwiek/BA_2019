@@ -1,8 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import axios from "axios";
 
-class UsersList extends React.Component {
+export default class GetData extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,32 +27,25 @@ class UsersList extends React.Component {
       <li key={userData.id}> {userData.full_name}</li>
     ));
   };
-
   componentDidMount() {
     this.userDataTaker();
   }
-
   render() {
     return (
       <>
         {this.state.users_data.map(userData => (
-          <tr key={userData.id}>
-            <th>{userData.id}</th> <td>{userData.full_name}</td>
-            <td>{userData.email}</td>
-            <td>{String(userData.admin)}</td>
-            <td>
-              <button className="btn btn-danger">Add Admin</button>
-            </td>
-          </tr>
+          <div key={userData.id}>
+            <div>{userData.id}{userData.full_name}</div>
+          </div>
         ))}
       </>
     );
   }
 }
 
-export default UsersList;
 
-document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(<UsersList />, document.getElementById("tbody"));
-});
-// json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
+
+
+
+
+

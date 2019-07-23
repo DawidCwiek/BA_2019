@@ -1,0 +1,19 @@
+.admin {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.users {
+  border: 2px solid #331670;
+  border-radius: 6px;
+}
+
+.admin-header {
+  margin-top: 30px;
+}
+
+#app {
+  text-align: right;
+}
