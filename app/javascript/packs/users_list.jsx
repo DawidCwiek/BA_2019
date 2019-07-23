@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import ConfirmationAdmin from "./accepted_modal";
 
 class UsersList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users_data: []
+      users_data: [],
+      admin: []
     };
   }
 
@@ -23,26 +25,52 @@ class UsersList extends React.Component {
       });
   };
 
+  superAdminTaker = () => {
+    axios
+      .get("api/v1/users.json", {
+        headers: {
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+            .content
+        }
+      })
+      .then(response => {
+        this.setState({ admin: response.data });
+      });
+  };
+
   showUsers = () => {
     return this.state.users_data.map(userData => (
       <li key={userData.id}> {userData.full_name}</li>
     ));
   };
 
+  ShowSuperAdmin = () => {
+    return this.state.admin.map(superAdmin => (
+      <li key={superAdmin.id}> {superAdmin.full_name}</li>
+    ));
+  };
+
   componentDidMount() {
     this.userDataTaker();
+    this.superAdminTaker();
   }
 
   render() {
+    let i = 1;
     return (
       <>
         {this.state.users_data.map(userData => (
           <tr key={userData.id}>
-            <th>{userData.id}</th> <td>{userData.full_name}</td>
+            <th>{i++}</th> <td>{userData.full_name}</td>
             <td>{userData.email}</td>
             <td>{String(userData.admin)}</td>
             <td>
-              <button className="btn btn-danger">Add Admin</button>
+              {this.state.admin ? (
+                <ConfirmationAdmin
+                  user_id={userData.id}
+                  user_data={this.userDataTaker}
+                />
+              ) : null}
             </td>
           </tr>
         ))}
