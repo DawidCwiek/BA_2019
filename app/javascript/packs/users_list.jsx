@@ -4,7 +4,6 @@ import axios from "axios";
 import ConfirmationAdmin from "./accepted_modal";
 import Autosuggest from "react-autosuggest";
 
-// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -89,6 +88,16 @@ class UsersList extends React.Component {
     ));
   };
 
+  onKeyDown = event => {
+    if (event.keyCode === 13) {
+      const innerText = event.currentTarget.value;
+      this.setState({
+        activeUser: innerText,
+        value: innerText
+      });
+    }
+  };
+
   onChange = (event, { newValue, method }) => {
     if (method === "click") {
       const innerText = event.currentTarget.innerText;
@@ -153,7 +162,8 @@ class UsersList extends React.Component {
     const inputProps = {
       placeholder: "Search...",
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
+      onKeyDown: this.onKeyDown
     };
 
     return (
