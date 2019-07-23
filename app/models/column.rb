@@ -3,6 +3,8 @@ class Column < ApplicationRecord
   belongs_to :project
   has_many :task, dependent: :nullify
 
+  validates :name, presence: true
+
   def add_to_columns_order
     project.add_new_column!(id)
   end

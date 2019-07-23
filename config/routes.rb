@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   defaults format: :json do
     resources :projects do
         resources :users, only: [:index], member: true, controller: 'projects/users'
+        resources :columns, only: [:create, :update], member: true, controller: 'projects/columns'
       end
     resources :task, except: [:new, :edit, :destroy]
     resources :users_list, only: [:index]
