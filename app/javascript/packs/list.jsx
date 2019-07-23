@@ -48,7 +48,11 @@ class List extends React.Component {
         [{project.key}] {project.title}
     </ListGroupItem>) : 
       (<ListGroupItem key={project.id} tag="a" href="#" className="non-archived">
-        <div className="aligning-items">[{project.key}] {project.title} <div className="archive-modal"> { <ConfirmationModal projectId={project.id} /> } </div></div>
+        <div className="aligning-items">[{project.key}] {project.title} 
+          <div className="archive-modal">
+           { <ConfirmationModal projectData={this.projectData} projectId={project.id} /> } 
+           </div>
+         </div>
       </ListGroupItem>) }
 
     );
@@ -63,7 +67,7 @@ class List extends React.Component {
   }
 
   render() {
-    return <div><h2 className="title-positioning">Projects list</h2>{this.numberList()}</div>;
+    return <div><h2 className="title-positioning sign-up-header">Projects list</h2>{this.numberList()}</div>;
   }
 }
 

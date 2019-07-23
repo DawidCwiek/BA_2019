@@ -1,49 +1,51 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import axios from "axios";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 export class ConfirmationModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false,
-      projects: [],
-      isLoading: false,
-    };
-
-    this.toggle = this.toggle.bind(this);
-  }
+  state = {
+    modal: false,
+    archived: false
+  };
 
   toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
+  };
 
-  projectData = () => {
+  handleClick = () => {
+    this.setState(
+      {
+        archived: true
+      },
+      this.archiveProject
+    );
+  };
+
+  archiveProject = () => {
     axios
-     .get(
-       "/projects.json",
-     {
-         headers: {
-           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-             .content
-         }
-       })
-       .then(response => {
-        this.setState({ projects: response.data.data, isLoading: false });
+      .patch(
+        `projects/archive/${this.props.projectId}`,
+        {},
+        {
+          headers: {
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+              .content
+          }
+        }
+      )
+      .then(() => {
+        this.props.projectData();
       });
-   }
-
-   componentDidMount() {
-    this.projectData();
-  }
+  };
 
   render() {
     return (
       <div>
-        <Button onClick={this.toggle} className="btn btn-danger">Archive</Button>
+        <Button onClick={this.toggle} className="btn btn-danger">
+          Archive
+        </Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
@@ -53,12 +55,14 @@ export class ConfirmationModal extends React.Component {
           <ModalBody>Are you sure you want to archive this project?</ModalBody>
           <ModalFooter>
             <Button
-              onClick={this.toggle}
+              onClick={() => {
+                this.toggle(), this.handleClick();
+              }}
               color="primary"
               className="archive-button"
               rel="nofollow"
             >
-              <a className="archive-link" href={`/project/archive/${this.props.projectId}`}>Archive</a>
+              Archive
             </Button>
             {""}
             <Button color="secondary" onClick={this.toggle}>
@@ -68,8 +72,7 @@ export class ConfirmationModal extends React.Component {
         </Modal>
       </div>
     );
-  };
+  }
 }
 
 export default ConfirmationModal;
-
