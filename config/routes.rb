@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   resources :administrators, only: [:index]
 
   root to: 'manage_io#index'
+
   get '/project/archive/:id' => 'projects#archive'
+  get '/manage_io/:id' => 'manage_io#project'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
