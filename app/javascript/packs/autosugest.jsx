@@ -1,12 +1,12 @@
-let languages = [
-  { full_name: "Damian Gronowski" },
-  {
-    full_name: "Ciasny Wiesiek"
-  },
-  {
-    full_name: "Michał Chudzi"
-  }
-];
+// let languages = [
+//   { full_name: "Damian Gronowski" },
+//   {
+//     full_name: "Ciasny Wiesiek"
+//   },
+//   {
+//     full_name: "Michał Chudzi"
+//   }
+// ];
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -45,7 +45,7 @@ class App extends React.Component {
     this.state = {
       value: "",
       suggestions: [],
-      user_data: []
+      users_data: []
     };
   }
 
@@ -61,16 +61,20 @@ class App extends React.Component {
         this.setState({ users_data: response.data.data });
       });
   };
+
   showUsers = () => {
     return this.state.users_data.map(userData => (
       <li key={userData.id}> {userData.full_name}</li>
     ));
   };
+  
   componentDidMount() {
     this.userDataTaker();
   }
 
   onChange = (event, { newValue, method }) => {
+    const { user_data } = this.state;
+    console.log(this.state);
     this.setState({
       value: newValue
     });
@@ -88,8 +92,7 @@ class App extends React.Component {
     });
   };
 
-
-  render() {4
+  render() {
     const { value, suggestions } = this.state;
     const inputProps = {
       placeholder: "Search...",
