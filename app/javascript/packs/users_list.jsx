@@ -7,7 +7,8 @@ class UsersList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users_data: []
+      users_data: [],
+      admin: []
     };
   }
 
@@ -24,14 +25,34 @@ class UsersList extends React.Component {
       });
   };
 
+  superAdminTaker = () => {
+    axios
+      .get("api/v1/users.json", {
+        headers: {
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+            .content
+        }
+      })
+      .then(response => {
+        this.setState({ admin: response.data });
+      });
+  };
+
   showUsers = () => {
     return this.state.users_data.map(userData => (
       <li key={userData.id}> {userData.full_name}</li>
     ));
   };
 
+  ShowSuperAdmin = () => {
+    return this.state.admin.map(superAdmin => (
+      <li key={superAdmin.id}> {superAdmin.full_name}</li>
+    ));
+  };
+
   componentDidMount() {
     this.userDataTaker();
+    this.superAdminTaker();
   }
 
   render() {
@@ -43,10 +64,12 @@ class UsersList extends React.Component {
             <td>{userData.email}</td>
             <td>{String(userData.admin)}</td>
             <td>
-              <ConfirmationAdmin
-                user_id={userData.id}
-                user_data={this.userData}
-              />
+              {this.state.admin ? (
+                <ConfirmationAdmin
+                  user_id={userData.id}
+                  user_data={this.userDataTaker}
+                />
+              ) : null}
             </td>
           </tr>
         ))}
