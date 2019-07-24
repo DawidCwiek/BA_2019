@@ -23,9 +23,10 @@ class UsersList extends React.Component {
     this.state = {
       users_data: [],
       admin: [],
+      user_admin: [],
       value: "",
       activeUser: "",
-      suggestions: [],
+      suggestions: []
     };
   }
 
@@ -64,6 +65,22 @@ class UsersList extends React.Component {
       });
   };
 
+  UserAdminTaker = () => {
+    axios
+      .get("users_list.json", {
+        headers: {
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+            .content
+        }
+      })
+      .then(response => {
+        const user = response.data.admin;
+        this.setState({
+          user_admin: user
+        });
+      });
+  };
+
   superAdminTaker = () => {
     axios
       .get("api/v1/users.json", {
@@ -82,6 +99,23 @@ class UsersList extends React.Component {
       <li key={userData.id}> {userData.full_name}</li>
     ));
   };
+
+  // renderButton = () => {
+  //   if (this.state.admin) {
+  //     if (this.state.userData.admin) {
+  //       <ConfirmationAdmin
+  //         user_id={userData.id}
+  //         user_data={this.userDataTaker}
+  //       />;
+  //     } else {
+  //       return (
+  //         <RemoveAdmin user_id={userData.id} user_data={this.userDataTaker} />
+  //       );
+  //     }
+  //   } else {
+  //     null;
+  //   }
+  // };
 
   ShowSuperAdmin = () => {
     return this.state.admin.map(superAdmin => (
@@ -144,7 +178,17 @@ class UsersList extends React.Component {
         <td>{String(userData.admin)}</td>
         <td>
           {this.state.admin ? (
-            <RemoveAdmin user_id={userData.id} user_data={this.userDataTaker} />
+            userData.admin ? (
+              <RemoveAdmin
+                user_id={userData.id}
+                user_data={this.userDataTaker}
+              />
+            ) : (
+              <ConfirmationAdmin
+                user_id={userData.id}
+                user_data={this.userDataTaker}
+              />
+            )
           ) : null}
         </td>
       </tr>
