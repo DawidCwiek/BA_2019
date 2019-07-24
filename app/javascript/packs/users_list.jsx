@@ -39,7 +39,7 @@ class UsersList extends React.Component {
     }
 
     const regex = new RegExp("^" + escapedValue, "i");
-
+    
     return suggestions.filter(suggestions => regex.test(suggestions.full_name));
   };
 

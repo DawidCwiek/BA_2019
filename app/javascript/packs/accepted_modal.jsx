@@ -26,7 +26,7 @@ export class ConfirmationAdmin extends React.Component {
   addAdmin = () => {
     axios
       .patch(
-        `/administrators/addAdmin/${this.props.user_id}`,
+        `/administrators/add_admin/${this.props.user_id}`,
         {},
         {
           headers: {
