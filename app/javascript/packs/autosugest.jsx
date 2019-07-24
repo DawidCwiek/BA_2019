@@ -1,13 +1,3 @@
-// let languages = [
-//   { full_name: "Damian Gronowski" },
-//   {
-//     full_name: "Ciasny Wiesiek"
-//   },
-//   {
-//     full_name: "Michał Chudzi"
-//   }
-// ];
-
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
@@ -67,14 +57,13 @@ class App extends React.Component {
       <li key={userData.id}> {userData.full_name}</li>
     ));
   };
-  
+
   componentDidMount() {
     this.userDataTaker();
   }
 
   onChange = (event, { newValue, method }) => {
     const { user_data } = this.state;
-    console.log(this.state);
     this.setState({
       value: newValue
     });
