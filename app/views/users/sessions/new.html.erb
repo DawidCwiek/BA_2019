@@ -14,10 +14,10 @@
             </div>
 
         </div>
-        <div class="col-5">
+        <div class="col-5 login-container-styling">
 
         <div class="form-user">
-            <h2 class="sign-up-header">Login</h2>
+            <h2 class="sign-in-header">Login</h2>
 
               <%= form_for(resource, as: resource_name, url:
               session_path(resource_name)) do |f| %>
@@ -44,7 +44,7 @@
           <% end %>
 
         
-         <div class="actions btn">
+         <div class="actions btn login-link-styling">
           <h5 class="info">Don't have account?</h5>
               <%= render "users/shared/links" %>
           </div>
