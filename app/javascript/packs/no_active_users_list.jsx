@@ -61,7 +61,7 @@ class NoActiveUsersList extends React.Component {
   }
 
   render() {
-    return <div><h2 className="title-positioning sign-up-header">Users to activate</h2>{this.numberList()}</div>;
+    return <div>{this.numberList()}</div>;
   }
 }
 

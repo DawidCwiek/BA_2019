@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import ConfirmationModal from './archive_modal';
+import ProjectEditModal from './project_edit_modal';
 
 class List extends React.Component {
   state = {
@@ -28,7 +29,7 @@ class List extends React.Component {
 
   numberList = () => {
     this.state.projects.sort((a,b) => {
-      if (a.title > b.title) {
+      if (a.title.toLowerCase() > b.title.toLowerCase()) {
         return -1
       } else {
         return 1
@@ -48,9 +49,15 @@ class List extends React.Component {
         [{project.key}] {project.title}
     </ListGroupItem>) : 
       (<ListGroupItem key={project.id} tag="a" href="#" className="non-archived">
-        <div className="aligning-items">[{project.key}] {project.title} 
+        <div className="aligning-items">[{project.key}] {project.title}
+          
+          <div className="aligning-items">
+          <div  className="edit-button">
+            { <ProjectEditModal projectData={this.projectData} projectId={project.id} theProject={project} /> }
+          </div>
           <div className="archive-modal">
            { <ConfirmationModal projectData={this.projectData} projectId={project.id} /> } 
+           </div>
            </div>
          </div>
       </ListGroupItem>) }
