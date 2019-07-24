@@ -94,7 +94,7 @@ class ProjectFormModal extends React.Component {
   }
   render() {
     return (
-      <div>
+      <li className="li-styling li-last-item">
          <a onClick={this.toggle} className="link-hover a-styling">Create Project</a>
         <Modal
           isOpen={this.state.modal}
@@ -169,7 +169,7 @@ class ProjectFormModal extends React.Component {
             </ModalFooter>
           </Form>
         </Modal>
-      </div>
+      </li>
     );
   }
 }
