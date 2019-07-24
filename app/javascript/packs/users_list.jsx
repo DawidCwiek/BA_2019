@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import ConfirmationAdmin from "./accepted_modal";
+import RemoveAdmin from "./remove_admin";
 import Autosuggest from "react-autosuggest";
 
 function escapeRegexCharacters(str) {
@@ -24,7 +25,7 @@ class UsersList extends React.Component {
       admin: [],
       value: "",
       activeUser: "",
-      suggestions: []
+      suggestions: [],
     };
   }
 
@@ -39,7 +40,7 @@ class UsersList extends React.Component {
     }
 
     const regex = new RegExp("^" + escapedValue, "i");
-    
+
     return suggestions.filter(suggestions => regex.test(suggestions.full_name));
   };
 
@@ -143,10 +144,7 @@ class UsersList extends React.Component {
         <td>{String(userData.admin)}</td>
         <td>
           {this.state.admin ? (
-            <ConfirmationAdmin
-              user_id={userData.id}
-              user_data={this.userDataTaker}
-            />
+            <RemoveAdmin user_id={userData.id} user_data={this.userDataTaker} />
           ) : null}
         </td>
       </tr>

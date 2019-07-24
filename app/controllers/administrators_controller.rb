@@ -8,4 +8,10 @@ class AdministratorsController < ApplicationController
     @user.update(admin: true)
     head :no_content
   end
+
+  def remove_admin
+    @user = User.find(params[:id])
+    @user.update(admin: false)
+    head :no_content
+  end
 end
