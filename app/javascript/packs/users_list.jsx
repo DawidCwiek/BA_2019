@@ -135,9 +135,10 @@ class UsersList extends React.Component {
 
     const newUsersData = users_data.filter(user => regex.test(user.full_name));
 
-    return newUsersData.map((userData, i) => (
+    return newUsersData.map((userData, i = 1) => (
       <tr key={userData.id}>
-        <th>{i++}</th> <td>{userData.full_name}</td>
+        <th>{i++}</th>
+        <td>{userData.full_name}</td>
         <td>{userData.email}</td>
         <td>{String(userData.admin)}</td>
         <td>
@@ -176,7 +177,7 @@ class UsersList extends React.Component {
           renderSuggestion={renderSuggestion}
           inputProps={inputProps}
         />
-        <table class="table table-striped">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th scope="col">#</th>
