@@ -1,35 +1,4 @@
-<!-- <div class="Id" id="users_list"></div>
-<div class="Full_Name" id="users_list"></div>
-<div class="Email" id="users_list"></div>
-<div class="IsAdmin" id="users_list"></div>
-<%= javascript_pack_tag'users_list' %>
-<div id="list"></div>
-<%= javascript_pack_tag'list' %> -->
 <div class="container">
-        <div class="row">
-          <div class="col admin">
-            <div id="list"></div>
-          </div>
-          <div class="col admin">
-              <div id="app"></div>
-              <%= javascript_pack_tag'autosugest' %>
-            <h2 class="sign-up-header admin-header">Users list</h2>
-            <div class="users">
-              <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Full Name</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Admin?</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody id="tbody">
-                  </tbody>
-                </table>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div id="tabs_list"></div>
+  <%= javascript_pack_tag 'tabs_user_list' %>
+</div>

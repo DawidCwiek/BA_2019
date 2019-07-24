@@ -53,7 +53,7 @@ class UsersList extends React.Component {
 
 export default UsersList;
 
-document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(<UsersList />, document.getElementById("tbody"));
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   ReactDOM.render(<UsersList />, document.getElementById("tbody"));
+// });
 // json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
