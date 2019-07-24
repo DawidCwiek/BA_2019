@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-export class ConfirmationAdmin extends React.Component {
+export class ActivateUserModal extends React.Component {
   state = {
     modal: false,
-    admin: false
+    active: false
   };
 
   toggle = () => {
@@ -17,16 +17,16 @@ export class ConfirmationAdmin extends React.Component {
   handleClick = () => {
     this.setState(
       {
-        admin: true
+        active: false
       },
-      this.addAdmin
+      this.activateUser
     );
   };
 
-  addAdmin = () => {
+  activateUser = () => {
     axios
       .patch(
-        `/administrators/add_admin/${this.props.user_id}`,
+        `/administrators/user/${this.props.userId}`,
         {},
         {
           headers: {
@@ -36,7 +36,7 @@ export class ConfirmationAdmin extends React.Component {
         }
       )
       .then(() => {
-        this.props.user_data();
+        this.props.usersData();
       });
   };
 
@@ -44,17 +44,15 @@ export class ConfirmationAdmin extends React.Component {
     return (
       <div>
         <Button onClick={this.toggle} className="btn btn-danger">
-          Admin
+          Activate
         </Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>Add Admin?</ModalHeader>
-          <ModalBody>
-            Are you sure you want to add admin to this project?
-          </ModalBody>
+          <ModalHeader toggle={this.toggle}>Activate user?</ModalHeader>
+          <ModalBody>Are you sure you want to activate this user?</ModalBody>
           <ModalFooter>
             <Button
               onClick={() => {
@@ -64,11 +62,11 @@ export class ConfirmationAdmin extends React.Component {
               className="archive-button"
               rel="nofollow"
             >
-              Yes
+              Activate
             </Button>
             {""}
             <Button color="secondary" onClick={this.toggle}>
-              No
+              Cancel
             </Button>
           </ModalFooter>
         </Modal>
@@ -77,4 +75,4 @@ export class ConfirmationAdmin extends React.Component {
   }
 }
 
-export default ConfirmationAdmin;
+export default ActivateUserModal;
