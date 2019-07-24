@@ -73,14 +73,14 @@ const Posts = () => {
 
   const fetchColumns = () => {
     axios
-        .get("projects/1/users.json", {
+        .get("/projects/1/users.json", {
           headers: {
             "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
               .content
           }
         })
         .then(response => {
-          incomingData=response.data.data
+          incomingData=response.data.data.columns
     })
   }
   console.log(incomingData)
