@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   patch '/administrators/user/:id' => 'administrators#activate_user'
   patch '/administrators/add_admin/:id' => 'administrators#add_admin'
   get '/manage_io/:id' => 'manage_io#project'
+  get '/manage_io/task/:id' => 'manage_io#task'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
