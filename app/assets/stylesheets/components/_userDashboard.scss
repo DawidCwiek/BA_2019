@@ -11,6 +11,11 @@
   min-width: 400px;
 }
 
+.task-scroll {
+  overflow: scroll;
+  max-height: 70vh;
+}
+
 .label-margin {
   margin-top: 20px;
 }
@@ -19,10 +24,29 @@
   flex-direction: column;
 }
 
+.task-list-styling {
+  display: flex;
+}
+
 .project {
   margin: 20px;
   display: flex;
   justify-content: space-between;
+}
+
+.task-main-container {
+  margin-right: 10px;
+  display: flex;
+  justify-content: space-around !important;
+}
+
+.project-main-container {
+  display: flex;
+  justify-content: start;
+}
+
+.main-container {
+  padding-top: 0px;
 }
 
 
