@@ -39,7 +39,7 @@ class UsersList extends React.Component {
     }
 
     const regex = new RegExp("^" + escapedValue, "i");
-
+    
     return suggestions.filter(suggestions => regex.test(suggestions.full_name));
   };
 
@@ -135,9 +135,9 @@ class UsersList extends React.Component {
 
     const newUsersData = users_data.filter(user => regex.test(user.full_name));
 
-    return newUsersData.map((userData, i = 1) => (
+    return newUsersData.map((userData, index) => (
       <tr key={userData.id}>
-        <th>{i++}</th>
+        <th>{index + 1}</th>
         <td>{userData.full_name}</td>
         <td>{userData.email}</td>
         <td>{String(userData.admin)}</td>
