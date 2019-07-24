@@ -4,6 +4,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import { moveElement, findIndex } from "./collection_helper";
+import axios from "axios";
 
 const ColumnArea = ({columnName, moveColumn, columns }) => {
   const [, drop] = useDrop({
@@ -66,6 +67,23 @@ const itemType = "COLUMN";
 const Posts = () => {
   const [posts, updatePost] = useState(initalColumns);
 
+  useEffect(() => {
+    fetchColumns();
+  }, [])
+
+  const fetchColumns = () => {
+    axios
+        .get("projects/1/users.json", {
+          headers: {
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+              .content
+          }
+        })
+        .then(response => {
+          incomingData=response.data.data
+    })
+  }
+  console.log(incomingData)
   const moveColumn = (id, columnName, targetId) => {
     updatePost(posts => {
       console.log(id, targetId);
@@ -133,5 +151,5 @@ const initalColumns = [
     columnName: "Namegen",
   }
 ];
-
+let incomingData = [];
 
