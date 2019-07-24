@@ -11,7 +11,9 @@ export default class TabsUserList extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: '1'
+      activeTab: '1',
+      first_key: 1,
+      second_key: 1,
     };
   }
 
@@ -22,6 +24,15 @@ export default class TabsUserList extends React.Component {
       });
     }
   }
+
+  refresFirstKey = () => {
+    this.state.first_key += 1
+  }
+
+  refresSecondKey = () => {
+    this.state.first_key += 1
+  }
+
   render() {
     return (
       <div>
@@ -29,7 +40,7 @@ export default class TabsUserList extends React.Component {
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '1' })}
-              onClick={() => { this.toggle('1'); }}
+              onClick={() => { this.toggle('1'), this.refresFirstKey() }}
             >
               Users list
             </NavLink>
@@ -37,7 +48,7 @@ export default class TabsUserList extends React.Component {
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '2' })}
-              onClick={() => { this.toggle('2'); }}
+              onClick={() => { this.toggle('2'), this.refresSecondKey() }}
             >
               Users to activate
             </NavLink>
@@ -48,7 +59,7 @@ export default class TabsUserList extends React.Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
-                <UsersList />
+                <UsersList key={this.state.first_key}/>
               </Col>
             </Row>
           </TabPane>
@@ -56,7 +67,7 @@ export default class TabsUserList extends React.Component {
           <TabPane tabId="2">
             <Row>
               <Col sm="12">
-                <NoActiveUsersList />
+                <NoActiveUsersList key={this.state.second_key}/>
               </Col>
             </Row>
           </TabPane>
