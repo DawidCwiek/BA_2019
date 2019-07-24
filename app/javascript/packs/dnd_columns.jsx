@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import { useDrag, useDrop } from "react-dnd";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
+import { moveElement, findIndex } from "./collection_helper";
 
-const ColumnArea = ({ columnName, id, moveColumn }) => {
+const ColumnArea = ({columnName, moveColumn, columns }) => {
   const [, drop] = useDrop({
     accept: itemType,
     drop: (item, monitor) => {
@@ -13,8 +14,22 @@ const ColumnArea = ({ columnName, id, moveColumn }) => {
       }
     }
   });
+
+  console.log(columns)
+
   return(
-    <div ref={drop}></div>
+    <div className="container">
+      <div className="row" ref={drop}>
+        {columns.map(column => (
+          <div style={{padding: 15}}>
+            <Column 
+            key={column.id}
+            id={column.id}
+            columnName={column.columnName}
+            moveColumn={moveColumn} />
+          </div>))}
+      </div>
+    </div>
   );
 }
 
@@ -34,11 +49,13 @@ const Column = ({ id, columnName, moveColumn }) => {
 
   drag(ref);
   drop(ref);
+
   return(
-    <table  moveColumn={moveColumn} key={Column.id} ref={ref}>
-      <tr>{columnName}</tr>
-      <td></td>
-    </table>
+  <div style={{ paddingBottom: 100 }}>
+    <div ref={ref} style={{ padding : 10 }} key={id}>
+      {columnName}
+    </div>
+  </div>
   );
 };
 
@@ -47,16 +64,16 @@ export default ColumnArea;
 const itemType = "COLUMN";
 /////////////////////////////////////////
 const Posts = () => {
-  const [posts, updatePost] = useState(initialData);
+  const [posts, updatePost] = useState(initalColumns);
 
   const moveColumn = (id, columnName, targetId) => {
     updatePost(posts => {
       console.log(id, targetId);
 
-      const postIndex = findIndex(posts, post => Column.id === id);
+      const postIndex = findIndex(posts, post => post.id === id);
 
       const targetIndex = targetId
-        ? findIndex(posts, post => Column.id === targetId)
+        ? findIndex(posts, post => post.id === targetId)
         : posts.length;
 
       const newList = moveElement(posts, postIndex, targetIndex)
@@ -71,23 +88,12 @@ const Posts = () => {
     });
   };
 
-  const newPosts = posts.filter(post => post.status === "new");
-  const goodPosts = posts.filter(post => post.status === "good");
-  const badPosts = posts.filter(post => post.status === "bad");
-
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <h1>Posts</h1>
-          </div>
-        </div>
-        <div className="row">
-          <ColumnArea columnName="new" posts={newPosts} moveColumn={moveColumn} />
-          <ColumnArea columnName="good" posts={goodPosts} moveColumn={moveColumn} />
-          <ColumnArea columnName="bad" posts={badPosts} moveColumn={moveColumn} />
-        </div>
+      <div className="container1">
+            <ColumnArea 
+            columns={posts} 
+            moveColumn={moveColumn}/>
       </div>
     </DndProvider>
   );
@@ -97,41 +103,34 @@ document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(<Posts />, document.querySelector(".post-app"));
 });
 
-const initialData = [
+const initalColumns = [
   {
     id: 0,
-    title: "Inear",
-    status: "new"
+    columnName: "NEW COLUMN >1sza",
   },
   {
     id: 1,
-    title: "Lovepad",
-    status: "new"
+    columnName: "Lovepad",
   },
   {
     id: 2,
-    title: "Netplode",
-    status: "new"
+    columnName: "Netplode",
   },
   {
     id: 3,
-    title: "Comcur",
-    status: "new"
+    columnName: "Comcur",
   },
   {
     id: 4,
-    title: "Nitracyr",
-    status: "new"
+    columnName: "Nitracyr",
   },
   {
     id: 5,
-    title: "Remold",
-    status: "new"
+    columnName: "Remold",
   },
   {
     id: 6,
-    title: "Namegen",
-    status: "new"
+    columnName: "Namegen",
   }
 ];
 
