@@ -58,7 +58,7 @@ class UsersList extends React.Component {
         }
       })
       .then(response => {
-        const data = response.data.data;
+        const data = response.data.data.filter((user) => { return user.active === true });;
         this.setState({
           users_data: data
         });
@@ -238,7 +238,7 @@ class UsersList extends React.Component {
 
 export default UsersList;
 
-document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(<UsersList />, document.getElementById("users"));
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   ReactDOM.render(<UsersList />, document.getElementById("tbody"));
+// });
 // json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
