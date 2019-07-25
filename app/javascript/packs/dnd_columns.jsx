@@ -6,12 +6,12 @@ import HTML5Backend from "react-dnd-html5-backend";
 import { moveElement, findIndex } from "./collection_helper";
 import axios from "axios";
 
-const ColumnArea = ({columnName, moveColumn, columns }) => {
+const ColumnArea = ({name, moveColumn, columns }) => {
   const [, drop] = useDrop({
     accept: itemType,
     drop: (item, monitor) => {
       if(!monitor.didDrop()) {
-        moveColumn(item.id, columnName);
+        moveColumn(item.id, name);
       }
     }
   });
@@ -26,7 +26,7 @@ const ColumnArea = ({columnName, moveColumn, columns }) => {
             <Column 
             key={column.id}
             id={column.id}
-            columnName={column.columnName}
+            name={column.name}
             moveColumn={moveColumn} />
           </div>))}
       </div>
@@ -34,17 +34,17 @@ const ColumnArea = ({columnName, moveColumn, columns }) => {
   );
 }
 
-const Column = ({ id, columnName, moveColumn }) => {
+const Column = ({ id, name, moveColumn }) => {
   const ref = useRef();
 
   const [, drag] = useDrag({
-    item: { id: id, columnName, type: itemType }
+    item: { id: id, name, type: itemType }
   });
 
   const [, drop] = useDrop({
     accept: itemType,
     drop: item => {
-      moveColumn(item.id, columnName, id)
+      moveColumn(item.id, name, id)
     }
   })
 
@@ -54,7 +54,7 @@ const Column = ({ id, columnName, moveColumn }) => {
   return(
   <div style={{ paddingBottom: 100 }}>
     <div ref={ref} style={{ padding : 10 }} key={id}>
-      {columnName}
+      {name}
     </div>
   </div>
   );
@@ -80,11 +80,24 @@ const Posts = () => {
           }
         })
         .then(response => {
-          incomingData=response.data.data.columns
-    })
+          updatePost(response.data.data.columns)
+    }
+    // )
+    // axios
+    //     .patch(
+    //       `/administrators/add_admin/${this.props.user_id}`,{
+    //         headers: {
+    //           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+    //             .content
+    //         }
+    //       })
+    //     .then(() => {
+    //       this.props.user_data();
+    // }
+    );
   }
   console.log(incomingData)
-  const moveColumn = (id, columnName, targetId) => {
+  const moveColumn = (id, name, targetId) => {
     updatePost(posts => {
       console.log(id, targetId);
 
@@ -98,7 +111,7 @@ const Posts = () => {
 
       return newList.map(post => {
         if (post.id === id) {
-          return { ...post, status: columnName };
+          return { ...post};
         } else {
           return post;
         }
@@ -124,31 +137,31 @@ document.addEventListener("DOMContentLoaded", () => {
 const initalColumns = [
   {
     id: 0,
-    columnName: "NEW COLUMN >1sza",
+    name: "NEW COLUMN >1sza",
   },
   {
     id: 1,
-    columnName: "Lovepad",
+    name: "Lovepad",
   },
   {
     id: 2,
-    columnName: "Netplode",
+    name: "Netplode",
   },
   {
     id: 3,
-    columnName: "Comcur",
+    name: "Comcur",
   },
   {
     id: 4,
-    columnName: "Nitracyr",
+    name: "Nitracyr",
   },
   {
     id: 5,
-    columnName: "Remold",
+    name: "Remold",
   },
   {
     id: 6,
-    columnName: "Namegen",
+    name: "Namegen",
   }
 ];
 let incomingData = [];
