@@ -1,22 +1,24 @@
-
+<div class="container">
   <div class="col-1">
-    
+    <%= link_to (octicon "arrow-left", :height => 64), "/manage_io/#{@task.project.id}" %>
   </div>
-
+</div>
 
 <div class="container">
   <div class="container">
 
     <div class="row">
-      <div class="col-sm">
+      <div class="col-5">
         <h1><%= @task.title %></h1>
       </div>
-      <div class="col-sm">
-        <% if @task.user %>
-          <%= @task.user.full_name %>
-        <% else %>
-          <p>No User</p>
-        <% end %>
+      <div class="col-3">
+        <h5>Member:
+          <% if @task.user %>
+            <%= @task.user.full_name %>
+          <% else %>
+            No User
+          <% end %>
+        </h5>
       </div>
     </div>
 
@@ -25,6 +27,13 @@
         <p class="text-justify"><%= @task.desc %></p>
       </div>
     </div>
+      <div class="container">
+        <%= content_tag :div,
+          id: "edit-task-modal",
+          data: @task.to_json do %>
+        <% end %>
 
+        <%= javascript_pack_tag 'edit_task_form' %>
+      </div>
   </div>
 </div>
