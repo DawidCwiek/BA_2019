@@ -175,7 +175,6 @@ class UsersList extends React.Component {
         <th>{index + 1}</th>
         <td>{userData.full_name}</td>
         <td>{userData.email}</td>
-        <td>{String(userData.admin)}</td>
         <td>
           {this.state.admin ? (
             userData.admin ? (
@@ -225,7 +224,6 @@ class UsersList extends React.Component {
               <th scope="col">#</th>
               <th scope="col">Full Name</th>
               <th scope="col">Email</th>
-              <th scope="col">Admin?</th>
               <th scope="col" />
             </tr>
           </thead>
