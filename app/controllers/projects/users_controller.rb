@@ -1,7 +1,6 @@
 class Projects::UsersController < ApplicationController
   def index
-    project = Project.find(params[:project_id])
-    @users = project.users
+    @project = Project.find(params[:project_id])
     render 'project/users/index'
   end
 end
