@@ -91,7 +91,6 @@ class Task_Form extends React.Component {
     }
 
     userDataTaker = () =>{
- 
        axios
         .get(
           "projects/1/users.json",
@@ -102,7 +101,7 @@ class Task_Form extends React.Component {
             }
           })
           .then(response => {
-          this.setState({ users_data: response.data.data });
+          this.setState({ users_data: response.data.data.users });
         });
       }
 
