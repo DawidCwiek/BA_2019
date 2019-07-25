@@ -8,9 +8,9 @@ RSpec.describe AdministratorsController, type: :controller do
     subject { patch :activate_user, params: { id: user.id }, format: :json }
 
     describe 'successful change' do
-        before {subject}
-        it { expect(response).to be_successful }
-        it { expect(User.last.active).to eq(true) }
+      before {subject}
+      it { expect(response).to be_successful }
+      it { expect(User.last.active).to eq(true) }
     end
   end
 
@@ -19,9 +19,9 @@ RSpec.describe AdministratorsController, type: :controller do
     subject { patch :add_admin, params: { id: user.id }, format: :json }
 
     describe 'successful add admin' do
-        before {subject}
-        it { expect(response).to be_successful }
-        it { expect(User.last.admin).to eq(true) }
+      before {subject}
+      it { expect(response).to be_successful }
+      it { expect(User.last.admin).to eq(true) }
     end
   end
 
@@ -30,9 +30,9 @@ RSpec.describe AdministratorsController, type: :controller do
     subject { patch :remove_admin, params: { id: user.id }, format: :json }
 
     describe 'successful remove admin' do
-        before {subject}
-        it { expect(response).to be_successful }
-        it { expect(User.last.admin).to eq(false) }
+      before {subject}
+      it { expect(response).to be_successful }
+      it { expect(User.last.admin).to eq(false) }
     end
   end
 end
