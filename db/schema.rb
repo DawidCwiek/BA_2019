@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_07_23_121445) do
     t.integer "tasks_order", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["project_id"], name: "index_columns_on_project_id"
     t.index ["tasks_order"], name: "index_columns_on_tasks_order", using: :gin
   end

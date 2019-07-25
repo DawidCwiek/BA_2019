@@ -1,7 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import axios from "axios";
 import ConfirmationAdmin from "./accepted_modal";
+import RemoveAdmin from "./remove_admin";
 import Autosuggest from "react-autosuggest";
 
 function escapeRegexCharacters(str) {
@@ -22,6 +22,7 @@ class UsersList extends React.Component {
     this.state = {
       users_data: [],
       admin: [],
+      user_admin: [],
       value: "",
       activeUser: "",
       suggestions: []
@@ -56,9 +57,27 @@ class UsersList extends React.Component {
         }
       })
       .then(response => {
-        const data = response.data.data.filter((user) => { return user.active === true });;
+        const data = response.data.data.filter(user => {
+          return user.active === true;
+        });
         this.setState({
           users_data: data
+        });
+      });
+  };
+
+  UserAdminTaker = () => {
+    axios
+      .get("users_list.json", {
+        headers: {
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+            .content
+        }
+      })
+      .then(response => {
+        const user = response.data.admin;
+        this.setState({
+          user_admin: user
         });
       });
   };
@@ -140,13 +159,19 @@ class UsersList extends React.Component {
         <th>{index + 1}</th>
         <td>{userData.full_name}</td>
         <td>{userData.email}</td>
-        <td>{String(userData.admin)}</td>
         <td>
           {this.state.admin ? (
-            <ConfirmationAdmin
-              user_id={userData.id}
-              user_data={this.userDataTaker}
-            />
+            userData.admin ? (
+              <RemoveAdmin
+                user_id={userData.id}
+                user_data={this.userDataTaker}
+              />
+            ) : (
+              <ConfirmationAdmin
+                user_id={userData.id}
+                user_data={this.userDataTaker}
+              />
+            )
           ) : null}
         </td>
       </tr>
@@ -183,7 +208,6 @@ class UsersList extends React.Component {
               <th scope="col">#</th>
               <th scope="col">Full Name</th>
               <th scope="col">Email</th>
-              <th scope="col">Admin?</th>
               <th scope="col" />
             </tr>
           </thead>
@@ -195,8 +219,3 @@ class UsersList extends React.Component {
 }
 
 export default UsersList;
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   ReactDOM.render(<UsersList />, document.getElementById("tbody"));
-// });
-// json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
