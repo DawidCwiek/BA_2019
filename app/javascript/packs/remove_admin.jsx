@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-export class ConfirmationAdmin extends React.Component {
+export class RemoveAdmin extends React.Component {
   state = {
     modal: false,
-    admin: false
+    admin: true
   };
 
   toggle = () => {
@@ -17,16 +17,16 @@ export class ConfirmationAdmin extends React.Component {
   handleClick = () => {
     this.setState(
       {
-        admin: true
+        admin: false
       },
-      this.addAdmin
+      this.RemoveAdmin
     );
   };
 
-  addAdmin = () => {
+  RemoveAdmin = () => {
     axios
       .patch(
-        `/administrators/add_admin/${this.props.user_id}`,
+        `/administrators/remove_admin/${this.props.user_id}`,
         {},
         {
           headers: {
@@ -42,19 +42,17 @@ export class ConfirmationAdmin extends React.Component {
 
   render() {
     return (
-      <div className="center">
-        <Button onClick={this.toggle} className="btn btn-danger add-admin ">
-          Grant Admin
+      <div className= "center">
+        <Button onClick={this.toggle} className="btn btn-warning">
+          Remove Admin
         </Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>Add Admin?</ModalHeader>
-          <ModalBody>
-            Are you sure you want to add admin to this project?
-          </ModalBody>
+          <ModalHeader toggle={this.toggle}>Remove Admin?</ModalHeader>
+          <ModalBody>Are you sure you want to remove admin?</ModalBody>
           <ModalFooter>
             <Button
               onClick={() => {
@@ -77,4 +75,4 @@ export class ConfirmationAdmin extends React.Component {
   }
 }
 
-export default ConfirmationAdmin;
+export default RemoveAdmin;

@@ -23,8 +23,10 @@ Rails.application.routes.draw do
 
   root to: 'manage_io#index'
   patch '/projects/archive/:id' => 'projects#archive'
-  patch '/administrators/user/:id' => 'administrators#activate_user'
   patch '/administrators/add_admin/:id' => 'administrators#add_admin'
+  patch '/administrators/user/:id' => 'administrators#activate_user'
+  patch '/administrators/remove_admin/:id' => 'administrators#remove_admin'
   get '/manage_io/:id' => 'manage_io#project'
+  get '/manage_io/task/:id' => 'manage_io#task'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
