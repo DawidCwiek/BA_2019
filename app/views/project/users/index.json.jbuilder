@@ -1,6 +1,6 @@
 json.data do
   json.call(@project, :columns_order)
-  json.users do 
+  json.users do
     json.array! @project.users do |user|
       json.call(user, :id, :full_name, :email)
     end
