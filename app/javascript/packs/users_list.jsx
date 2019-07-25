@@ -58,7 +58,9 @@ class UsersList extends React.Component {
         }
       })
       .then(response => {
-        const data = response.data.data.filter((user) => { return user.active === true });;
+        const data = response.data.data.filter(user => {
+          return user.active === true;
+        });
         this.setState({
           users_data: data
         });
@@ -99,23 +101,6 @@ class UsersList extends React.Component {
       <li key={userData.id}> {userData.full_name}</li>
     ));
   };
-
-  // renderButton = () => {
-  //   if (this.state.admin) {
-  //     if (this.state.userData.admin) {
-  //       <ConfirmationAdmin
-  //         user_id={userData.id}
-  //         user_data={this.userDataTaker}
-  //       />;
-  //     } else {
-  //       return (
-  //         <RemoveAdmin user_id={userData.id} user_data={this.userDataTaker} />
-  //       );
-  //     }
-  //   } else {
-  //     null;
-  //   }
-  // };
 
   ShowSuperAdmin = () => {
     return this.state.admin.map(superAdmin => (
@@ -235,8 +220,3 @@ class UsersList extends React.Component {
 }
 
 export default UsersList;
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   ReactDOM.render(<UsersList />, document.getElementById("tbody"));
-// });
-// json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f
