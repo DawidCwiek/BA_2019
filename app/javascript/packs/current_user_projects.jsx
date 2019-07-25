@@ -26,15 +26,15 @@ class CurrentUserProjectsList extends React.Component {
   numberList = () => {
     this.state.projects.sort((a,b) => {
       if (a.title.toLowerCase() > b.title.toLowerCase()) {
-        return -1
-      } else {
         return 1
+      } else {
+        return -1
       }
     })
     
     const projects = this.state.projects;
     const projectsList = projects.map((project) =>
-      <ListGroupItem  className=" task-list-styling" key={project.id}>
+      <ListGroupItem  className=" task-list-styling userdash-link" key={project.id} href="#">
         [{project.key}] {project.title}
       </ListGroupItem>
 
@@ -50,7 +50,7 @@ class CurrentUserProjectsList extends React.Component {
   }
 
   render() {
-    return <div className="label-info task-scroll">{this.numberList()}</div>;
+    return <div className="label-info project-scroll">{this.numberList()}</div>;
   }
 }
 

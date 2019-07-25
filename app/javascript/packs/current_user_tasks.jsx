@@ -25,7 +25,7 @@ class CurrentUserTasksList extends React.Component {
 
   numberList = () => {
     this.state.tasks.sort((a,b) => {
-      if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      if (a.updated_at > b.updated_at) {
         return -1
       } else {
         return 1
@@ -34,7 +34,7 @@ class CurrentUserTasksList extends React.Component {
     
     const tasks = this.state.tasks;
     const tasksList = tasks.map((task) =>
-      <ListGroupItem  className=" task-list-styling" key={task.id}>
+      <ListGroupItem  className=" task-list-styling userdash-link" key={task.id} href="#">
         [{task.project.key}] {task.title}
       </ListGroupItem>
 
