@@ -16,21 +16,23 @@ const ColumnArea = ({name, moveColumn, columns }) => {
     }
   });
 
+  columns.length;
   console.log(columns)
-
+  columns.map(columsOrder =>  
+    
+    console.log(columsOrder.id)
+    )
+  
   return(
-    <div className="container">
       <div className="row" ref={drop}>
         {columns.map(column => (
-          <div style={{padding: 15}}>
             <Column 
             key={column.id}
             id={column.id}
             name={column.name}
             moveColumn={moveColumn} />
-          </div>))}
+          ))}
       </div>
-    </div>
   );
 }
 
@@ -52,7 +54,7 @@ const Column = ({ id, name, moveColumn }) => {
   drop(ref);
 
   return(
-  <div style={{ paddingBottom: 100 }}>
+  <div class="Single_Column" style={{ paddingBottom: 100 }}>
     <div ref={ref} style={{ padding : 10 }} key={id}>
       {name}
     </div>
@@ -65,6 +67,7 @@ export default ColumnArea;
 const itemType = "COLUMN";
 /////////////////////////////////////////
 const Posts = () => {
+
   const [posts, updatePost] = useState(initalColumns);
 
   useEffect(() => {
@@ -96,13 +99,13 @@ const Posts = () => {
     // }
     );
   }
-  console.log(incomingData)
+
   const moveColumn = (id, name, targetId) => {
     updatePost(posts => {
       console.log(id, targetId);
 
       const postIndex = findIndex(posts, post => post.id === id);
-
+    
       const targetIndex = targetId
         ? findIndex(posts, post => post.id === targetId)
         : posts.length;
@@ -121,7 +124,7 @@ const Posts = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="container1">
+      <div className="TableContainer">
             <ColumnArea 
             columns={posts} 
             moveColumn={moveColumn}/>
@@ -164,5 +167,5 @@ const initalColumns = [
     name: "Namegen",
   }
 ];
-let incomingData = [];
+
 
