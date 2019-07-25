@@ -1,53 +1,29 @@
+<%= javascript_pack_tag 'current_user_tasks' %>
+<%= javascript_pack_tag 'current_user_projects' %>
 
-<%= javascript_pack_tag'task_form' %>
-  <div class="content">
-    <div class="container vertical-center ">
-      <div class="row">
-        <div class="col">
-
-          <h3 class="sign-up-header ">My Projects</h3>
-    <div id="col-projects">
+<div class="container main-container">
+  <div class="row">
+    <div class="col project-main-container">
+      <div>
+        <h2 class="project-header">Project list</h2>
+        <div id="current-projects-list"></div>
       </div>
     </div>
-    <div id="modal"></div>
-
-  </div>
-  <div class="col ">
-   <div style="color:black;">
-    <div class="col">
-      <h3 class="sign-up-header ">Task list</h3>
-      <div class="label-info">
-        <tr>
-          <% @task.each do |task| %>
-          <tr>
-            <div class="project">
-            <td><%= task.title %></td>
-            <td><%= task.desc %></td>
-          </div>
-          </tr>
+    <div class="col admin task-main-container">
+      <div>
+        <h2 class="project-header">Task list</h2>
+        <div id="current-tasks-list"></div>
+      </div>
+      <div class="label-margin">
+        <div class="label-info">
+          <% if user_signed_in? %>
+            Full Name:  <%= current_user.full_name %></br>
+            Your email: <%= current_user.email %>
+          <% else %>
+            <h3>Please Sign in!</h3>
           <% end %>
-        </tr>
-      </div>
-
-
-      </table>
-    </div>
-  </div>
-
-    <div class="col label-margin">
-    <div class="label-info">
-        <% if user_signed_in? %>
-       Full Name:  <%= current_user.full_name %></br>
-       Your email: <%= current_user.email %>
-       <% else %>
-      <h3>Please Sign in!</h3>
-        <% end %>
-
+        </div>
       </div>
     </div>
   </div>
-  </div>
-  </div>
-
-
-  <%= javascript_pack_tag'projects-list' %>
+</div>

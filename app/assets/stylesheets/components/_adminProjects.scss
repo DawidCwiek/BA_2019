@@ -1,0 +1,47 @@
+.non-archived {
+  background-color: #fff !important;
+  color: #331670 !important;
+  text-decoration: none !important;
+  border-width: 1px 2px !important;
+}
+
+.non-archived:last-child {
+  border-width: 1px 2px solid !important;
+}
+
+.archived {
+  background-color: #c6c6c6 !important;
+  color: black !important;
+  border-width: 1px 2px !important;
+}
+
+.archive-modal {
+  right: 0;
+}
+
+.edit-button {
+  padding-right: 10px;
+}
+
+.archive-link {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.archive-link:hover {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.aligning-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-positioning {
+  text-align: center;
+}
+
+ul.striped-list {
+  max-width: none !important;
+}
