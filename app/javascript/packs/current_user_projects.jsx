@@ -34,10 +34,11 @@ class CurrentUserProjectsList extends React.Component {
     
     const projects = this.state.projects;
     const projectsList = projects.map((project) =>
-      <ListGroupItem  className=" task-list-styling userdash-link" key={project.id} href="#">
+    <a href={`/manage_io/${project.id}`} className="task-list-styling userdash-link">
+      <ListGroupItem  className="task-list-styling userdash-link" key={project.id}>
         [{project.key}] {project.title}
       </ListGroupItem>
-
+    </a>
     );
     return (
       <ListGroup className="striped-list">{projectsList}</ListGroup>

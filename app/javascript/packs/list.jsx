@@ -48,7 +48,7 @@ class List extends React.Component {
         <ListGroupItem
           key={project.id}
           tag="a"
-          href="#"
+          href={`/manage_io/${project.id}`}
           className="non-archived"
         >
           <div className="aligning-items">
