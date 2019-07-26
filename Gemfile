@@ -50,6 +50,7 @@ gem 'jquery-rails'
 
 gem 'devise'
 gem 'figaro'
+gem 'octicons_helper'
 gem 'prettier'
 
 group :development, :test do

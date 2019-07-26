@@ -16,9 +16,9 @@ class Task_Form extends React.Component {
       modal: false,
       dropdownOpen: false,
       data: {
-        title: "",
-        desc: "",
-        project_id: 1,
+        title: this.props.task.title,
+        desc: this.props.task.desc,
+        project_id: this.props.task.project_id,
       },
       users_data: [],
       errors: {}
@@ -47,33 +47,23 @@ class Task_Form extends React.Component {
       this.setState({errors: errors});
       return formIsValid;
     }
-    
+
   setFromValue = (attribute, value) => {
 		this.setState(prev => ({ data: {...prev.data, [attribute]: value} }))
 	}
 
- 
+
     handleSubmit = e => {
-            this.setState({
-            data: {
-              title: "",
-              desc: "",
-              user_id: "",
-              project_id: 1
-            }
-            
-          });
-         
           if(this.handleValidation()){
           e.preventDefault();
-          
+
           this.setState(prevState => ({
             modal: !prevState.modal,
           }));
 
       axios
-        .post(
-          "task.json",
+        .patch(
+          `/task/${this.props.task.id}`,
           { task: this.state.data },
         {
             headers: {
@@ -82,18 +72,14 @@ class Task_Form extends React.Component {
             }
           }
         )
-        .catch(e => {
-					if(e.response.data.errors["key"] !== "undefined"){
-						this.setState({errors: {key: "The key must be unique"}});
-					}
-				})
       }
     }
 
     userDataTaker = () =>{
+
        axios
         .get(
-          "projects/1/users.json",
+          `/projects/${this.props.task.project_id}/users`,
         {
             headers: {
               "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -106,7 +92,7 @@ class Task_Form extends React.Component {
       }
 
   showUsers=()=>{
-    return this.state.users_data.map(userData => 
+    return this.state.users_data.map(userData =>
     <DropdownItem key={userData.id}>
         {userData.full_name}
      </DropdownItem>)
@@ -132,7 +118,7 @@ class Task_Form extends React.Component {
   render() {
     return (
       <div>
-          <a onClick={this.toggle} className="link-hover a-styling">Create task</a>
+        <button type="button" onClick={this.toggle} className="btn btn-outline-success">Edit Task</button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
@@ -142,7 +128,7 @@ class Task_Form extends React.Component {
             <Form>
               <FormGroup>
                 <Label className="text-muted" for="title">Title</Label>
-                <Input type="text" minLength="3" maxLength="30" name="title" id="title" placeholder="Write task title" 
+                <Input type="text" minLength="3" maxLength="30" name="title" id="title" placeholder="Write task title"
                 value={this.state.data.title} onChange={e => { this.setFromValue('title', e.target.value) } }/>
                 <span style={{color: "red"}}>{this.state.errors["title"]}</span>
             </FormGroup>
@@ -181,10 +167,12 @@ class Task_Form extends React.Component {
 
 export default Task_Form;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
+  const node = document.getElementById('edit-task-modal')
+  const data = JSON.parse(node.getAttribute('data'))
   ReactDOM.render(
-    <Task_Form />,
-    document.getElementById('create-task-modal'))
-  
-});
+    <Task_Form task={data} />,
+  document.getElementById('edit-task-modal'))
+})
+
 // json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f

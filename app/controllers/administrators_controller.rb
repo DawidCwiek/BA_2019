@@ -1,5 +1,6 @@
 class AdministratorsController < ApplicationController
   before_action :authenticate_user!
+  before_action :admin_user
 
   def index; end
 
@@ -19,5 +20,9 @@ class AdministratorsController < ApplicationController
     @user = User.find(params[:id])
     @user.update(admin: false)
     head :no_content
+  end
+
+  def admin_user
+    redirect_to root_path unless current_user.admin?
   end
 end
