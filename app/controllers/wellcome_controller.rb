@@ -1,7 +1,8 @@
 class WellcomeController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user_redirect
-
+  
+ 
   def index; end
 
   private
