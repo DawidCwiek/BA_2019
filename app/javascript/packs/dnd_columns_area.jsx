@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { TasksArea } from "./dnd_tasks";
 import { moveElement, findIndex } from "./collection_helper";
-import { black } from "ansi-colors";
 import axios from "axios";
 
 export const ColumnArea = ({name, moveColumn, columns }) => {
@@ -15,14 +14,14 @@ export const ColumnArea = ({name, moveColumn, columns }) => {
     }
   });
 
-  const columnIds = columns.map(columsOrder => 
+  const columnIds = columns.map(columsOrder =>
     columsOrder.id
     )
 
   return(
       <div className="row" ref={drop}>
         {columns.map(column => (
-            <Column 
+            <Column
             key={column.id}
             id={column.id}
             name={column.name}
@@ -52,7 +51,7 @@ const Column = ({ id, name, moveColumn }) => {
 
 
   const [tasks, updateTask] = useState(initalTasks);
-   
+
   const moveTask = (id, title, targetId) => {
     updateTask(tasks => {
         console.log(id, targetId);
