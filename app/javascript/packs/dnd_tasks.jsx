@@ -1,13 +1,12 @@
 import React, { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 
-export const TasksArea = ({nameTask, moveTask, tasks }) => {
-
+export const TasksArea = ({title, moveTask, tasks }) => {
 const [, drop] = useDrop({
     accept: itemType2,
     drop: (item, monitor) => {
     if(!monitor.didDrop()) {
-        moveTask(item.id, nameTask);
+        moveTask(item.id, title);
     }
     }
 });
@@ -23,7 +22,7 @@ console.log(columnIds);
                 <Task 
                 key={task.id}
                 id={task.id}
-                name={task.nameTask}
+                name={task.title}
                 moveTask={moveTask}
                 tasks={tasks}
                 />
@@ -50,7 +49,7 @@ const Task = ({id, name, moveTask}) => {
   drop(ref);
 
   return(
-  <div class="Single_Task" style={{ paddingBottom: 20 }} ref={ref}  key={id}>
+  <div className="Single_Task" style={{ paddingBottom: 20 }} ref={ref}  key={id}>
       {name}
   </div>
   );
