@@ -5,7 +5,7 @@ import { moveElement, findIndex } from "./collection_helper";
 import { black } from "ansi-colors";
 import axios from "axios";
 
-export const ColumnArea = ({name, moveColumn, columns }) => {
+export const ColumnArea = ({name, moveColumn, columns, projectId }) => {
   const [, drop] = useDrop({
     accept: itemType,
     drop: (item, monitor) => {
@@ -26,13 +26,15 @@ export const ColumnArea = ({name, moveColumn, columns }) => {
             key={column.id}
             id={column.id}
             name={column.name}
-            moveColumn={moveColumn} />
+            moveColumn={moveColumn}
+            projectId={projectId}
+             />
           ))}
       </div>
   );
 }
 
-const Column = ({ id, name, moveColumn }) => {
+const Column = ({ id, name, moveColumn, projectId }) => {
   const ref = useRef();
 
   const [, drag] = useDrag({
@@ -81,7 +83,7 @@ const Column = ({ id, name, moveColumn }) => {
 
   const fetchTasks = () => {
     axios
-        .get("/projects/1/users.json", {
+        .get(`/projects/${projectId}/users.json`, {
           headers: {
             "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
               .content

@@ -9,7 +9,7 @@
       <%= javascript_pack_tag 'add_user_to_project_modal' %>
     </div>
   </div>
-  <div class="post-app"></div>
+  <div class="post-app" data-project-id="<%= @project.id %>"></div>
 
   <%= javascript_pack_tag 'dnd_columns' %>
 </div>

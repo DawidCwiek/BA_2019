@@ -5,7 +5,8 @@ import HTML5Backend from "react-dnd-html5-backend";
 import { moveElement, findIndex } from "./collection_helper";
 import { ColumnArea } from "./dnd_columns_area";
 import axios from "axios";
-const Dnd = () => {
+
+const Dnd = ({projectId}) => {
 
   const [posts, updatePost] = useState(initalColumns);
 
@@ -15,7 +16,7 @@ const Dnd = () => {
 
   const fetchColumns = () => {
     axios
-        .get("/projects/1/users.json", {
+        .get(`/projects/${projectId}/users.json`, {
           headers: {
             "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
               .content
@@ -66,14 +67,17 @@ const Dnd = () => {
       <div className="TableContainer">
             <ColumnArea 
             columns={posts} 
-            moveColumn={moveColumn}/>
+            moveColumn={moveColumn}
+            projectId={projectId}
+            />
       </div>
     </DndProvider>
   );
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(<Dnd />, document.querySelector(".post-app"));
+  const el = document.querySelector(".post-app");
+  ReactDOM.render(<Dnd projectId={el.dataset.projectId}/>, el);
 });
 
 
