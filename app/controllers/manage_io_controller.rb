@@ -1,5 +1,6 @@
 class ManageIoController < ApplicationController
   before_action :authenticate_user!
+  before_action :user_active
 
   def index
     @projects = Project.all
@@ -22,5 +23,11 @@ class ManageIoController < ApplicationController
       return redirect_to manage_io_index_path if current_user.projects.where(id: @task.project).empty?
     end
     # rubocop:enable Style/GuardClause
+  end
+
+  private
+
+  def user_active
+    redirect_to root_path unless current_user.active
   end
 end
