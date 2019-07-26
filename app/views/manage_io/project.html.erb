@@ -1,4 +1,15 @@
-<div class="post-app"></div>
 
-<%= javascript_pack_tag 'dnd_columns' %>
+<div>
+  <div>
+    <div class="container">
+      <%= content_tag :div,
+        id: "add-user-to-project",
+        data: @project.to_json do %>
+      <% end %>
+      <%= javascript_pack_tag 'add_user_to_project_modal' %>
+    </div>
+  </div>
+  <div class="post-app"></div>
 
+  <%= javascript_pack_tag 'dnd_columns' %>
+</div>

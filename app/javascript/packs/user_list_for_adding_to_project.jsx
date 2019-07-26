@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "axios";
-import ConfirmationAdmin from "./accepted_modal";
-import RemoveAdmin from "./remove_admin";
 import Autosuggest from "react-autosuggest";
+import AddUserToProjectButton from './add_user_to_project_button';
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -16,13 +15,11 @@ function renderSuggestion(suggestion) {
   return suggestion.full_name;
 }
 
-class UsersList extends React.Component {
+export class UsersListForAdding extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       users_data: [],
-      admin: [],
-      user_admin: [],
       value: "",
       activeUser: "",
       suggestions: []
@@ -50,60 +47,23 @@ class UsersList extends React.Component {
 
   userDataTaker = () => {
     axios
-      .get("users_list.json", {
+      .get(`/api/v1/not_assigned_users/${this.props.project.project.id}`, {
         headers: {
           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
             .content
         }
       })
       .then(response => {
-        const data = response.data.data.filter(user => {
-          return user.active === true && user.super_admin === null;
-        });
+        const data = response.data.filter((user) => { return user.active === true });;
         this.setState({
           users_data: data
         });
       });
   };
 
-  UserAdminTaker = () => {
-    axios
-      .get("users_list.json", {
-        headers: {
-          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-            .content
-        }
-      })
-      .then(response => {
-        const user = response.data.admin;
-        this.setState({
-          user_admin: user
-        });
-      });
-  };
-
-  superAdminTaker = () => {
-    axios
-      .get("api/v1/users.json", {
-        headers: {
-          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-            .content
-        }
-      })
-      .then(response => {
-        this.setState({ admin: response.data });
-      });
-  };
-
   showUsers = () => {
     return this.state.users_data.map(userData => (
       <li key={userData.id}> {userData.full_name}</li>
-    ));
-  };
-
-  ShowSuperAdmin = () => {
-    return this.state.admin.map(superAdmin => (
-      <li key={superAdmin.id}> {superAdmin.full_name}</li>
     ));
   };
 
@@ -156,31 +116,15 @@ class UsersList extends React.Component {
 
     return newUsersData.map((userData, index) => (
       <tr key={userData.id}>
-        <th>{index + 1}</th>
         <td>{userData.full_name}</td>
         <td>{userData.email}</td>
-        <td>
-          {this.state.admin ? (
-            userData.admin ? (
-              <RemoveAdmin
-                user_id={userData.id}
-                user_data={this.userDataTaker}
-              />
-            ) : (
-              <ConfirmationAdmin
-                user_id={userData.id}
-                user_data={this.userDataTaker}
-              />
-            )
-          ) : null}
-        </td>
+        <td><AddUserToProjectButton userId={userData.id} projectId={this.props.project}/></td>
       </tr>
     ));
   };
 
   componentDidMount() {
     this.userDataTaker();
-    this.superAdminTaker();
   }
 
   render() {
@@ -205,7 +149,6 @@ class UsersList extends React.Component {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Full Name</th>
               <th scope="col">Email</th>
               <th scope="col" />
@@ -218,4 +161,4 @@ class UsersList extends React.Component {
   }
 }
 
-export default UsersList;
+export default UsersListForAdding;

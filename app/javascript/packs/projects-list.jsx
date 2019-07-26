@@ -25,7 +25,7 @@ export default class ProjectList extends React.PureComponent {
       {this.state.projects.map(project => {
         return (
           <div key={project.id} className="project">
-            [{project.key}] {project.title}{" "}
+            {project.key}] {project.title}{" "}
             {this.state.user ? (
               <ConfirmationModal projectId={this.project.id} />
             ) : null}
