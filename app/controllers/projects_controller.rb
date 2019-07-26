@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_admin!, only: %i[update destroy archive]
   before_action :set_project, only: %i[show update destroy archive]
   def index
     @projects = Project.all
@@ -46,5 +47,9 @@ class ProjectsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def projects_params
     params.require(:project).permit(:title, :desc, :key)
+  end
+
+  def authenticate_admin!
+    redirect_to root_path unless current_user.admin?
   end
 end
