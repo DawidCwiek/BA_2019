@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe ManageIoController, type: :controller do
-  render_views
 
   describe '#index' do
     login_user
