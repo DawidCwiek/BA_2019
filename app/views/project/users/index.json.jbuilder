@@ -10,4 +10,9 @@ json.data do
       json.call(column, :id, :name)
     end
   end
+  json.task do
+    json.array! @project.task do |tasks|
+      json.call(tasks, :id, :column_id, :title)
+    end
+  end
 end
