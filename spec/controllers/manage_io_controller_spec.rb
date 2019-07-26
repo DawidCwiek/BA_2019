@@ -14,22 +14,27 @@ RSpec.describe ManageIoController, type: :controller do
     end
   end
 
-  describe '#project' do
-    let!(:project) { create(:project) }
-    subject { get :index, params: {id: project.id} }
-
-    describe 'user should not be project' do
-      login_user
-      before { subject }
-      it { expect(response).to be_successful }
-      it { expect(response).to render_template('manage_io/index') }
-    end
-
-    describe 'user belongs to project' do
-      login_admin     
-      before { subject }
-      it { expect(response).to be_successful }
-      it { expect(response).to render_template('project') }
-    end
-  end
+  # describe '#project' do
+  #   let!(:project) { create(:project) }
+  #   subject { get :project, params: {id: project.id} }
+  #
+  #   describe 'user should not be project' do
+  #     login_user
+  #     before { subject }
+  #     it { expect(response).to be_successful }
+  #     it { expect(response).to render_template('manage_io/index') }
+  #   end
+  # end
+  #
+  # describe '#task' do
+  #   let!(:task) { create(:task) }
+  #   subject { get :task, params: {id: task.id} }
+  #
+  #   describe 'user should not be project' do
+  #     login_user
+  #     before { subject }
+  #     it { expect(response).to be_successful }
+  #     it { expect(response).to render_template('manage_io/index') }
+  #   end
+  # end
 end

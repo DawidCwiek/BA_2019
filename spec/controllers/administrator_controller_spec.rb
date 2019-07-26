@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AdministratorsController, type: :controller do
-  login_user
+  login_admin
 
   describe '#activate_user' do
     let(:user) { create(:user) }
