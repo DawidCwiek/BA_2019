@@ -58,7 +58,7 @@ class UsersList extends React.Component {
       })
       .then(response => {
         const data = response.data.data.filter(user => {
-          return user.active === true;
+          return user.active === true && user.super_admin === null;
         });
         this.setState({
           users_data: data

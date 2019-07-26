@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def logged_and_no_logged
-    if user_signed_in?
+    if user_signed_in? && current_user.active
       if current_user.admin?
         'admin'
       else

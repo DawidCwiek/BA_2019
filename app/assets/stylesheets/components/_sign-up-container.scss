@@ -33,3 +33,24 @@
 .larger {
   padding: 132px 0;
 }
+
+.confirm {
+  display: flex;
+  align-items: center;
+}
+
+.more {
+  padding: 242px 0;
+}
+
+.elo {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: 50px;
+  width: 100%;
+
+  padding-top: 5px;
+  text-align: center;
+  font-size: 1.3em;
+}
