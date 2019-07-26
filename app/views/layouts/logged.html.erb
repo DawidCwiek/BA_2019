@@ -2,20 +2,20 @@
 <html>
   <head>
     <title>Pik</title>
-    <%= csrf_meta_tags %> <%= csp_meta_tag %> 
-    <%= stylesheet_link_tag'application', media: 'all' %>
-     <%= javascript_include_tag 'application' %>
-     <%= javascript_pack_tag'task_form' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-<<<<<<< HEAD
       <div class="row">
         <div id="sidebar" class="col-2 width-change">
           <h1 class="sidebar-header manageIo-text">Manage.io</h1>
           <ul class="ul-styling">
             <li class="li-styling li-last-item">
-              <a href="/manage_io" class="link-hover a-styling">Backlog</a>
+              <a href="/manage_iogi" class="link-hover a-styling">Backlog</a>
             </li>
             <li class="last-child link-hover">
               <a class="link-hover last-child a-styling" rel="nofollow" data-method="delete" href="/users/sign_out">Logout</a>
@@ -23,47 +23,14 @@
           </ul>
         </div>
         <div class="col-10 width-fix offset-2">
-=======
-    <div class="row">
-      <div id="sidebar" class="col-2 width-change">
-        <h1 class="sidebar-header manageIo-text">Manage.io</h1>
-        <ul class="ul-styling">
-          <li class="li-styling">
-            <a href="#" class="link-hover a-styling">Kanban</a>
-          </li>
-          <li class="li-styling">
-            <a href="#" class="link-hover a-styling">Backlog</a>
-          </li>
-          <li class="li-styling li-last-item">
-            <a id="create-task-modal">Create task</a>
-          </li>
-          <li class="last-child link-hover">
-            <a
-              class="link-hover last-child a-styling"
-              rel="nofollow"
-              data-method="delete"
-              href="/users/sign_out"
-              >Logout</a
-            >
-          </li>
-        </ul>
-      </div>
-      <div class="col-10 width-fix offset-2">
->>>>>>> 5c560718cac0deb21b3dd0242b0d0da782b3763e
         <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %> alert-dismissable">
-          <button
-            type="button"
-            class="close"
-            data-dismiss="alert"
-            aria-hidden="true"
-          >
-            ×
-          </button>
+          <div class="alert alert-<%= key %> alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
           <%= value %>
+          </div>
+        <% end %>
+          <%= yield %>
         </div>
-        <% end %> <%= yield %>
       </div>
-    </div>
   </body>
 </html>
