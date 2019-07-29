@@ -4,6 +4,7 @@ import axios from "axios";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import ConfirmationModal from "./archive_modal";
 import ProjectEditModal from "./project_edit_modal";
+import { UncontrolledCollapse, Button } from "reactstrap";
 
 class List extends React.Component {
   state = {
@@ -38,6 +39,7 @@ class List extends React.Component {
         return -1;
       }
     });
+
     const projects = this.state.projects;
     const projectsList = projects.map(project => {
       return project.archived ? (
@@ -45,14 +47,28 @@ class List extends React.Component {
           [{project.key}] {project.title}
         </ListGroupItem>
       ) : (
-        <ListGroupItem
-          key={project.id}
-          tag="a"
-          className="non-archived"
-        >
+        <ListGroupItem key={project.id} tag="a" className="non-archived">
           <div className="aligning-items">
-            <a href={`/manage_io/${project.id}`}>[{project.key}] {project.title}</a>
+            <a href={`/manage_io/${project.id}`}>
+              [{project.key}] {project.title}
+            </a>
+            <div>
+              <UncontrolledCollapse toggler="#toggler">
+                {project.users.map(user => {
+                  return user.full_name;
+                })}
+              </UncontrolledCollapse>
+            </div>
             <div className="aligning-items">
+              <div className="edit-button">
+                <Button
+                  color="primary"
+                  id="toggler"
+                  style={{ marginBottom: "1rem" }}
+                >
+                  Users
+                </Button>
+              </div>
               <div className="edit-button">
                 {
                   <ProjectEditModal
