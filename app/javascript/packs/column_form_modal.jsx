@@ -36,7 +36,6 @@ class ColumnFormModal extends React.Component {
   };
   handleSubmit = e => {
     if (this.handleValidation()) {
-      e.preventDefault();
       axios
         .post(
           `/projects/${this.state.data.project_id}/columns`,
@@ -104,7 +103,9 @@ class ColumnFormModal extends React.Component {
               </FormGroup>
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.handleSubmit} toggle={this.toggle} >
+              <Button color="primary" onClick={() => {
+                (this.handleSubmit(),
+                this.toggle())}} >
                 Save
               </Button>{" "}
               <Button color="secondary" onClick={this.toggle}>
