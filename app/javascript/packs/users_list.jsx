@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import ConfirmationAdmin from "./accepted_modal";
 import RemoveAdmin from "./remove_admin";
-import Search from "./searchbar";
+import Autosuggest from "react-autosuggest";
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -194,7 +194,14 @@ class UsersList extends React.Component {
 
     return (
       <>
-        <Search />
+        <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          inputProps={inputProps}
+        />
         <table className="table table-striped">
           <thead>
             <tr>
