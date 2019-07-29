@@ -2,19 +2,6 @@ import React from "react";
 import axios from "axios";
 import ConfirmationAdmin from "./accepted_modal";
 import RemoveAdmin from "./remove_admin";
-import Autosuggest from "react-autosuggest";
-
-function escapeRegexCharacters(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function getSuggestionValue(suggestion) {
-  return suggestion.full_name;
-}
-
-function renderSuggestion(suggestion) {
-  return suggestion.full_name;
-}
 
 class UsersList extends React.Component {
   constructor(props) {
@@ -24,7 +11,6 @@ class UsersList extends React.Component {
       admin: [],
       user_admin: [],
       value: "",
-      activeUser: "",
       suggestions: []
     };
   }
@@ -34,24 +20,13 @@ class UsersList extends React.Component {
       return null;
     }
     const { users_data } = this.state;
-    const suggestions = this.state.users_data.map(item => {
-      return { full_name: item.full_name };
-    });
-    const escapedValue = escapeRegexCharacters(value.trim());
-
-    console.log("getSuggestions suggestions: ", suggestions);
-
-    console.log("getSuggestions escapedValue: ", escapedValue);
+    const escapedValue = this.escapeRegexCharacters(value.trim());
 
     if (escapedValue === "") {
       return [];
     }
 
     const regex = new RegExp("^" + escapedValue, "i");
-    console.log(
-      "result",
-      users_data.filter(user => regex.test(user.full_name))
-    );
     return users_data.filter(user => regex.test(user.full_name));
   };
 
@@ -118,33 +93,6 @@ class UsersList extends React.Component {
     ));
   };
 
-  // onKeyDown = event => {
-  //   if (event.keyCode === 13) {
-  //     const innerText = event.currentTarget.value;
-  //     this.setState({
-  //       activeUser: innerText,
-  //       value: innerText
-  //     });
-  //   }
-  // };
-
-  onChange = (event, { newValue, method }) => {
-    console.log("onchange", event, newValue, method);
-    if (method === "click") {
-      const innerText = event.currentTarget.innerText;
-
-      this.setState({
-        activeUser: innerText,
-        value: innerText
-      });
-    } else {
-      this.setState({
-        value: newValue,
-        activeUser: ""
-      });
-    }
-  };
-
   onSuggestionsFetchRequested = e => {
     const value = e.target.value;
     this.setState({
@@ -159,12 +107,8 @@ class UsersList extends React.Component {
   };
 
   renderUsers = () => {
-    const { activeUser, users_data, suggestions, value } = this.state;
+    const { users_data, suggestions } = this.state;
 
-    const escapedValue = escapeRegexCharacters(activeUser.trim());
-
-    const regex = new RegExp("^" + escapedValue, "i");
-    console.log("state", this.state);
     const newUsersData = suggestions.length > 0 ? suggestions : users_data;
 
     return newUsersData.map((userData, index) => (
@@ -197,15 +141,6 @@ class UsersList extends React.Component {
   }
 
   render() {
-    const { value, suggestions } = this.state;
-    console.log(this.state);
-    const inputProps = {
-      placeholder: "Search...",
-      value,
-      onChange: this.onChange,
-      onKeyDown: this.onKeyDown
-    };
-
     return (
       <>
         <input
@@ -216,15 +151,6 @@ class UsersList extends React.Component {
           aria-describedby="basic-addon1"
           onChange={this.onSuggestionsFetchRequested}
         />
-
-        {/* <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
-        /> */}
 
         <table className="table table-striped">
           <thead>
