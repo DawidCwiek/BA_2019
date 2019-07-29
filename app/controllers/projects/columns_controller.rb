@@ -10,7 +10,8 @@ class Projects::ColumnsController < ApplicationController
   end
 
   def update
-    if @column.update(projects_params)
+    @column = Column.find(params[:id])
+    if @column.update(columns_params)
       render json: { data: @column }, status: :ok
     else
       render json: { errors: @column.errors }, status: :unprocessable_entity
