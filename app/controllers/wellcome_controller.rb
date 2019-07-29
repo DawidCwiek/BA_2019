@@ -18,6 +18,6 @@ class WellcomeController < ApplicationController
   end
 
   def user_archived_redirect
-    current_user.archived ? (render :archived) : null
+    current_user.archived ? (render :archived) : (render :index)
   end
 end
