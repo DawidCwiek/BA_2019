@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, except: [:new, :edit, :update, :destroy, :create, :show]
       resources :tasks, only: [:index]
-      resources :projects, only: [:index, :assign_user]
+      resources :projects, only: [:index, :assign_user, :users_in_project]
     end
   end
 
@@ -31,5 +31,6 @@ Rails.application.routes.draw do
   get '/manage_io/task/:id' => 'manage_io#task'
   post '/api/v1/assign_user' => 'api/v1/projects#assign_user'
   get '/api/v1/not_assigned_users/:id' => 'api/v1/projects#not_assigned_users'
+  get '/api/v1/users_in_project/:id' => 'api/v1/projects#users_in_project'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
