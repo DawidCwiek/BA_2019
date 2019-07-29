@@ -7,6 +7,7 @@ export class AddUserToProjectButton extends React.Component {
     modal: false,
     btnColor: "primary",
     btnText: "Add",
+    disabled: false
   };
 
   toggle = () => {
@@ -23,7 +24,7 @@ export class AddUserToProjectButton extends React.Component {
     this.setState({
       btnColor: "success",
       btnText: "Success!",
-      btnDisabled: "disabled"
+      disabled: true
     })
   }
 
@@ -49,7 +50,9 @@ export class AddUserToProjectButton extends React.Component {
           this.toggle(),
           this.handleClick(),
           this.changeButton()
-          }} className="btn btn-primary" color={this.state.btnColor} >
+          }}
+          disabled={this.state.disabled}
+          className="btn btn-primary success-button" color={this.state.btnColor} >
           {this.state.btnText}
         </Button>
       </div>
