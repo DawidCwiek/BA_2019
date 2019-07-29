@@ -25,18 +25,7 @@ const Dnd = ({projectId}) => {
         .then(response => {
           updatePost(response.data.data.columns)
     }
-    // )
-    // axios
-    //     .patch(
-    //       `/administrators/add_admin/${this.props.user_id}`,{
-    //         headers: {
-    //           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-    //             .content
-    //         }
-    //       })
-    //     .then(() => {
-    //       this.props.user_data();
-    // }
+    
     );
   }
 
@@ -52,13 +41,29 @@ const Dnd = ({projectId}) => {
 
       const newList = moveElement(posts, postIndex, targetIndex)
 
-      return newList.map(post => {
+      const result = newList.map(post => {
         if (post.id === id) {
           return { ...post};
         } else {
           return post;
         }
       });
+
+
+      const columnIds = result.map(columsOrder => 
+        columsOrder.id
+        )
+        axios
+        .patch(
+          `/projects/${projectId}/update_column_order.json`,
+          { project: { columnIds }},
+          {headers: {
+              "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+                .content
+            }
+          })
+      console.log(columnIds)
+      return result;
     });
   };
 

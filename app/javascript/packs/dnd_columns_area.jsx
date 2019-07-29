@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { TasksArea } from "./dnd_tasks";
 import { moveElement, findIndex } from "./collection_helper";
-import { black } from "ansi-colors";
 import axios from "axios";
 
 export const ColumnArea = ({name, moveColumn, columns, projectId }) => {
@@ -14,10 +13,6 @@ export const ColumnArea = ({name, moveColumn, columns, projectId }) => {
       }
     }
   });
-
-  const columnIds = columns.map(columsOrder => 
-    columsOrder.id
-    )
 
   return(
       <div className="row" ref={drop}>
