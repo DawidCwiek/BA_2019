@@ -25,10 +25,10 @@ class Projects::ColumnsController < ApplicationController
         @column.destroy
         head :no_content
       else
-        render json: { errors: {error: 'The project must have one column'} }, status: :not_modified
+        render json: { errors: { error: 'The project must have one column' } }, status: :not_modified
       end
     else
-      render json: { errors: {error: 'The column must be empty'} }, status: :not_modified
+      render json: { errors: { error: 'The column must be empty' } }, status: :not_modified
     end
   end
 
