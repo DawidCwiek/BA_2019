@@ -24,9 +24,9 @@ class ColumnFormModal extends React.Component {
       },
       errors: {}
     };
-    this.toggle = this.toggle.bind(this);
   }
-  toggle() {
+  
+  toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
@@ -89,9 +89,9 @@ class ColumnFormModal extends React.Component {
                 </Label>
                 <Input
                   type="text"
-                  name="title"
-                  id="title"
-                  placeholder="Title"
+                  name="name"
+                  id="name"
+                  placeholder="Name"
                   value={this.state.data.title}
                   onChange={e => {
                     this.setFromValue("name", e.target.value);
