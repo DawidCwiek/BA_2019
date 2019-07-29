@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2019_07_26_132431) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "columns_order", default: [], array: true
     t.boolean "archived", default: false
+    t.integer "columns_order", default: [], array: true
     t.index ["columns_order"], name: "index_projects_on_columns_order", using: :gin
     t.index ["user_id"], name: "index_projects_on_user_id"
   end

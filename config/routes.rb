@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'sessions' }
   defaults format: :json do
     resources :projects do
-        resources :users, only: [:index], member: true, controller: 'projects/users'
+        resources :users, only: [:index], controller: 'projects/users'
+        resources :columns, only: [:create, :update], controller: 'projects/columns'
       end
     resources :task, except: [:new, :edit, :destroy]
     resources :users_list, only: [:index]
