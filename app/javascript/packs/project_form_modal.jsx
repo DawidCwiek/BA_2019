@@ -52,6 +52,9 @@ class ProjectFormModal extends React.Component {
           if (e.response.data.errors["key"] !== "undefined") {
             this.setState({ errors: { key: "The key must be unique" } });
           }
+          if (e.response.data.errors["admin"]) {
+            window.alert(e.response.data.errors["admin"]);
+          }
         });
     }
   };
