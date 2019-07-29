@@ -167,9 +167,9 @@ class UsersList extends React.Component {
         </tr>
       ) : (
         <tr key={userData.id}>
-          <th>{index + 1}</th>
-          <td>{userData.full_name}</td>
-          <td>{userData.email}</td>
+          <th className="vert-align-mid">{index + 1}</th>
+          <td className="vert-align-mid">{userData.full_name}</td>
+          <td className="vert-align-mid">{userData.email}</td>
           <td>
             {this.state.admin ? (
               userData.admin ? (
@@ -182,7 +182,7 @@ class UsersList extends React.Component {
               )
             ) : null}
           </td>
-          <td>
+          <td className="vert-align-mid">
             <ArchiveUserModal userId={userData.id} user_data={this.userDataTaker}/>
           </td>
         </tr>
