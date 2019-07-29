@@ -56,7 +56,7 @@ class ColumnFormModal extends React.Component {
     //title
     if (!column.name) {
       formIsValid = false;
-      errors["name"] = "Cannot be empty";
+      errors.name = "Cannot be empty";
     } else {
       if (column.name.length > 30) {
         formIsValid = false;
