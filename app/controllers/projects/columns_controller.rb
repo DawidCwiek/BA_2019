@@ -18,6 +18,20 @@ class Projects::ColumnsController < ApplicationController
     end
   end
 
+  def destroy
+    @column = Column.find(params[:id])
+    if @column.tasks.blank?
+      if @column.project.columns.count > 1
+        @column.destroy
+        head :no_content
+      else
+        render json: { errors: { error: 'The project must have one column' } }, status: :not_modified
+      end
+    else
+      render json: { errors: { error: 'The column must be empty' } }, status: :not_modified
+    end
+  end
+
   private
 
   def columns_params

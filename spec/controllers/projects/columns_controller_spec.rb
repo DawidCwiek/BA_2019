@@ -45,4 +45,33 @@ RSpec.describe Projects::ColumnsController, type: :controller do
       it { expect { subject }.not_to change(column, :name) }
     end
   end
+
+  describe '#destroy' do
+    let!(:column) { create(:column) }
+    subject { delete :destroy, params: { id: column.id, project_id: column.project }, format: :json }
+
+    context 'can destroy' do
+      let!(:column2) { create(:column, project_id: column.project.id) }
+      it 'project have > 1 columns' do
+        expect(Project.last.columns_order).to eq([column.id, column2.id])
+        expect { subject }.to change(Column, :count).by(-1)
+        expect(Project.last.columns_order).to eq([column2.id])
+      end
+    end
+
+    context 'can not destroy' do
+      it 'project have one column' do
+        expect { subject }.to change(Column, :count).by(0)
+      end
+
+      describe 'project have > 1 columns, but columns have task' do
+        let(:task) {create(:task, project_id: column.project_id, column_id: column.id)}
+        it 'no deletes column' do
+          task
+          expect { subject }.to change(Column, :count).by(0)
+        end
+      end
+
+    end
+  end
 end
