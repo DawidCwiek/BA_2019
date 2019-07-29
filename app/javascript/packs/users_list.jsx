@@ -3,6 +3,7 @@ import axios from "axios";
 import ConfirmationAdmin from "./accepted_modal";
 import RemoveAdmin from "./remove_admin";
 import Autosuggest from "react-autosuggest";
+import ArchiveUserModal from "./archive_user_modal";
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -25,7 +26,8 @@ class UsersList extends React.Component {
       user_admin: [],
       value: "",
       activeUser: "",
-      suggestions: []
+      suggestions: [],
+      user_archived: []
     };
   }
 
@@ -155,27 +157,36 @@ class UsersList extends React.Component {
     const newUsersData = users_data.filter(user => regex.test(user.full_name));
 
     return newUsersData.map((userData, index) => (
-      <tr key={userData.id}>
-        <th>{index + 1}</th>
-        <td>{userData.full_name}</td>
-        <td>{userData.email}</td>
-        <td>
-          {this.state.admin ? (
-            userData.admin ? (
-              <RemoveAdmin
-                user_id={userData.id}
-                user_data={this.userDataTaker}
-              />
-            ) : (
-              <ConfirmationAdmin
-                user_id={userData.id}
-                user_data={this.userDataTaker}
-              />
-            )
-          ) : null}
-        </td>
-      </tr>
-    ));
+      userData.archived ? (
+        <tr key={userData.id} className="archived">
+          <th>{index + 1}</th>
+          <td>{userData.full_name}</td>
+          <td>{userData.email}</td>
+          <td>{""}</td>
+          <td>{""}</td>
+        </tr>
+      ) : (
+        <tr key={userData.id}>
+          <th>{index + 1}</th>
+          <td>{userData.full_name}</td>
+          <td>{userData.email}</td>
+          <td>
+            {this.state.admin ? (
+              userData.admin ? (
+                <RemoveAdmin user_id={userData.id} user_data={this.userDataTaker} />
+              ) : (
+                <ConfirmationAdmin
+                  user_id={userData.id}
+                  user_data={this.userDataTaker}
+                />
+              )
+            ) : null}
+          </td>
+          <td>
+            <ArchiveUserModal userId={userData.id} user_data={this.userDataTaker}/>
+          </td>
+        </tr>
+      )));
   };
 
   componentDidMount() {

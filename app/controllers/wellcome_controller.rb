@@ -1,6 +1,8 @@
 class WellcomeController < ApplicationController
   before_action :authenticate_user!
+  before_action :user_archived_redirect
   before_action :admin_user_redirect
+
   def index; end
 
   private
@@ -13,5 +15,9 @@ class WellcomeController < ApplicationController
     else
       render :index
     end
+  end
+
+  def user_archived_redirect
+    current_user.archived ? (render :archived) : null
   end
 end
