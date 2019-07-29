@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe TaskController, type: :controller do
   render_views
 
-  describe 'USER' do
+  context 'USER' do
     login_user
 
     describe '#index' do
@@ -79,7 +79,7 @@ RSpec.describe TaskController, type: :controller do
     end
   end
 
-  describe 'Admin' do
+  context 'Admin' do
     login_admin
 
     describe '#create' do

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_admin!, only: %i[create update destroy archive]
+  before_action :authenticate_admin!, except: %i[index show]
   before_action :set_project, only: %i[show update destroy archive]
   def index
     @projects = Project.all
@@ -50,6 +50,6 @@ class ProjectsController < ApplicationController
   end
 
   def authenticate_admin!
-    redirect_to root_path unless current_user.admin?
+    render json: { errors: { admin: 'You are not an admin' } }, status: :unprocessable_entity unless current_user.admin?
   end
 end

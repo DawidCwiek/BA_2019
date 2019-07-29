@@ -35,13 +35,6 @@ export class ProjectEditModal extends React.Component {
     this.setState(prev => ({ data: { ...prev.data, [attribute]: value } }));
   };
 
-  // handleClick = () => {
-  //   this.setState(
-  //     {project: { title: this.state.title, desc: this.state.desc, key: this.state.desc}}
-  //   )
-  //     this.handleSubmit
-    
-  // }
 
   handleSubmit = e => {
     if (this.handleValidation()) {
@@ -56,15 +49,15 @@ export class ProjectEditModal extends React.Component {
             }
           }
         )
-        .then(() => {
-          this.props.projectData();
+        .catch(e => {
+          if (e.response.data.errors["key"] !== "undefined") {
+            this.setState({ errors: { key: "The key must be unique" } });
+          }
+          if (e.response.data.errors["admin"]) {
+            window.alert(e.response.data.errors["admin"]);
+          }
         });
-        // .catch(e => {
-        //   if (e.response.data.errors["key"] !== "undefined") {
-        //     this.setState({ errors: { key: "The key must be unique" } });
-        //   }
-        // });
-        
+
     }
   };
   handleValidation() {

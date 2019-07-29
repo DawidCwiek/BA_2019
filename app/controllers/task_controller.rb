@@ -1,7 +1,7 @@
 class TaskController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: %i[show update user_belongs_to_project!]
-  before_action :user_belongs_to_project!, only: %i[create update]
+  before_action :set_task, only: %i[show update user_belongs_to_project]
+  before_action :user_belongs_to_project, only: %i[create update]
 
   def index
     @task = Task.all
@@ -36,12 +36,9 @@ class TaskController < ApplicationController
     params.require(:task).permit(:title, :desc, :project_id, :column_id)
   end
 
-  def user_belongs_to_project!
+  def user_belongs_to_project
     @project = Project.find(params[:task][:project_id])
-    # rubocop:disable Style/GuardClause
-    unless current_user.admin?
-      redirect_to root_path if @project.users.where(id: current_user.id).empty?
-    end
-    # rubocop:enable Style/GuardClause
+
+    redirect_to root_path if @project.users.where(id: current_user.id).empty? && !current_user.admin?
   end
 end
