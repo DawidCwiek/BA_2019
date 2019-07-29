@@ -3,28 +3,24 @@
   color: #331670 !important;
   text-decoration: none !important;
   border-width: 1px 2px !important;
-  border-color:#331670 !important;
 }
 
 .non-archived:last-child {
   border-width: 1px 2px solid !important;
-  border-color: #331670 !important;
 }
 
 .archived {
-  background-color: grey !important;
+  background-color: #c6c6c6 !important;
   color: black !important;
   border-width: 1px 2px !important;
-  border-color:#331670 !important;
-  
 }
 
 .archive-modal {
   right: 0;
 }
 
-.list-group-item:last-child {
-  border-bottom:2px solid #331670 !important;
+.edit-button {
+  padding-right: 10px;
 }
 
 .archive-link {
@@ -47,5 +43,5 @@
 }
 
 ul.striped-list {
-  max-width: none !important; 
+  max-width: none !important;
 }

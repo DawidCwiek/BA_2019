@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TaskController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task, only: %i[show update]
 
   def index

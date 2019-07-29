@@ -11,12 +11,34 @@
   min-width: 400px;
 }
 
+.task-scroll {
+  overflow: scroll;
+  max-height: 70vh;
+}
+
+.project-scroll {
+  overflow: scroll;
+  max-height: 85vh;
+}
+
 .label-margin {
   margin-top: 20px;
+  margin-bottom: 28px;
 }
 
 .myProjects {
   flex-direction: column;
+}
+
+.task-list-styling {
+  display: flex;
+  width: 100%;
+}
+
+.project-header {
+  margin-top: 27px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .project {
@@ -25,4 +47,32 @@
   justify-content: space-between;
 }
 
+.task-main-container {
+  margin-right: 10px;
+  display: flex;
+  justify-content: space-between !important;
+  padding-right: 30px;
+}
 
+.project-main-container {
+  display: flex;
+  justify-content: start;
+  padding-left: 30px;
+}
+
+.main-container {
+  padding-top: 0px;
+}
+
+.userdash-link {
+  color: #331670;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.userdash-link:hover {
+  color: #fff;
+  background-color: #331670 !important;
+  text-decoration: none;
+  cursor: pointer;
+}

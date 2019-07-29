@@ -1,11 +1,17 @@
-<h1>TU NARAZIE JEST H1 ALE BEDZIE PROJECT RENDER</h1>
-<br>
-<h1>Tutaj jest tymczasowa nazwa projektu XD: <%= @project.title %></h1>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h1>|klumna| |kolumna2| |kolumna3|</h1>
+
+<div>
+  <div>
+    <% if current_user.admin? %>
+    <div class="container">
+      <%= content_tag :div,
+        id: "add-user-to-project",
+        data: @project.to_json do %>
+      <% end %>
+      <%= javascript_pack_tag 'add_user_to_project_modal' %>
+    </div>
+    <% end %>
+  </div>
+  <div class="post-app"></div>
+
+  <%= javascript_pack_tag 'dnd_columns' %>
+</div>
