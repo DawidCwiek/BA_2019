@@ -145,7 +145,7 @@ class UsersList extends React.Component {
       <>
         <input
           type="text"
-          class="form-control"
+          className="form-control fas fa-search"
           placeholder="Search..."
           aria-label="Username"
           aria-describedby="basic-addon1"
