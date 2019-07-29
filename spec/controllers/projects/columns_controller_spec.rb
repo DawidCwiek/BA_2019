@@ -40,7 +40,7 @@ RSpec.describe Projects::ColumnsController, type: :controller do
     end
 
     context 'invalid attributes' do
-      subject { post :create, params: invalid_attributes, format: :json}
+      subject { put :update, params: invalid_attributes, format: :json}
       it { expect(subject.status).to eq(422) }
       it { expect { subject }.not_to change(column, :name) }
     end
