@@ -24,7 +24,7 @@ class Users extends Component {
         </Button>
         <Collapse isOpen={this.state.collapse}>
           <Card className="left">
-            <CardBody>{this.props.ProjectUser}</CardBody>
+            <CardBody className="width">{this.props.ProjectUser}</CardBody>
           </Card>
         </Collapse>
       </div>

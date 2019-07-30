@@ -5,6 +5,7 @@ import { ListGroup, ListGroupItem } from "reactstrap";
 import ConfirmationModal from "./archive_modal";
 import ProjectEditModal from "./project_edit_modal";
 import Users from "./button-users-list";
+import DeleteUser from "./delete-user-from-project";
 
 class List extends React.Component {
   state = {
@@ -40,24 +41,19 @@ class List extends React.Component {
       }
     });
 
-    // {project.users.map(user => {
-    //   console.log(user.full_name);
-    //   return user.full_name;
-    // })}
-
     const projects = this.state.projects;
-
-    // const elo = projects.map(project => {
-    //   const a = project;
-    //   a.users.map(user => {
-    //     console.log(user.full_name);
-    //     return user.full_name;
-    //   });
-    // });
 
     const projectsList = projects.map(project => {
       const ProjectUser = project.users.map(user => {
-        return <div>{user.full_name}</div>;
+        if (project.users) {
+          return (
+            <div className="padding">
+              <span>{user.full_name}</span> <DeleteUser>Delete</DeleteUser>
+            </div>
+          );
+        } else {
+          return <span>There is no members</span>;
+        }
       });
 
       return project.archived ? (

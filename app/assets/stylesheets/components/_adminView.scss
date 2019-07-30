@@ -5,7 +5,7 @@
 }
 
 .users {
-  border: 2px solid #331670;
+  border: 2px solid #16111f;
   border-radius: 6px;
 }
 
@@ -23,4 +23,15 @@
 
 .left {
   text-align: left;
+  border: none;
+}
+
+.width {
+  width: 250px;
+}
+
+.padding {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
 }
