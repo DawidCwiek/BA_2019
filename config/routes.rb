@@ -19,11 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :wellcome, only: [:index, :archived]
+  resources :welcome, only: [:index, :archived]
   resources :manage_io, only: [:index]
   resources :administrators, only: [:index]
 
-  root to: 'wellcome#index'
+  root to: 'welcome#index'
   patch '/projects/archive/:id' => 'projects#archive'
   patch '/users/archive/:id' => 'users#archive_user'
   patch '/administrators/add_admin/:id' => 'administrators#add_admin'

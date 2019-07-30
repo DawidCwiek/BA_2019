@@ -6,6 +6,6 @@ RSpec.describe UsersController, type: :controller do
     before { get :archive_user, params: { id: user.id } }
     it { expect(user.reload.archived).to eq(true) }
     it { expect(user.reload.admin).to eq(nil) }
-    it { expect(user.reload.active).to eq(false) }
+    it { expect(user.reload.active).to eq(true) }
   end
 end
