@@ -3,9 +3,10 @@
 class Project < ApplicationRecord
   has_many :task, dependent: :destroy
   has_many :columns, dependent: :destroy
-  # rubocop:disable Rails/HasAndBelongsToMany
-  has_and_belongs_to_many :users
-  # rubocop:enable Rails/HasAndBelongsToMany
+  
+  has_many :workers
+  has_many :users, through: :workers
+
 
   validates :title, presence: true
   validates :desc, presence: true, length: { maximum: 160 }

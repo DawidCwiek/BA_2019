@@ -8,9 +8,8 @@ class User < ApplicationRecord
 
   has_many :task, dependent: :nullify
 
-  # rubocop:disable Rails/HasAndBelongsToMany
-  has_and_belongs_to_many :projects
-  # rubocop:enable Rails/HasAndBelongsToMany
+  has_many :workers
+  has_many :project, through: :workers
 
   validates :full_name, presence: true
 

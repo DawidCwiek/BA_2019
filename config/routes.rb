@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   root to: 'wellcome#index'
   patch '/projects/archive/:id' => 'projects#archive'
+  patch '/projects/:id/archive_user/:user_id' => 'projects#archive_user'
   patch '/administrators/add_admin/:id' => 'administrators#add_admin'
   patch '/administrators/user/:id' => 'administrators#activate_user'
   patch '/administrators/remove_admin/:id' => 'administrators#remove_admin'
