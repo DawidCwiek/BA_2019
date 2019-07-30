@@ -1,15 +1,27 @@
 
 <div>
   <div>
+    <% if current_user.admin? %>
     <div class="container">
       <%= content_tag :div,
         id: "add-user-to-project",
         data: @project.to_json do %>
       <% end %>
       <%= javascript_pack_tag 'add_user_to_project_modal' %>
+      <%= content_tag :div,
+        id: "add-column",
+        data: @project.to_json do %>
+      <% end %>
+      <%= javascript_pack_tag 'column_form_modal' %>
     </div>
+    <% end %>
   </div>
+<<<<<<< HEAD
   <div class="post-app" data-project-id="<%= @project.id %>"></div>
+=======
+
+  <div class="post-app"></div>
+>>>>>>> f5ea257f1284d74e75ea4ec12ec23f3a249d832a
 
   <%= javascript_pack_tag 'dnd_columns' %>
 </div>

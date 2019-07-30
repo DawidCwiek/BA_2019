@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'sessions' }
   defaults format: :json do
     resources :projects do
+<<<<<<< HEAD
         resources :users, only: [:index], member: true, controller: 'projects/users'
         patch :update_column_order
+=======
+        resources :users, only: [:index], controller: 'projects/users'
+        resources :columns, only: [:create, :update, :destroy], controller: 'projects/columns'
+>>>>>>> f5ea257f1284d74e75ea4ec12ec23f3a249d832a
       end
     resources :task, except: [:new, :edit, :destroy]
     resources :users_list, only: [:index]
@@ -19,12 +24,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :wellcome, only: [:index]
+  resources :wellcome, only: [:index, :archived]
   resources :manage_io, only: [:index]
   resources :administrators, only: [:index]
 
   root to: 'wellcome#index'
   patch '/projects/archive/:id' => 'projects#archive'
+  patch '/users/archive/:id' => 'users#archive_user'
   patch '/administrators/add_admin/:id' => 'administrators#add_admin'
   patch '/administrators/user/:id' => 'administrators#activate_user'
   patch '/administrators/remove_admin/:id' => 'administrators#remove_admin'

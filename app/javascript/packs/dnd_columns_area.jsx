@@ -14,10 +14,17 @@ export const ColumnArea = ({name, moveColumn, columns, projectId }) => {
     }
   });
 
+<<<<<<< HEAD
+=======
+  const columnIds = columns.map(columsOrder =>
+    columsOrder.id
+    )
+
+>>>>>>> f5ea257f1284d74e75ea4ec12ec23f3a249d832a
   return(
       <div className="row" ref={drop}>
         {columns.map(column => (
-            <Column 
+            <Column
             key={column.id}
             id={column.id}
             name={column.name}
@@ -49,7 +56,7 @@ const Column = ({ id, name, moveColumn, projectId }) => {
 
 
   const [tasks, updateTask] = useState(initalTasks);
-   
+
   const moveTask = (id, title, targetId) => {
     updateTask(tasks => {
         console.log(id, targetId);
