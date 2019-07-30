@@ -1,23 +1,59 @@
-<h2>Change your password</h2>
+<div class="vertical-center">
+    <div class="container white">
+      <div class="sign-up-container forgot-container">
+      <div class="row">
+        <div class="col-7">
+            <div class="d-flex align-items-center justify-content-center h-100">
+              <div>
+                <h1 class="company-name">Manage.io</h1>
+                <h3>Damian Gronowski</h3>
+                <h3>Dawid Ćwiek</h3>
+                <h3>Adam Kuczyński</h3>
+                <h3>Filip Garlak</h3>
+              </div>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name),
-html: { method: :put }) do |f| %> <%= render "devise/shared/error_messages",
-resource: resource %> <%= f.hidden_field :reset_password_token %>
+        </div>
+        <div class="col-5 login-container-styling">
 
-<div class="field">
-  <%= f.label :password, "New password" %><br />
-  <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-  <% end %> <%= f.password_field :password, autofocus: true, autocomplete:
-  "new-password" %>
-</div>
+        <div class="form-user">
+          <h2 class="sign-in-header">Change your password</h2>
 
-<div class="field">
-  <%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-</div>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+            html: { method: :put }) do |f| %>
+             <%= render "devise/shared/error_messages",
+              resource: resource %>
+             <%= f.hidden_field :reset_password_token %>
 
-<div class="actions">
-  <%= f.submit "Change my password" %>
-</div>
-<% end %> <%= render "users/shared/links" %>
+          <div class="form-user_fields">
+
+          <div class="form-user_field">
+            <%= f.label :password, "New password" %><br />
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <% end %> 
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "New password...", class: "input form-control mb-2 mr-sm-2" %>
+          </div>
+
+          <div class="form-user_field">
+            <%= f.label :password_confirmation, "Confirm new password" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm password...", class: "input form-control mb-2 mr-sm-2" %>
+          </div>
+
+          </div>
+
+          <div class="actions btn">
+            <%= f.submit "Change my password", class: "btn btn-primary btn-lg" %>
+          </div>
+          <% end %> 
+          <div class="actions btn">
+          <%= render "users/shared/links" %>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
