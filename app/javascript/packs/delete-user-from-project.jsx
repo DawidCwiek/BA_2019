@@ -5,7 +5,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 export class DeleteUser extends React.Component {
   state = {
     modal: false,
-    active: false
+    archive: false,
+    workers: []
   };
 
   toggle = () => {
@@ -17,27 +18,23 @@ export class DeleteUser extends React.Component {
   handleClick = () => {
     this.setState(
       {
-        active: false
+        archive: true
       },
-      this.activateUser
+      this.archiveUser
     );
   };
 
-  activateUser = () => {
-    axios
-      .patch(
-        `/administrators/user/${this.props.userId}`,
-        {},
-        {
-          headers: {
-            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-              .content
-          }
+  archiveUser = () => {
+    axios.patch(
+      `/projects/${this.props.ProjectId}/archive_user/${this.props.UserId}`,
+      {},
+      {
+        headers: {
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+            .content
         }
-      )
-      .then(() => {
-        this.props.usersData();
-      });
+      }
+    );
   };
 
   render() {

@@ -48,12 +48,22 @@ class List extends React.Component {
         if (project.users) {
           return (
             <div className="padding">
-              <span>{user.full_name}</span> <DeleteUser>Delete</DeleteUser>
+              <span>{user.full_name}</span>{" "}
+              <DeleteUser UserId={user.id} ProjectId={project.id}>
+                Delete
+              </DeleteUser>
             </div>
           );
         } else {
           return <span>There is no members</span>;
         }
+      });
+      const UserId = project.workers.map(e => {
+        console.log(e.project_id);
+        return e.user_id;
+      });
+      const ProjectId = project.workers.map(e => {
+        return e.project_id;
       });
 
       return project.archived ? (
