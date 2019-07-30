@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <% if !flash.blank? %>
+      <%= content_tag :div,
+        class: 'col-12 flash',
+        id: "alert",
+        data: flash.to_json do %>
+      <% end %>
+      <%= javascript_pack_tag 'flash_alert' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

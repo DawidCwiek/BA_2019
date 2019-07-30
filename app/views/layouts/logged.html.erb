@@ -23,12 +23,14 @@
           </ul>
         </div>
         <div class="col-10 width-fix offset-2">
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %> alert-dismissable">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-          <%= value %>
-          </div>
-        <% end %>
+          <% if !flash.blank? %>
+            <%= content_tag :div,
+              class: 'col-10 flash',
+              id: "alert",
+              data: flash.to_json do %>
+            <% end %>
+            <%= javascript_pack_tag 'flash_alert' %>
+          <% end %>
           <%= yield %>
         </div>
       </div>
