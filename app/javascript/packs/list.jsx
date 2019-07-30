@@ -56,6 +56,10 @@ class List extends React.Component {
     // });
 
     const projectsList = projects.map(project => {
+      const ProjectUser = project.users.map(user => {
+        return <div>{user.full_name}</div>;
+      });
+
       return project.archived ? (
         <ListGroupItem key={project.id} className="archived">
           [{project.key}] {project.title}
@@ -66,13 +70,9 @@ class List extends React.Component {
             <a href={`/manage_io/${project.id}`}>
               [{project.key}] {project.title}
             </a>
-            {project.users.map(user => {
-              return user.full_name;
-            })}
-
             <div className="aligning-items">
               <div className="edit-button">
-                <Users> {console.log(project.users)};</Users>
+                <Users ProjectUser={ProjectUser}> </Users>
               </div>
               <div className="edit-button">
                 {

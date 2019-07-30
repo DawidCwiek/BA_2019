@@ -14,7 +14,7 @@ class Users extends Component {
 
   render() {
     return (
-      <div>
+      <div className="right">
         <Button
           color="primary"
           onClick={this.toggle}
@@ -23,8 +23,8 @@ class Users extends Component {
           Users
         </Button>
         <Collapse isOpen={this.state.collapse}>
-          <Card>
-            <CardBody />
+          <Card className="left">
+            <CardBody>{this.props.ProjectUser}</CardBody>
           </Card>
         </Collapse>
       </div>
