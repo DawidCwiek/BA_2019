@@ -4,13 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
   defaults format: :json do
     resources :projects do
-<<<<<<< HEAD
-        resources :users, only: [:index], member: true, controller: 'projects/users'
-        patch :update_column_order
-=======
         resources :users, only: [:index], controller: 'projects/users'
         resources :columns, only: [:create, :update, :destroy], controller: 'projects/columns'
->>>>>>> f5ea257f1284d74e75ea4ec12ec23f3a249d832a
       end
     resources :task, except: [:new, :edit, :destroy]
     resources :users_list, only: [:index]
