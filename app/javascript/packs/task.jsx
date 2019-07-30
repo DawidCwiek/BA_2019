@@ -6,7 +6,7 @@ const Container = styled.div`
     border: 1px solid lightgrey;
     padding: 8px;
     margin-bottom: 8px;
-    background-color: ${props => (props.isDragging ? 'orchid' : 'white' )}
+    background-color: ${props => (props.isDragging ? '#ae9dd2' : 'white' )}
 `;
 
 export default class Task extends React.Component{
