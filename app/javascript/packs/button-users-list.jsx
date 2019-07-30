@@ -5,7 +5,7 @@ class Users extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
-    this.state = { collapse: false, users: [] };
+    this.state = { collapse: false };
   }
 
   toggle() {
@@ -24,7 +24,7 @@ class Users extends Component {
         </Button>
         <Collapse isOpen={this.state.collapse}>
           <Card>
-            <CardBody users={this.state.users}></CardBody>
+            <CardBody />
           </Card>
         </Collapse>
       </div>

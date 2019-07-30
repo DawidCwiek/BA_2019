@@ -47,13 +47,13 @@ class List extends React.Component {
 
     const projects = this.state.projects;
 
-    const elo = projects.map(project => {
-      const a = project;
-      a.users.map(user => {
-        console.log(user.full_name);
-        return user.full_name;
-      });
-    });
+    // const elo = projects.map(project => {
+    //   const a = project;
+    //   a.users.map(user => {
+    //     console.log(user.full_name);
+    //     return user.full_name;
+    //   });
+    // });
 
     const projectsList = projects.map(project => {
       return project.archived ? (
@@ -66,10 +66,13 @@ class List extends React.Component {
             <a href={`/manage_io/${project.id}`}>
               [{project.key}] {project.title}
             </a>
+            {project.users.map(user => {
+              return user.full_name;
+            })}
 
             <div className="aligning-items">
               <div className="edit-button">
-                <Users />
+                <Users> {console.log(project.users)};</Users>
               </div>
               <div className="edit-button">
                 {
