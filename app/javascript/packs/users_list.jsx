@@ -170,7 +170,7 @@ class UsersList extends React.Component {
           <th className="vert-align-mid">{index + 1}</th>
           <td className="vert-align-mid">{userData.full_name}</td>
           <td className="vert-align-mid">{userData.email}</td>
-          <td>
+          <td className="vert-align-mid">
             {this.state.admin ? (
               userData.admin ? (
                 <RemoveAdmin user_id={userData.id} user_data={this.userDataTaker} />
