@@ -53,4 +53,8 @@ class ProjectsController < ApplicationController
   def projects_params
     params.require(:project).permit(:title, :desc, :key)
   end
+
+  def authenticate_admin!
+    render json: { errors: { admin: 'You are not an admin' } }, status: :unprocessable_entity unless current_user.admin?
+  end
 end

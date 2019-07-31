@@ -112,7 +112,7 @@ export class UsersListForAdding extends React.Component {
 
     const regex = new RegExp("^" + escapedValue, "i");
 
-    const newUsersData = users_data.filter(user => regex.test(user.full_name));
+    const newUsersData = users_data.filter(user => regex.test(user.full_name) && user.archived != true);
 
     return newUsersData.map((userData, index) => (
       <tr key={userData.id}>

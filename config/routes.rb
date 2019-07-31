@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'sessions' }
+  devise_for :users
   defaults format: :json do
     resources :projects do
-        resources :users, only: [:index], member: true, controller: 'projects/users'
+        resources :users, only: [:index], controller: 'projects/users'
+        resources :columns, only: [:create, :update, :destroy], controller: 'projects/columns'
       end
     resources :task, except: [:new, :edit, :destroy]
     resources :users_list, only: [:index]
@@ -18,20 +19,22 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :wellcome, only: [:index]
+  resources :welcome, only: [:index, :archived]
   resources :manage_io, only: [:index]
   resources :administrators, only: [:index]
 
-  root to: 'wellcome#index'
+  root to: 'welcome#index'
   patch '/projects/archive/:id' => 'projects#archive'
   patch '/projects/:id/archive_user/:user_id' => 'projects#archive_user'
+  patch '/users/archive/:id' => 'users#archive_user'
   patch '/administrators/add_admin/:id' => 'administrators#add_admin'
   patch '/administrators/user/:id' => 'administrators#activate_user'
   patch '/administrators/remove_admin/:id' => 'administrators#remove_admin'
   get '/manage_io/:id' => 'manage_io#project'
   get '/manage_io/task/:id' => 'manage_io#task'
+  get '/manage_io/backlog/:id' => 'manage_io#backlog'
   post '/api/v1/assign_user' => 'api/v1/projects#assign_user'
   get '/api/v1/not_assigned_users/:id' => 'api/v1/projects#not_assigned_users'
-  get '/api/v1/users_in_project/:id' => 'api/v1/projects#users_in_project'
+  get '/api/v1/project_tasks/:id' => 'api/v1/tasks#project_tasks'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

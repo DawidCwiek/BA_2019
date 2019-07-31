@@ -35,7 +35,7 @@ class NoActiveUsersList extends React.Component {
       }
     })
 
-    const users = this.state.users.filter((user) => { return user.active != true });
+    const users = this.state.users.filter((user) => { return user.active != true && user.archived != true });
     const usersList = users.map((user) => {
       return (
         <ListGroupItem key={user.id} >

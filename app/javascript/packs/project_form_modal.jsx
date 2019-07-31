@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Redirect } from 'react-router';
 import {
   Button,
   Modal,
@@ -16,6 +17,7 @@ class ProjectFormModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      project_id: "",
       modal: false,
       data: {
         title: "",
@@ -34,6 +36,11 @@ class ProjectFormModal extends React.Component {
   setFromValue = (attribute, value) => {
     this.setState(prev => ({ data: { ...prev.data, [attribute]: value } }));
   };
+
+  handleRedirect = () => {
+    window.location.assign(`/manage_io/${this.state.project_id}`);
+  }
+
   handleSubmit = e => {
     if (this.handleValidation()) {
       e.preventDefault();
@@ -52,9 +59,17 @@ class ProjectFormModal extends React.Component {
           if (e.response.data.errors["key"] !== "undefined") {
             this.setState({ errors: { key: "The key must be unique" } });
           }
-        });
+          if (e.response.data.errors["admin"]) {
+            window.alert(e.response.data.errors["admin"]);
+          }
+        })
+        .then(response => {
+          this.setState({ project_id: response.data.data.id }),
+          this.handleRedirect()
+        })
+       
+      }
     }
-  };
   handleValidation() {
     let project = this.state.data;
     let errors = {};
@@ -95,7 +110,9 @@ class ProjectFormModal extends React.Component {
   render() {
     return (
       <li className="li-styling li-last-item">
-         <a onClick={this.toggle} className="link-hover a-styling">Create Project</a>
+        <a onClick={this.toggle} className="link-hover a-styling">
+          Create Project
+        </a>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
@@ -160,7 +177,7 @@ class ProjectFormModal extends React.Component {
               </FormGroup>
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.handleSubmit} >
+              <Button color="primary" onClick={this.handleSubmit}>
                 Save
               </Button>{" "}
               <Button color="secondary" onClick={this.toggle}>

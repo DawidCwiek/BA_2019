@@ -13,6 +13,12 @@ class Project < ApplicationRecord
     save
   end
 
+  def remove_column!(column_id)
+    position = columns_order.find_index(column_id)
+    columns_order.delete_at(position)
+    save
+  end
+
   def move_column!(column_id, new_position)
     old_position = columns_order.find_index(column_id)
     delete_position_offset = new_position > old_position ? 0 : 1

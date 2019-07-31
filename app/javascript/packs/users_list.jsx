@@ -11,7 +11,9 @@ class UsersList extends React.Component {
       admin: [],
       user_admin: [],
       value: "",
-      suggestions: []
+      activeUser: "",
+      suggestions: [],
+      user_archived: []
     };
   }
 
@@ -112,27 +114,36 @@ class UsersList extends React.Component {
     const newUsersData = suggestions.length > 0 ? suggestions : users_data;
 
     return newUsersData.map((userData, index) => (
-      <tr key={userData.id}>
-        <th>{index + 1}</th>
-        <td>{userData.full_name}</td>
-        <td>{userData.email}</td>
-        <td>
-          {this.state.admin ? (
-            userData.admin ? (
-              <RemoveAdmin
-                user_id={userData.id}
-                user_data={this.userDataTaker}
-              />
-            ) : (
-              <ConfirmationAdmin
-                user_id={userData.id}
-                user_data={this.userDataTaker}
-              />
-            )
-          ) : null}
-        </td>
-      </tr>
-    ));
+      userData.archived ? (
+        <tr key={userData.id} className="archived">
+          <th>{index + 1}</th>
+          <td>{userData.full_name}</td>
+          <td>{userData.email}</td>
+          <td>{""}</td>
+          <td>{""}</td>
+        </tr>
+      ) : (
+        <tr key={userData.id}>
+          <th className="vert-align-mid">{index + 1}</th>
+          <td className="vert-align-mid">{userData.full_name}</td>
+          <td className="vert-align-mid">{userData.email}</td>
+          <td className="vert-align-mid">
+            {this.state.admin ? (
+              userData.admin ? (
+                <RemoveAdmin user_id={userData.id} user_data={this.userDataTaker} />
+              ) : (
+                <ConfirmationAdmin
+                  user_id={userData.id}
+                  user_data={this.userDataTaker}
+                />
+              )
+            ) : null}
+          </td>
+          <td className="vert-align-mid">
+            <ArchiveUserModal userId={userData.id} user_data={this.userDataTaker}/>
+          </td>
+        </tr>
+      )));
   };
 
   componentDidMount() {

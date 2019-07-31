@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
   render_views
-  login_user
+  login_admin
 
   describe '#index' do
     subject { get :index, format: :json }
@@ -91,6 +91,6 @@ RSpec.describe ProjectsController, type: :controller do
     let(:project) { create(:project) }
     before { get :archive, params: { id: project.id } }
     it { expect(project.reload.archived).to eq(true) }
-  
+
   end
 end
