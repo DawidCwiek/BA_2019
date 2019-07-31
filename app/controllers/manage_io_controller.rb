@@ -25,6 +25,11 @@ class ManageIoController < ApplicationController
     # rubocop:enable Style/GuardClause
   end
 
+  def backlog
+    @backlog = Project.find(params[:id])
+    current_user.admin? ? nil : (return redirect_to manage_io_index_path)
+  end
+
   private
 
   def user_active
