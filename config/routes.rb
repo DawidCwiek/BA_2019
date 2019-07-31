@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, except: [:new, :edit, :update, :destroy, :create, :show]
-      resources :tasks, only: [:index]
+      resources :tasks, only: [:index, :project_tasks]
       resources :projects, only: [:index, :assign_user]
     end
   end
@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   patch '/administrators/remove_admin/:id' => 'administrators#remove_admin'
   get '/manage_io/:id' => 'manage_io#project'
   get '/manage_io/task/:id' => 'manage_io#task'
+  get '/manage_io/backlog/:id' => 'manage_io#backlog'
   post '/api/v1/assign_user' => 'api/v1/projects#assign_user'
   get '/api/v1/not_assigned_users/:id' => 'api/v1/projects#not_assigned_users'
+  get '/api/v1/project_tasks/:id' => 'api/v1/tasks#project_tasks'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
