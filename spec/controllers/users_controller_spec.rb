@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  login_user
   describe '#archive' do
     let(:user) { create(:user) }
     before { get :archive_user, params: { id: user.id } }

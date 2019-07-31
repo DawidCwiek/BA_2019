@@ -2,6 +2,8 @@
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :permission
+
   layout :logged_and_no_logged
 
   protected
@@ -20,5 +22,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[full_name email password])
+  end
+
+  def permission
+    redirect_to root_path if !current_user.active || current_user.archived
   end
 end
