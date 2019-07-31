@@ -4,7 +4,7 @@
     <% if current_user.admin? %>
     <div class="container">
       <%= content_tag :div,
-        id: "add-user-to-project",
+        id: "add-user-to-project", 
         data: @project.to_json do %>
       <% end %>
       <%= javascript_pack_tag 'add_user_to_project_modal' %>
@@ -17,7 +17,9 @@
     <% end %>
   </div>
 
-  <div id="dnd-app"></div>
-
+  <%= content_tag :div,
+  id: "dnd-app", 
+  data: @project.to_json do %>
+<% end %>
   <%= javascript_pack_tag 'dnd-super' %>
 </div>

@@ -10,19 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_26_132431) do
+ActiveRecord::Schema.define(version: 2019_07_31_092318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "columns", force: :cascade do |t|
     t.bigint "project_id"
-    t.integer "tasks_order", array: true
+    t.integer "tasks_order", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
     t.index ["project_id"], name: "index_columns_on_project_id"
     t.index ["tasks_order"], name: "index_columns_on_tasks_order", using: :gin
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
@@ -32,8 +38,8 @@ ActiveRecord::Schema.define(version: 2019_07_26_132431) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "archived", default: false
     t.integer "columns_order", default: [], array: true
+    t.boolean "archived", default: false
     t.index ["columns_order"], name: "index_projects_on_columns_order", using: :gin
     t.index ["user_id"], name: "index_projects_on_user_id"
   end

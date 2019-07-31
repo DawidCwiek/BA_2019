@@ -34,7 +34,7 @@ export default class Column extends React.Component {
                                 ref={provided.innerRef}
                                 isDragging={snapshot.isDragging}>
                         <Title {...provided.dragHandleProps} >
-                            {this.props.column.title}
+                            {this.props.column.name}
                         </Title>
                         <Droppable droppableId={this.props.column.id} type="task">
                             {provided => (
@@ -42,7 +42,7 @@ export default class Column extends React.Component {
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                             >
-                            {this.props.tasks.map((task, index) => <Task key={task.id} task={task} index={index}/>)}
+                            {this.props.task.map((tasks, index) => <Task key={tasks.id} task={tasks} index={index}/>)}
                             {provided.placeholder}
                             </TaskList>
                         )}

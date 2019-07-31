@@ -7,7 +7,7 @@ json.data do
   end
   json.columns do
     json.array! @project.columns do |column|
-      json.call(column, :id, :name)
+      json.call(column, :id, :name, :tasks_order)
     end
   end
   json.task do

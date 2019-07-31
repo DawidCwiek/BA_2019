@@ -12,11 +12,19 @@ const Container = styled.div`
 
 class App extends React.Component {
   state = initaialData
-  
+  //   data:{
+  //     task:[ {id}, {title} ],
+  //     columns:[ {id}, {name}, {taskIds}],
+  //     column_order:[],
+  //   }
+  // }
+  componentDidMount(){
+    this.dataTaker()
+  }
   dataTaker = () =>{
     axios
      .get(
-       "/projects/1/users.json",
+       `/projects/${this.props.project.id}/users.json`,
      {
          headers: {
            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -25,6 +33,7 @@ class App extends React.Component {
        })
        .then(response => {
         let data = (response.data.data)
+        // this.setState(data)
         console.log(data)
         console.log(initaialData)
      });
@@ -34,7 +43,6 @@ class App extends React.Component {
     const { destination, source, draggableId, type } = result
     
     // console.log(result);
-    this.dataTaker()
     if (!destination) {
       return
     }
@@ -46,13 +54,13 @@ class App extends React.Component {
      }
 
      if(type === 'column'){
-      const newColumnOrder = Array.from(this.state.columnOrder);
+      const newColumnOrder = Array.from(this.state.column_order);
       newColumnOrder.splice(source.index, 1);
       newColumnOrder.splice(destination.index, 0, draggableId);
 
       const newState = {
         ...this.state,
-        columnOrder: newColumnOrder,
+        column_order: newColumnOrder,
       };
       //  console.log(newColumnOrder);
       // console.log(newState);
@@ -86,18 +94,18 @@ class App extends React.Component {
           return
       }
 
-      const startTaskIds = Array.from(start.taskIds);
+      const startTaskIds = Array.from(start.tasks_order);
       startTaskIds.splice(source.index, 1);
       const newStart = {
         ...start,
-        taskIds: startTaskIds,
+        tasks_order: startTaskIds,
       };
 
-      const finishTaskIds = Array.from(finish.taskIds);
+      const finishTaskIds = Array.from(finish.tasks_order);
       finishTaskIds.splice(destination.index, 0, draggableId);
       const newFinish = {
         ...finish,
-        taskIds: finishTaskIds,
+        tasks_order: finishTaskIds,
       };
 
       const newState = {
@@ -119,11 +127,11 @@ render() {
         {provided => ( 
           <Container {...provided.droppableProps}
                      ref={provided.innerRef}>
-          {this.state.columnOrder.map((columnId, index) => {
+          {this.state.column_order.map((columnId, index) => {
             const column = this.state.columns[columnId];
-            const tasks = column.taskIds.map(taskId => this.state.tasks[taskId]);
+            const tasks = column.tasks_order.map(taskId => this.state.task[taskId]);
 
-            return <Column key={column.id} column={column} tasks={tasks} index={index} />;
+            return <Column key={column.id} column={column} task={tasks} index={index} />;
         })}
         {provided.placeholder}
         </Container>
@@ -134,5 +142,7 @@ render() {
   }
 }
 document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(<App />, document.getElementById("dnd-app"));
+  const node = document.getElementById('dnd-app')
+  const data = JSON.parse(node.getAttribute('data'))
+  ReactDOM.render(<App project={data}/>, document.getElementById("dnd-app"));
 });

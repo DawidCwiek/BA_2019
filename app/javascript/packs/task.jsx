@@ -20,7 +20,7 @@ export default class Task extends React.Component{
                         ref={provided.innerRef}
                         isDragging={snapshot.isDragging}
                      >
-                     {this.props.task.content}
+                     {this.props.task.title}
                      </Container>
                 )}
             </Draggable>
