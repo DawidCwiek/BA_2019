@@ -10,8 +10,23 @@ const Container = styled.div`
 `
 
 class App extends React.Component {
-  state = initaialData;
- 
+  state = initaialData
+  
+  // dataTaker = (data) =>{
+  //   axios
+  //    .get(
+  //      "projects/1/users.json",
+  //    {
+  //        headers: {
+  //          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+  //            .content
+  //        }
+  //      })
+  //      .then(response => {
+  //      data=== response.data.data
+  //    });
+  //  }
+   
   onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result
     
@@ -36,7 +51,7 @@ class App extends React.Component {
         ...this.state,
         columnOrder: newColumnOrder,
       };
-      // console.log(newColumnOrder);
+       console.log(newColumnOrder);
       // console.log(newState);
       this.setState(newState);
       return
