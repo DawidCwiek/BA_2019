@@ -11,7 +11,7 @@ class Api::V1::ProjectsController < ApplicationController
     render json: @not_assigned_users
   end
 
-  def users_in_project 
+  def users_in_project
     project_users = Project.find(params[:id]).users
     render json: project_users
   end

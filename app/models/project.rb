@@ -3,15 +3,11 @@
 class Project < ApplicationRecord
   has_many :task, dependent: :destroy
   has_many :columns, dependent: :destroy
-  
-  has_many :workers
+  has_many :workers, dependent: :destroy
   has_many :users, through: :workers
-
-
   validates :title, presence: true
   validates :desc, presence: true, length: { maximum: 160 }
   validates :key, presence: true, uniqueness: true, length: { maximum: 3 }
-
   def add_new_column!(column_id)
     columns_order.push(column_id)
     save
