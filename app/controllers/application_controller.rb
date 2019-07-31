@@ -25,8 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def permission
-    if user_signed_in?
-      redirect_to root_path if !current_user.active || current_user.archived
-    end
+    redirect_to root_path if user_signed_in? && (!current_user.active || current_user.archived)
   end
 end
