@@ -42,28 +42,16 @@ class List extends React.Component {
     });
 
     const projects = this.state.projects;
-
     const projectsList = projects.map(project => {
       const ProjectUser = project.users.map(user => {
-        if (project.users) {
-          return (
-            <div className="padding">
-              <span>{user.full_name}</span>{" "}
-              <DeleteUser UserId={user.id} ProjectId={project.id}>
-                Delete
-              </DeleteUser>
-            </div>
-          );
-        } else {
-          return <span>There is no members</span>;
-        }
-      });
-      const UserId = project.workers.map(e => {
-        console.log(e.project_id);
-        return e.user_id;
-      });
-      const ProjectId = project.workers.map(e => {
-        return e.project_id;
+        return (
+          <div className="padding">
+            <span>{user.full_name}</span>{" "}
+            <DeleteUser UserId={user.id} ProjectId={project.id}>
+              Delete
+            </DeleteUser>
+          </div>
+        );
       });
 
       return project.archived ? (

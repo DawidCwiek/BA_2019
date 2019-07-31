@@ -39,6 +39,7 @@ export class DeleteUser extends React.Component {
 
   render() {
     return (
+      
       <div>
         <Button onClick={this.toggle} outline color="danger">
           Delete
