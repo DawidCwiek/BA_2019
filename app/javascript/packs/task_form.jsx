@@ -18,7 +18,8 @@ class Task_Form extends React.Component {
       data: {
         title: "",
         desc: "",
-        project_id: 1,
+        project_id: this.props.project.id,
+        user_id: ""
       },
       users_data: [],
       errors: {}
@@ -73,7 +74,7 @@ class Task_Form extends React.Component {
 
       axios
         .post(
-          "task.json",
+          "/task.json",
           { task: this.state.data },
         {
             headers: {
@@ -93,7 +94,7 @@ class Task_Form extends React.Component {
     userDataTaker = () =>{
        axios
         .get(
-          "projects/1/users.json",
+          `/projects/${this.props.project.id}/users`,
         {
             headers: {
               "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -107,7 +108,7 @@ class Task_Form extends React.Component {
 
   showUsers=()=>{
     return this.state.users_data.map(userData => 
-    <DropdownItem key={userData.id}>
+    <DropdownItem key={userData.id} value={userData.id} onClick={e => { this.setFromValue('user_id', e.target.value) } }>
         {userData.full_name}
      </DropdownItem>)
   }
@@ -131,7 +132,7 @@ class Task_Form extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
           <a onClick={this.toggle} className="link-hover a-styling">Create task</a>
         <Modal
           isOpen={this.state.modal}
@@ -174,17 +175,18 @@ class Task_Form extends React.Component {
             </Form>
           </ModalBody>
         </Modal>
-      </div>
+      </>
     );
   }
 }
 
 export default Task_Form;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
+  const node = document.getElementById('create-task-modal')
+  const data = JSON.parse(node.getAttribute('data'))
   ReactDOM.render(
-    <Task_Form />,
-    document.getElementById('create-task-modal'))
-  
-});
+    <Task_Form project={data} />,
+  document.getElementById('create-task-modal'))
+})
 // json and data saving lerned from this site: https://medium.com/@everdimension/how-to-handle-forms-with-just-react-ac066c48bd4f

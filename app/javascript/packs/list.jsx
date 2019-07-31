@@ -51,7 +51,7 @@ class List extends React.Component {
           className="non-archived"
         >
           <div className="aligning-items">
-            <a href={`/manage_io/${project.id}`}>[{project.key}] {project.title}</a>
+            <a href={`/manage_io/${project.id}`} className="task-list-styling admindash-link">[{project.key}] {project.title}</a>
             <div className="aligning-items">
               <div className="edit-button">
                 {
