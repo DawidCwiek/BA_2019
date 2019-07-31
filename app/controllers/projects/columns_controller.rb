@@ -35,6 +35,6 @@ class Projects::ColumnsController < ApplicationController
   private
 
   def columns_params
-    params.require(:column).permit(:project_id, :name)
+    params.require(:column).permit(:project_id, :name, :tasks_order)
   end
 end

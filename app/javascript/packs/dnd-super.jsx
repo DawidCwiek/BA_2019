@@ -16,6 +16,7 @@ class App extends React.Component {
   componentDidMount(){
     this.dataTaker()
   }
+
   dataTaker = () =>{
     axios
      .get(
@@ -68,6 +69,19 @@ class App extends React.Component {
         ...this.state,
         column_order: newColumnOrder,
       };
+      axios
+      .patch( 
+        `/projects/update_column/${this.props.project.id}`,
+        { columns_order: newColumnOrder },
+        {
+          headers: {
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+              .content
+          }
+        }
+      )
+
+      ///Column Order
        console.log(newColumnOrder);
       // console.log(newState);
       this.setState(newState);
@@ -89,6 +103,7 @@ class App extends React.Component {
 
           const newState = {
             ...this.state,
+
             columns: {
               ...this.state.columns,
               [newColumn.id]: newColumn,

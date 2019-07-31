@@ -29,7 +29,8 @@ class ProjectsController < ApplicationController
 
   def update_column_order
     @project = Project.find(params[:project_id])
-    @project.update(project_colums_params)
+    @project.update(project_columns_params)
+    #byebug
   end
 
   def destroy
@@ -54,7 +55,7 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:title, :desc, :key)
   end
 
-  def project_colums_params
+  def project_columns_params
     params.require(:project).permit(:columns_order)
   end
 
