@@ -30,7 +30,6 @@ class ProjectsController < ApplicationController
   def update_column_order
     @project = Project.find(params[:project_id])
     @project.update(project_columns_params)
-    #byebug
   end
 
   def destroy

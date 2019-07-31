@@ -29,19 +29,12 @@ class App extends React.Component {
        })
        .then(response => {
         let data = (response.data.data)
-        console.log("data")
-        console.log(data)
-        console.log("Inicjal data")
-        console.log(initaialData)
-
           const newData = {
             ...initaialData,
             column_order: data.columns_order,
             task: Object.fromEntries(data.task.map(task => [task.id, task])),
             columns: Object.fromEntries(data.columns.map(column => [column.id, column])),
           };
-          console.log("Prepare Inicjal data")
-          console.log(newData)
         this.setState(newData)
      });
    }
@@ -81,9 +74,6 @@ class App extends React.Component {
           }
         )
 
-      ///Column Order
-       console.log(newColumnOrder);
-      // console.log(newState);
       this.setState(newState);
       return
      }
@@ -109,8 +99,17 @@ class App extends React.Component {
               [newColumn.id]: newColumn,
             },
           };
-          // console.log(newColumn);
-          // console.log(newState);
+          axios
+            .patch(
+              `/columns/update_task/${newColumn.id}`,
+              { tasks_order: newColumn.tasks_order },
+              {
+                headers: {
+                  "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+                    .content
+                }
+              }
+            )
           this.setState(newState);
           return
       }
@@ -121,14 +120,34 @@ class App extends React.Component {
         ...start,
         tasks_order: startTaskIds,
       };
-
+      axios
+        .patch(
+          `/columns/update_task/${newStart.id}`,
+          { tasks_order: newStart.tasks_order },
+          {
+            headers: {
+              "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+                .content
+            }
+          }
+        )
       const finishTaskIds = Array.from(finish.tasks_order);
       finishTaskIds.splice(destination.index, 0, draggableId);
       const newFinish = {
         ...finish,
         tasks_order: finishTaskIds,
       };
-
+      axios
+        .patch(
+          `/columns/update_task/${newFinish.id}`,
+          { tasks_order: newFinish.tasks_order },
+          {
+            headers: {
+              "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+                .content
+            }
+          }
+        )
       const newState = {
         ...this.state,
         columns: {
