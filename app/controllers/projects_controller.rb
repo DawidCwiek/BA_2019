@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_columns_params
-    params.require(:project).permit(:columns_order)
+    params.require(:project).permit(columns_order: [])
   end
 
   def authenticate_admin!

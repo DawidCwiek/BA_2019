@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import initaialData from './initaial-data';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd' 
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import Column from './column'
 import axios from "axios";
 
@@ -45,10 +45,10 @@ class App extends React.Component {
         this.setState(newData)
      });
    }
-   
+
   onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result
-    
+
     // console.log(result);
     if (!destination) {
       return
@@ -70,16 +70,16 @@ class App extends React.Component {
         column_order: newColumnOrder,
       };
       axios
-      .patch( 
-        `/projects/update_column/${this.props.project.id}`,
-        { columns_order: newColumnOrder },
-        {
-          headers: {
-            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-              .content
+        .patch(
+          `/projects/update_column/${this.props.project.id}`,
+          { columns_order: newColumnOrder },
+          {
+            headers: {
+              "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+                .content
+            }
           }
-        }
-      )
+        )
 
       ///Column Order
        console.log(newColumnOrder);
@@ -87,7 +87,7 @@ class App extends React.Component {
       this.setState(newState);
       return
      }
-      
+
       const start = this.state.columns[source.droppableId];
       const finish = this.state.columns[destination.droppableId];
 
@@ -139,12 +139,12 @@ class App extends React.Component {
       };
       this.setState(newState);
   };
-   
+
 render() {
   return (
     <DragDropContext onDragEnd={this.onDragEnd}>
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
-        {provided => ( 
+        {provided => (
           <Container {...provided.droppableProps}
                      ref={provided.innerRef}>
           {this.state.column_order.map((columnId, index) => {
