@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import initaialData from './initaial-data';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd' 
 import Column from './column'
+import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -12,26 +13,28 @@ const Container = styled.div`
 class App extends React.Component {
   state = initaialData
   
-  // dataTaker = (data) =>{
-  //   axios
-  //    .get(
-  //      "projects/1/users.json",
-  //    {
-  //        headers: {
-  //          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
-  //            .content
-  //        }
-  //      })
-  //      .then(response => {
-  //      data=== response.data.data
-  //    });
-  //  }
+  dataTaker = () =>{
+    axios
+     .get(
+       "/projects/1/users.json",
+     {
+         headers: {
+           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+             .content
+         }
+       })
+       .then(response => {
+        let data = (response.data.data)
+        console.log(data)
+        console.log(initaialData)
+     });
+   }
    
   onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result
     
     // console.log(result);
-
+    this.dataTaker()
     if (!destination) {
       return
     }
@@ -51,7 +54,7 @@ class App extends React.Component {
         ...this.state,
         columnOrder: newColumnOrder,
       };
-       console.log(newColumnOrder);
+      //  console.log(newColumnOrder);
       // console.log(newState);
       this.setState(newState);
       return
