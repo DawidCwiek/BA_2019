@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import ConfirmationAdmin from "./accepted_modal";
 import RemoveAdmin from "./remove_admin";
+import ArchiveUserModal from "./archive_user_modal";
 
 class UsersList extends React.Component {
   constructor(props) {
@@ -113,7 +114,7 @@ class UsersList extends React.Component {
 
     const newUsersData = suggestions.length > 0 ? suggestions : users_data;
 
-    return newUsersData.map((userData, index) => (
+    return newUsersData.map((userData, index) =>
       userData.archived ? (
         <tr key={userData.id} className="archived">
           <th>{index + 1}</th>
@@ -130,7 +131,10 @@ class UsersList extends React.Component {
           <td className="vert-align-mid">
             {this.state.admin ? (
               userData.admin ? (
-                <RemoveAdmin user_id={userData.id} user_data={this.userDataTaker} />
+                <RemoveAdmin
+                  user_id={userData.id}
+                  user_data={this.userDataTaker}
+                />
               ) : (
                 <ConfirmationAdmin
                   user_id={userData.id}
@@ -140,10 +144,14 @@ class UsersList extends React.Component {
             ) : null}
           </td>
           <td className="vert-align-mid">
-            <ArchiveUserModal userId={userData.id} user_data={this.userDataTaker}/>
+            <ArchiveUserModal
+              userId={userData.id}
+              user_data={this.userDataTaker}
+            />
           </td>
         </tr>
-      )));
+      )
+    );
   };
 
   componentDidMount() {
