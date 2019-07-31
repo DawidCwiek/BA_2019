@@ -28,7 +28,7 @@ const TaskList = styled.div`
 export default class Column extends React.Component {
     render() {
         return (
-            <Draggable draggableId={this.props.column.id} index={this.props.index}>
+            <Draggable key={this.props.column.id} draggableId={this.props.column.id} index={this.props.index}>
                 {(provided, snapshot) => (
                     <Container {...provided.draggableProps}
                                 ref={provided.innerRef}
@@ -36,7 +36,7 @@ export default class Column extends React.Component {
                         <Title {...provided.dragHandleProps} >
                             {this.props.column.name}
                         </Title>
-                        <Droppable droppableId={this.props.column.id} type="task">
+                        <Droppable key={this.props.column.id} droppableId={this.props.column.id} type="task">
                             {provided => (
                             <TaskList
                             ref={provided.innerRef}

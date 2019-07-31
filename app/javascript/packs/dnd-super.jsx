@@ -12,12 +12,7 @@ const Container = styled.div`
 
 class App extends React.Component {
   state = initaialData
-  //   data:{
-  //     task:[ {id}, {title} ],
-  //     columns:[ {id}, {name}, {taskIds}],
-  //     column_order:[],
-  //   }
-  // }
+
   componentDidMount(){
     this.dataTaker()
   }
@@ -33,9 +28,20 @@ class App extends React.Component {
        })
        .then(response => {
         let data = (response.data.data)
-        // this.setState(data)
+        console.log("data")
         console.log(data)
+        console.log("Inicjal data")
         console.log(initaialData)
+
+          const newData = {
+            ...initaialData,
+            column_order: data.columns_order,
+            task: Object.fromEntries(data.task.map(task => [task.id, task])),
+            columns: Object.fromEntries(data.columns.map(column => [column.id, column])),
+          };
+          console.log("Prepare Inicjal data")
+          console.log(newData)
+        this.setState(newData)
      });
    }
    
@@ -62,7 +68,7 @@ class App extends React.Component {
         ...this.state,
         column_order: newColumnOrder,
       };
-      //  console.log(newColumnOrder);
+       console.log(newColumnOrder);
       // console.log(newState);
       this.setState(newState);
       return
@@ -72,13 +78,13 @@ class App extends React.Component {
       const finish = this.state.columns[destination.droppableId];
 
       if(start === finish){
-          const newTaskIds = Array.from(start.taskIds);
+          const newTaskIds = Array.from(start.tasks_order);
           newTaskIds.splice(source.index, 1);
           newTaskIds.splice(destination.index, 0, draggableId);
 
           const newColumn = {
             ...start,
-            taskIds: newTaskIds,
+            tasks_order: newTaskIds,
           };
 
           const newState = {
@@ -121,7 +127,6 @@ class App extends React.Component {
    
 render() {
   return (
-    
     <DragDropContext onDragEnd={this.onDragEnd}>
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
         {provided => ( 
@@ -130,7 +135,6 @@ render() {
           {this.state.column_order.map((columnId, index) => {
             const column = this.state.columns[columnId];
             const tasks = column.tasks_order.map(taskId => this.state.task[taskId]);
-
             return <Column key={column.id} column={column} task={tasks} index={index} />;
         })}
         {provided.placeholder}
