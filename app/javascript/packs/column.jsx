@@ -6,14 +6,16 @@ import Task from './task'
 const Container = styled.div`
   margin: 8px; 
   border: 1px solid lightgrey;
-  border-radius: 2px;
-  width: 220px;
+  border-radius: 6px; 
+  min-width: 120px;
+  max-width: 320px;
   background-color: ${props => (props.isDragging ? '#e7dff6' : '#f9f6ff' )}
   display: flex;
   flex-direction: column;
   `
-  const Title = styled.h3`
-  text-align: center 
+const Title = styled.h4`
+  text-align: center; 
+  word-break: break-all;
   padding: 8px;
   height: 80px;
   border-bottom: 1px solid lightgrey; 
@@ -23,7 +25,11 @@ const TaskList = styled.div`
   padding: 8px;
   flex-grow: 1;
   min-height: 100px;
-  `
+`
+const Button = styled.div`
+padding-bottom: 20px;
+text-align: right; 
+`
 
 export default class Column extends React.Component {
     render() {
@@ -33,9 +39,10 @@ export default class Column extends React.Component {
                     <Container {...provided.draggableProps}
                                 ref={provided.innerRef}
                                 isDragging={snapshot.isDragging}>
-                        <Title {...provided.dragHandleProps} >
-                            {this.props.column.name}
-                        </Title>
+                     <Button></Button>
+                     <Title {...provided.dragHandleProps} >
+                        {this.props.column.name}
+                      </Title> 
                         <Droppable key={this.props.column.id} droppableId={this.props.column.id} type="task">
                             {provided => (
                             <TaskList
