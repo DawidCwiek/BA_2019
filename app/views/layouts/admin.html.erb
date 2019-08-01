@@ -19,7 +19,28 @@
           <li class="li-styling">
             <a href="/administrators" class="link-hover a-styling">Admin</a>
           </li>
-          <div id="project_form_modal"></div>
+          <% if params[:controller] == "administrators" && params[:action] == "index"%>
+            <div id="project_form_modal"></div>
+          <% end %>
+          <li class="li-styling li-last-item">
+              <a href="/manage_io" class="link-hover a-styling">Dashboard</a>
+          </li>
+          <% if params[:controller] == "manage_io" && (params[:action] == "project" || params[:action] == "backlog") %>
+          <li class="li-styling">
+            <a href="/manage_io/backlog/<%= @project.id %>" class="link-hover a-styling">Backlog</a>
+          </li>
+          <li class="li-styling">
+            <a href="/manage_io/<%= @project.id %>" class="link-hover a-styling">Kanban</a>
+          </li>
+          <li class="li-styling li-last-item">
+            <%= content_tag :div,
+              id: "create-task-modal",
+              data: @project.to_json do %>
+              <% end %>
+              <%= javascript_pack_tag 'task_form' %>
+          </li>
+          <% end %>
+          
           <li class="last-child link-hover">
             <a
               class="link-hover last-child a-styling"
@@ -33,6 +54,14 @@
       </div>
     </div>
       <div class="col-10 width-fix offset-2">
+        <% if !flash.blank? %>
+          <%= content_tag :div,
+            class: 'col-10 flash',
+            id: "alert",
+            data: flash.to_json do %>
+          <% end %>
+          <%= javascript_pack_tag 'flash_alert' %>
+        <% end %>
        <%= yield %>
     </div>
   </body>

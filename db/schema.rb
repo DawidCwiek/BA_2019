@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_23_121445) do
+ActiveRecord::Schema.define(version: 2019_08_01_084118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "columns", force: :cascade do |t|
     t.bigint "project_id"
-    t.integer "tasks_order", array: true
+    t.integer "tasks_order", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -36,13 +36,6 @@ ActiveRecord::Schema.define(version: 2019_07_23_121445) do
     t.boolean "archived", default: false
     t.index ["columns_order"], name: "index_projects_on_columns_order", using: :gin
     t.index ["user_id"], name: "index_projects_on_user_id"
-  end
-
-  create_table "projects_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "project_id"
-    t.index ["project_id"], name: "index_projects_users_on_project_id"
-    t.index ["user_id"], name: "index_projects_users_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -77,10 +70,20 @@ ActiveRecord::Schema.define(version: 2019_07_23_121445) do
     t.boolean "admin"
     t.boolean "super_admin"
     t.boolean "active", default: false
+    t.boolean "archived", default: false
+    t.string "unconfirmed_email"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  end
+
+  create_table "workers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.boolean "archived", default: false
+    t.index ["project_id"], name: "index_workers_on_project_id"
+    t.index ["user_id"], name: "index_workers_on_user_id"
   end
 
   add_foreign_key "tasks", "columns"

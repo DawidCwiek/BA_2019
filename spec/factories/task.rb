@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :task do
-    project
+    column
     title { Faker::Games::Pokemon.name }
     desc { Faker::Name.last_name }
-    column
+    project_id {column.project_id}
   end
 end

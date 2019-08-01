@@ -5,7 +5,7 @@
 }
 
 .users {
-  border: 2px solid #331670;
+  border: 2px solid #16111f;
   border-radius: 6px;
 }
 
@@ -15,4 +15,38 @@
 
 #app {
   text-align: right;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+  border: none;
+}
+
+.width {
+  width: 250px;
+}
+
+.padding {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  .vert-align-mid {
+    vertical-align: middle !important;
+  }
+}
+
+.admindash-link {
+  color: #331670;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.admindash-link:hover {
+  color: #331670;
+  text-decoration: none;
+  cursor: pointer;
 }

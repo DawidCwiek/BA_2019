@@ -19,6 +19,7 @@ class Task_Form extends React.Component {
         title: this.props.task.title,
         desc: this.props.task.desc,
         project_id: this.props.task.project_id,
+        user_id: this.props.task.user_id
       },
       users_data: [],
       errors: {}
@@ -93,7 +94,7 @@ class Task_Form extends React.Component {
 
   showUsers=()=>{
     return this.state.users_data.map(userData =>
-    <DropdownItem key={userData.id}>
+    <DropdownItem key={userData.id} value={userData.id} onClick={e => { this.setFromValue('user_id', e.target.value) } }>
         {userData.full_name}
      </DropdownItem>)
   }
@@ -123,7 +124,7 @@ class Task_Form extends React.Component {
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}>
-          <ModalHeader className="text-muted" toggle={this.toggle}>Create Task</ModalHeader>
+          <ModalHeader className="text-muted" toggle={this.toggle}>Edit Task</ModalHeader>
           <ModalBody>
             <Form>
               <FormGroup>

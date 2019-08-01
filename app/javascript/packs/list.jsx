@@ -4,6 +4,8 @@ import axios from "axios";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import ConfirmationModal from "./archive_modal";
 import ProjectEditModal from "./project_edit_modal";
+import Users from "./button-users-list";
+import DeleteUser from "./delete-user-from-project";
 
 class List extends React.Component {
   state = {
@@ -38,21 +40,31 @@ class List extends React.Component {
         return -1;
       }
     });
+
     const projects = this.state.projects;
     const projectsList = projects.map(project => {
+      const ProjectUser = project.users.map(user => {
+        return (
+          <div className="padding">
+            <span>{user.full_name}</span>{" "}
+            <DeleteUser UserId={user.id} ProjectId={project.id}>
+              Delete
+            </DeleteUser>
+          </div>
+        );
+      });
       return project.archived ? (
         <ListGroupItem key={project.id} className="archived">
           [{project.key}] {project.title}
         </ListGroupItem>
       ) : (
-        <ListGroupItem
-          key={project.id}
-          tag="a"
-          className="non-archived"
-        >
+        <ListGroupItem key={project.id} tag="a" className="non-archived">
           <div className="aligning-items">
-            <a href={`/manage_io/${project.id}`}>[{project.key}] {project.title}</a>
+            <a href={`/manage_io/${project.id}`} className="task-list-styling admindash-link">[{project.key}] {project.title}</a>
             <div className="aligning-items">
+              <div className="edit-button">
+                <Users ProjectUser={ProjectUser}> </Users>
+              </div>
               <div className="edit-button">
                 {
                   <ProjectEditModal

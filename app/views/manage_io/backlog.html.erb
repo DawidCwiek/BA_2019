@@ -1,0 +1,10 @@
+  <div><h1 class="backlog">Backlog</h1></div>
+  <div class="row backlog-second-row">
+    <div class="col project-task-list">
+    <%= content_tag :div,
+        id: "project-task-list-backlog",
+        data: @project.to_json do %>
+      <% end %>
+      <%= javascript_pack_tag 'project-task-list-backlog' %>
+    </div>
+  </div>

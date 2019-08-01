@@ -18,11 +18,17 @@ class ManageIoController < ApplicationController
 
   def task
     @task = Task.find(params[:id])
+    @task_project = Task.find(params[:id]).project_id
     # rubocop:disable Style/GuardClause
     unless current_user.admin?
       return redirect_to manage_io_index_path if current_user.projects.where(id: @task.project).empty?
     end
     # rubocop:enable Style/GuardClause
+  end
+
+  def backlog
+    @project = Project.find(params[:id])
+    current_user.admin? ? nil : (return redirect_to manage_io_index_path)
   end
 
   private
