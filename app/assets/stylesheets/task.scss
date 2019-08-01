@@ -5,3 +5,31 @@
 .white_arrow {
   color: white;
 }
+
+.task-container {
+  padding-top: 0px;
+}
+
+.task-container-2 {
+  padding-top: 50px;
+}
+
+.arrow-container {
+  padding-top: 20px;
+}
+
+.task-desc {
+  white-space: pre-line;
+  border-top: 2px solid;
+  border-color: #331670;
+}
+
+.task-title-row {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.edit-button-row {
+  padding-top: 0px;
+}
