@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { confirmations: 'confirmations' }
   defaults format: :json do
     resources :projects do
         resources :users, only: [:index], controller: 'projects/users'
