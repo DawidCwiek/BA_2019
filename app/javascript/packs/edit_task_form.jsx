@@ -73,6 +73,9 @@ class Task_Form extends React.Component {
             }
           }
         )
+        .then(
+          window.location.assign(`/manage_io/task/${this.props.task.id}`)
+        )
       }
     }
 
@@ -113,6 +116,10 @@ class Task_Form extends React.Component {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen
     }));
+  }
+
+  handleRedirect = () => {
+    window.location.assign(`/manage_io/task/${this.props.task.id}`);
   }
 
 
