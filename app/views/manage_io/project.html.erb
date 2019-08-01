@@ -17,7 +17,9 @@
     <% end %>
   </div>
 
-  <div class="post-app"></div>
-
-
+  <%= content_tag :div,
+    id: "dnd-app",
+    data: @project.to_json do %>
+  <% end %>
+  <%= javascript_pack_tag 'dnd-super' %>
 </div>

@@ -1,4 +1,6 @@
 class Projects::ColumnsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @column = Column.new(columns_params)
 
@@ -32,9 +34,20 @@ class Projects::ColumnsController < ApplicationController
     end
   end
 
+  def update_task_order
+    @column = Column.find(params[:id])
+    @column.update(column_tasks_params)
+  end
+
   private
 
   def columns_params
     params.require(:column).permit(:project_id, :name)
+  end
+
+  def column_tasks_params
+    task_ids_str = params[:tasks_order]
+    task_ids = task_ids_str.map { |id| id.tr_s('task-', '').to_i }
+    { tasks_order: task_ids }
   end
 end
