@@ -44,7 +44,7 @@ export class ConfirmationAdmin extends React.Component {
     return (
       <div className="center">
         <Button onClick={this.toggle} className="btn btn-danger add-admin ">
-          Grant Admin
+           Admin
         </Button>
         <Modal
           isOpen={this.state.modal}
