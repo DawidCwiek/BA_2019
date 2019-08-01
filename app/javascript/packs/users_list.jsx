@@ -2,20 +2,8 @@ import React from "react";
 import axios from "axios";
 import ConfirmationAdmin from "./accepted_modal";
 import RemoveAdmin from "./remove_admin";
-import Autosuggest from "react-autosuggest";
 import ArchiveUserModal from "./archive_user_modal";
-
-function escapeRegexCharacters(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function getSuggestionValue(suggestion) {
-  return suggestion.full_name;
-}
-
-function renderSuggestion(suggestion) {
-  return suggestion.full_name;
-}
+import { ListGroup, ListGroupItem } from "reactstrap";
 
 class UsersList extends React.Component {
   constructor(props) {
@@ -32,18 +20,18 @@ class UsersList extends React.Component {
   }
 
   getSuggestions = value => {
-    const suggestions = this.state.users_data.map(item => {
-      return { full_name: item.full_name };
-    });
-    const escapedValue = escapeRegexCharacters(value.trim());
+    if (!value) {
+      return null;
+    }
+    const { users_data } = this.state;
+    const escapedValue = this.escapeRegexCharacters(value.trim());
 
     if (escapedValue === "") {
       return [];
     }
 
     const regex = new RegExp("^" + escapedValue, "i");
-
-    return suggestions.filter(suggestions => regex.test(suggestions.full_name));
+    return users_data.filter(user => regex.test(user.full_name));
   };
 
   escapeRegexCharacters = str => {
@@ -109,35 +97,10 @@ class UsersList extends React.Component {
     ));
   };
 
-  onKeyDown = event => {
-    if (event.keyCode === 13) {
-      const innerText = event.currentTarget.value;
-      this.setState({
-        activeUser: innerText,
-        value: innerText
-      });
-    }
-  };
-
-  onChange = (event, { newValue, method }) => {
-    if (method === "click") {
-      const innerText = event.currentTarget.innerText;
-
-      this.setState({
-        activeUser: innerText,
-        value: innerText
-      });
-    } else {
-      this.setState({
-        value: newValue,
-        activeUser: ""
-      });
-    }
-  };
-
-  onSuggestionsFetchRequested = ({ value }) => {
+  onSuggestionsFetchRequested = e => {
+    const value = e.target.value;
     this.setState({
-      suggestions: this.getSuggestions(value)
+      suggestions: value.length > 0 ? this.getSuggestions(value) : []
     });
   };
 
@@ -148,21 +111,24 @@ class UsersList extends React.Component {
   };
 
   renderUsers = () => {
-    const { activeUser, users_data } = this.state;
+    this.state.users_data.sort((a, b) => {
+      if (a.archived < b.archived) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
 
-    const escapedValue = escapeRegexCharacters(activeUser.trim());
+    const { users_data, suggestions } = this.state;
 
-    const regex = new RegExp("^" + escapedValue, "i");
+    const newUsersData = suggestions.length > 0 ? suggestions : users_data;
 
-    const newUsersData = users_data.filter(user => regex.test(user.full_name));
-
-    return newUsersData.map((userData, index) => (
+    return newUsersData.map((userData, index) =>
       userData.archived ? (
         <tr key={userData.id} className="archived">
           <th>{index + 1}</th>
           <td>{userData.full_name}</td>
           <td>{userData.email}</td>
-          <td>{""}</td>
           <td>{""}</td>
         </tr>
       ) : (
@@ -173,7 +139,10 @@ class UsersList extends React.Component {
           <td className="vert-align-mid">
             {this.state.admin ? (
               userData.admin ? (
-                <RemoveAdmin user_id={userData.id} user_data={this.userDataTaker} />
+                <RemoveAdmin
+                  user_id={userData.id}
+                  user_data={this.userDataTaker}
+                />
               ) : (
                 <ConfirmationAdmin
                   user_id={userData.id}
@@ -181,12 +150,17 @@ class UsersList extends React.Component {
                 />
               )
             ) : null}
-          </td>
-          <td className="vert-align-mid">
-            <ArchiveUserModal userId={userData.id} user_data={this.userDataTaker}/>
+
+            <div className="margin">
+              <ArchiveUserModal
+                userId={userData.id}
+                user_data={this.userDataTaker}
+              />
+            </div>
           </td>
         </tr>
-      )));
+      )
+    );
   };
 
   componentDidMount() {
@@ -195,23 +169,15 @@ class UsersList extends React.Component {
   }
 
   render() {
-    const { value, suggestions } = this.state;
-    const inputProps = {
-      placeholder: "Search...",
-      value,
-      onChange: this.onChange,
-      onKeyDown: this.onKeyDown
-    };
-
     return (
       <>
-        <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
+        <input
+          type="text"
+          className="form-control fas fa-search"
+          placeholder="Search..."
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          onChange={this.onSuggestionsFetchRequested}
         />
         <table className="table table-striped">
           <thead>

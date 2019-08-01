@@ -2,13 +2,11 @@
 <html>
   <head>
     <title>Pik</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %> <%= csp_meta_tag %> 
+    <%=stylesheet_link_tag'application', 
+    media: 'all' %> <%= javascript_include_tag'application' %>
+    <script src="https://kit.fontawesome.com/4a8c585908.js"></script>
   </head>
-
   <body>
       <div class="row">
         <div id="sidebar" class="col-2 width-change">
@@ -39,5 +37,6 @@
           <%= yield %>
         </div>
       </div>
+    </div>
   </body>
 </html>
