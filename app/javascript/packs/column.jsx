@@ -45,7 +45,7 @@ export default class Column extends React.Component {
                           <div>
                             {this.props.column.name}
                           </div>
-                          <div>
+                          <div className="edit-button-modal">
                             <ColumnFormModal projectId={this.props.projectId} column={this.props.column}/>
                           </div>
                         </div>
