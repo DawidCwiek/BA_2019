@@ -19,8 +19,8 @@ export default class ColumnFormModal extends React.Component {
     this.state = {
       modal: false,
       data: {
-        name: this.props.columnId,
-        project_id: this.props.projectId,
+        name: this.props.column.name,
+        projectId: this.props.projectId.id,
       },
       errors: {}
     };
@@ -37,8 +37,8 @@ export default class ColumnFormModal extends React.Component {
   handleSubmit = e => {
     if (this.handleValidation()) {
       axios
-        .pathch(
-          `/projects/${this.state.data.ProjectId}/columns/${this.state.data.columnId}`,
+        .patch(
+          `/projects/${this.state.data.projectId}/columns/${this.props.column.id}`,
           { column: this.state.data },
           {
             headers: {
@@ -70,16 +70,16 @@ export default class ColumnFormModal extends React.Component {
   render() {
     return (
       <>
-        <Button onClick={this.toggle} className="btn btn-primary">
+        <a onClick={this.toggle} >
           ...
-        </Button>
+        </a>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
         >
           <ModalHeader toggle={this.toggle} className="text-muted">
-            Add Column
+            Edit Column
           </ModalHeader>
           <Form onSubmit={this.handleSubmit}>
             <ModalBody>
