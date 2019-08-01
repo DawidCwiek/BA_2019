@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import DeleteColumn from "./column_update_modal"
 import {
   Button,
   Modal,
@@ -46,9 +47,32 @@ export default class ColumnFormModal extends React.Component {
                 .content
             }
           }
+        ).then(
+          this.toggle()
         )
     }
   };
+
+  handleDelete = e => {
+      axios
+        .delete(
+          `/projects/${this.state.data.projectId}/columns/${this.props.column.id}`,
+          {
+            headers: {
+              "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+                .content
+            }
+          }
+        ).then(e => {
+          if (e.data) {
+            this.setState({ errors: { delete: e.data.errors.error } });
+
+          } else {
+            this.toggle()
+          }
+				})
+  };
+
   handleValidation() {
     let column = this.state.data;
     let errors = {};
@@ -100,17 +124,25 @@ export default class ColumnFormModal extends React.Component {
                 <span style={{ color: "red" }}>
                   {this.state.errors["name"]}
                 </span>
+                <span style={{ color: "red" }}>
+                  {this.state.errors["delete"]}
+                </span>
               </FormGroup>
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={() => {
-                (this.handleSubmit(),
-                this.toggle())}} >
+                (this.handleSubmit())}} >
                 Save
+              </Button>{" "}
+              <Button color="danger" onClick={() => {
+                if (window.confirm('Are you sure you wish to delete this column?')) {
+                this.handleDelete()}}} >
+                Delete
               </Button>{" "}
               <Button color="secondary" onClick={this.toggle}>
                 Cancel
               </Button>
+
             </ModalFooter>
           </Form>
         </Modal>
