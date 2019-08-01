@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :task, dependent: :nullify
 
   has_many :workers, dependent: :nullify
-  has_many :project, through: :workers
+  has_many :projects, through: :workers
 
   validates :full_name, presence: true
 
