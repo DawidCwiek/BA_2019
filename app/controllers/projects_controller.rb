@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
     @projects = Project.new(projects_params)
 
     if @projects.save
-      2.times { @projects.columns.create }
+      2.times { @projects.columns.create(name: 'Column') }
       render :show, status: :created, location: @projects
     else
       render json: { errors: @projects.errors }, status: :unprocessable_entity
