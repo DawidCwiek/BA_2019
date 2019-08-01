@@ -48,7 +48,8 @@ export default class ColumnFormModal extends React.Component {
             }
           }
         ).then(
-          this.toggle()
+          this.toggle(),
+          window.location.assign(`/manage_io/${this.state.data.projectId}`)
         )
     }
   };
@@ -68,7 +69,8 @@ export default class ColumnFormModal extends React.Component {
             this.setState({ errors: { delete: e.data.errors.error } });
 
           } else {
-            this.toggle()
+            this.toggle(),
+            window.location.assign(`/manage_io/${this.state.data.projectId}`)
           }
 				})
   };
