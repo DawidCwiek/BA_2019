@@ -47,6 +47,9 @@ class ColumnFormModal extends React.Component {
             }
           }
         )
+        .then(
+          window.location.assign(`/manage_io/${this.state.data.project_id}`)
+        )
     }
   };
   handleValidation() {
@@ -70,7 +73,7 @@ class ColumnFormModal extends React.Component {
   render() {
     return (
       <>
-        <Button onClick={this.toggle} className="btn btn-primary">
+        <Button onClick={this.toggle} className="btn btn-primary add-column-button">
           +Add column
         </Button>
         <Modal

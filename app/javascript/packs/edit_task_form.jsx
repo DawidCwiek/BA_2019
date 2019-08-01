@@ -123,7 +123,7 @@ class Task_Form extends React.Component {
   }
 
   handleRedirect = () => {
-    window.location.assign(`/manage_io/task/${this.props.task.id}`);
+    // window.location.assign(`/manage_io/task/${this.props.task.id}`);
   }
 
 
