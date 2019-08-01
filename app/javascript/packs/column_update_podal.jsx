@@ -13,14 +13,14 @@ import {
 } from "reactstrap";
 import axios from "axios";
 
-class ColumnFormModal extends React.Component {
+export default class ColumnFormModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
       data: {
-        name: "",
-        project_id: this.props.project.id,
+        name: this.props.columnId,
+        project_id: this.props.projectId,
       },
       errors: {}
     };
@@ -37,8 +37,8 @@ class ColumnFormModal extends React.Component {
   handleSubmit = e => {
     if (this.handleValidation()) {
       axios
-        .post(
-          `/projects/${this.state.data.project_id}/columns`,
+        .pathch(
+          `/projects/${this.state.data.ProjectId}/columns/${this.state.data.columnId}`,
           { column: this.state.data },
           {
             headers: {
@@ -71,7 +71,7 @@ class ColumnFormModal extends React.Component {
     return (
       <>
         <Button onClick={this.toggle} className="btn btn-primary">
-          +Add column
+          ...
         </Button>
         <Modal
           isOpen={this.state.modal}
@@ -118,11 +118,3 @@ class ColumnFormModal extends React.Component {
     );
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const node = document.getElementById('add-column')
-  const data = JSON.parse(node.getAttribute('data'))
-  ReactDOM.render(
-    <ColumnFormModal project={data} />,
-  document.getElementById('add-column'))
-})
