@@ -7,8 +7,8 @@ const Container = styled.div`
   margin: 8px; 
   border: 1px solid lightgrey;
   border-radius: 6px; 
-  min-width: 120px;
-  max-width: 320px;
+  min-width: 150px;
+  max-width: 220px;
   background-color: ${props => (props.isDragging ? '#e7dff6' : '#f9f6ff' )}
   display: flex;
   flex-direction: column;
@@ -16,8 +16,8 @@ const Container = styled.div`
 const Title = styled.h4`
   text-align: center; 
   word-break: break-all;
-  padding: 8px;
-  height: 80px;
+  padding: 10px;
+  height: 100px;
   border-bottom: 1px solid lightgrey; 
   flex
 `
@@ -39,7 +39,6 @@ export default class Column extends React.Component {
                     <Container {...provided.draggableProps}
                                 ref={provided.innerRef}
                                 isDragging={snapshot.isDragging}>
-                     <Button></Button>
                      <Title {...provided.dragHandleProps} >
                         {this.props.column.name}
                       </Title> 
