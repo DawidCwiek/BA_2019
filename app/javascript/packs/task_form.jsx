@@ -149,7 +149,7 @@ class Task_Form extends React.Component {
             </FormGroup>
             <FormGroup>
                  <Label className="text-muted" for="exampleText">Description</Label>
-                 <Input type="textarea" maxLength="160" name="desc" id="desc" placeholder="Write discription"
+                 <Input type="textarea" maxLength="1000" name="desc" id="desc" placeholder="Write discription"
                  value={this.state.data.desc} onChange={e => { this.setFromValue('desc', e.target.value) } } />
             </FormGroup>
             <FormGroup>
