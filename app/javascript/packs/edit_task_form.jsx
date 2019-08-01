@@ -19,7 +19,7 @@ class Task_Form extends React.Component {
         title: this.props.task.title,
         desc: this.props.task.desc,
         project_id: this.props.task.project_id,
-        user_id: ""
+        user_id: this.props.task.user_id
       },
       users_data: [],
       errors: {}
