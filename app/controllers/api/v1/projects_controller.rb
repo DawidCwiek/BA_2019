@@ -1,6 +1,8 @@
 class Api::V1::ProjectsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @projects = Project.where(user_id: current_user.id)
+    @projects = current_user.projects
     render json: @projects
   end
 

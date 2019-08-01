@@ -19,7 +19,10 @@
           <li class="li-styling">
             <a href="/administrators" class="link-hover a-styling">Admin</a>
           </li>
-          <li class="li-styling">
+          <% if params[:controller] == "administrators" && params[:action] == "index"%>
+            <div id="project_form_modal"></div>
+          <% end %>
+          <li class="li-styling li-last-item">
               <a href="/manage_io" class="link-hover a-styling">Dashboard</a>
           </li>
           <% if params[:controller] == "manage_io" && (params[:action] == "project" || params[:action] == "backlog") %>
@@ -29,7 +32,7 @@
           <li class="li-styling">
             <a href="/manage_io/<%= @project.id %>" class="link-hover a-styling">Kanban</a>
           </li>
-          <li class="li-styling">
+          <li class="li-styling li-last-item">
             <%= content_tag :div,
               id: "create-task-modal",
               data: @project.to_json do %>
@@ -37,7 +40,7 @@
               <%= javascript_pack_tag 'task_form' %>
           </li>
           <% end %>
-          <div id="project_form_modal"></div>
+          
           <li class="last-child link-hover">
             <a
               class="link-hover last-child a-styling"
