@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, except: [:new, :edit, :update, :destroy, :create, :show]
-      resources :tasks, only: [:index, :project_tasks]
-      resources :projects, only: [:index, :assign_user]
+      resources :tasks, only: [:index]
+      resources :projects, only: [:index, :assign_user, :users_in_project]
     end
   end
 
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
   patch '/projects/archive/:id' => 'projects#archive'
+  patch '/projects/:id/archive_user/:user_id' => 'projects#archive_user'
   patch '/projects/update_column/:project_id' => 'projects#update_column_order'
   patch '/columns/update_task/:id' => 'projects/columns#update_task_order'
   patch '/users/archive/:id' => 'users#archive_user'

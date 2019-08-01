@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_admin!, except: %i[index show]
-  before_action :set_project, only: %i[show update destroy archive]
+  before_action :set_project, only: %i[show update destroy archive archive_user]
   def index
     @projects = Project.all
   end
@@ -39,6 +38,12 @@ class ProjectsController < ApplicationController
 
   def archive
     @projects.update(archived: true)
+    head :no_content
+  end
+
+  def archive_user
+    worker = @projects.workers.find_by(user_id: params[:user_id])
+    worker.update(archived: true)
     head :no_content
   end
 
