@@ -34,6 +34,7 @@ RSpec.describe TaskController, type: :controller do
 
     describe '#create' do
       let!(:project) { create(:project, user_ids: controller.current_user.id) }
+      let!(:column) { create(:column, project_id: project.id) }
       let!(:valid_attributes) { { task: attributes_for(:task, project_id: project.id) } }
       let!(:invalid_attributes) { { task: attributes_for(:task, title: nil, project_id: project.id) } }
 
@@ -54,6 +55,7 @@ RSpec.describe TaskController, type: :controller do
     describe 'update' do
       let(:project) { create(:project, user_ids: controller.current_user.id) }
       let(:task) { create(:task, project_id: project.id) }
+      let!(:column) { create(:column, project_id: project.id) }
       let(:valid_attributes) { { id: task.id, task: attributes_for(:task, project_id: project.id) } }
       let(:invalid_attributes) { { id: task.id, task: attributes_for(:task, project_id: project.id, title: nil) } }
 
@@ -84,6 +86,7 @@ RSpec.describe TaskController, type: :controller do
 
     describe '#create' do
       let!(:project) { create(:project) }
+      let!(:column) { create(:column, project_id: project.id) }
       let!(:valid_attributes) { { task: attributes_for(:task, project_id: project.id) } }
       let!(:invalid_attributes) { { task: attributes_for(:task, title: nil, project_id: project.id) } }
 
@@ -103,6 +106,7 @@ RSpec.describe TaskController, type: :controller do
 
     describe 'update' do
       let(:project) { create(:project) }
+      let!(:column) { create(:column, project_id: project.id) }
       let(:task) { create(:task, project_id: project.id) }
       let(:valid_attributes) { { id: task.id, task: attributes_for(:task, project_id: project.id) } }
       let(:invalid_attributes) { { id: task.id, task: attributes_for(:task, project_id: project.id, title: nil) } }
