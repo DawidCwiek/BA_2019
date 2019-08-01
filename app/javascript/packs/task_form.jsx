@@ -48,26 +48,26 @@ class Task_Form extends React.Component {
       this.setState({errors: errors});
       return formIsValid;
     }
-    
+
   setFromValue = (attribute, value) => {
 		this.setState(prev => ({ data: {...prev.data, [attribute]: value} }))
 	}
 
- 
+
     handleSubmit = e => {
             this.setState({
             data: {
               title: "",
               desc: "",
               user_id: "",
-              project_id: 1
+              project_id: this.props.project.id
             }
-            
+
           });
-         
+
           if(this.handleValidation()){
           e.preventDefault();
-          
+
           this.setState(prevState => ({
             modal: !prevState.modal,
           }));
@@ -107,7 +107,7 @@ class Task_Form extends React.Component {
       }
 
   showUsers=()=>{
-    return this.state.users_data.map(userData => 
+    return this.state.users_data.map(userData =>
     <DropdownItem key={userData.id} value={userData.id} onClick={e => { this.setFromValue('user_id', e.target.value) } }>
         {userData.full_name}
      </DropdownItem>)
@@ -143,7 +143,7 @@ class Task_Form extends React.Component {
             <Form>
               <FormGroup>
                 <Label className="text-muted" for="title">Title</Label>
-                <Input type="text" minLength="3" maxLength="30" name="title" id="title" placeholder="Write task title" 
+                <Input type="text" minLength="3" maxLength="30" name="title" id="title" placeholder="Write task title"
                 value={this.state.data.title} onChange={e => { this.setFromValue('title', e.target.value) } }/>
                 <span style={{color: "red"}}>{this.state.errors["title"]}</span>
             </FormGroup>
