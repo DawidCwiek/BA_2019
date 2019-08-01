@@ -110,6 +110,14 @@ class UsersList extends React.Component {
   };
 
   renderUsers = () => {
+    this.state.users_data.sort((a, b) => {
+      if (a.archived < b.archived) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+    
     const { users_data, suggestions } = this.state;
 
     const newUsersData = suggestions.length > 0 ? suggestions : users_data;
