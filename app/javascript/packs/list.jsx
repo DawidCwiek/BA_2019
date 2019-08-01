@@ -44,7 +44,6 @@ class List extends React.Component {
     const projects = this.state.projects;
     const projectsList = projects.map(project => {
       const ProjectUser = project.users.map(user => {
-        console.log(project.workers);
         return (
           <div className="padding">
             <span>{user.full_name}</span>{" "}
@@ -54,11 +53,6 @@ class List extends React.Component {
           </div>
         );
       });
-
-      const ProjectId = project.workers.map(e => {
-        return e.project_id;
-      });
-
       return project.archived ? (
         <ListGroupItem key={project.id} className="archived">
           [{project.key}] {project.title}
