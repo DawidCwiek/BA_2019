@@ -42,9 +42,9 @@ export class RemoveAdmin extends React.Component {
 
   render() {
     return (
-      <div className= "center">
+      <div className="center">
         <Button onClick={this.toggle} className="btn btn-warning">
-          Remove Admin
+          Remove
         </Button>
         <Modal
           isOpen={this.state.modal}

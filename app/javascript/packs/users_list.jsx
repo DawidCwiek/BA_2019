@@ -3,6 +3,7 @@ import axios from "axios";
 import ConfirmationAdmin from "./accepted_modal";
 import RemoveAdmin from "./remove_admin";
 import ArchiveUserModal from "./archive_user_modal";
+import { ListGroup, ListGroupItem } from "reactstrap";
 
 class UsersList extends React.Component {
   constructor(props) {
@@ -117,7 +118,7 @@ class UsersList extends React.Component {
         return 1;
       }
     });
-    
+
     const { users_data, suggestions } = this.state;
 
     const newUsersData = suggestions.length > 0 ? suggestions : users_data;
@@ -128,7 +129,6 @@ class UsersList extends React.Component {
           <th>{index + 1}</th>
           <td>{userData.full_name}</td>
           <td>{userData.email}</td>
-          <td>{""}</td>
           <td>{""}</td>
         </tr>
       ) : (
@@ -150,12 +150,13 @@ class UsersList extends React.Component {
                 />
               )
             ) : null}
-          </td>
-          <td className="vert-align-mid">
-            <ArchiveUserModal
-              userId={userData.id}
-              user_data={this.userDataTaker}
-            />
+
+            <div className="margin">
+              <ArchiveUserModal
+                userId={userData.id}
+                user_data={this.userDataTaker}
+              />
+            </div>
           </td>
         </tr>
       )
@@ -178,7 +179,6 @@ class UsersList extends React.Component {
           aria-describedby="basic-addon1"
           onChange={this.onSuggestionsFetchRequested}
         />
-
         <table className="table table-striped">
           <thead>
             <tr>
