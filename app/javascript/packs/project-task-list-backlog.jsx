@@ -21,7 +21,7 @@ class CurrentProjectTasksList extends React.Component {
       return [];
     }
 
-    const regex = new RegExp("^" + escapedValue, "i");
+    const regex = new RegExp(escapedValue + "+", "i");
     return tasks.filter(task => regex.test(task.title));
   };
 
@@ -72,7 +72,7 @@ class CurrentProjectTasksList extends React.Component {
     const tasksList = newTasksData.map((task) =>
       <a href={`/manage_io/task/${task.id}`} className=" task-list-styling userdash-link">
         <ListGroupItem  className=" task-list-styling userdash-link" key={task.id}>
-          [{task.project.key}] {task.title} 
+          [{task.project.key}] {task.title}
         </ListGroupItem>
       </a>
     );

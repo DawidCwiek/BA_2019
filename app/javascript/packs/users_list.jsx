@@ -30,7 +30,7 @@ class UsersList extends React.Component {
       return [];
     }
 
-    const regex = new RegExp("^" + escapedValue, "i");
+    const regex = new RegExp(escapedValue + "+", "i");
     return users_data.filter(user => regex.test(user.full_name));
   };
 

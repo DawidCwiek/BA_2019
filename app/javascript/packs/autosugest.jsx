@@ -15,7 +15,7 @@ function getSuggestions(value) {
     return [];
   }
 
-  const regex = new RegExp("^" + escapedValue, "i");
+  const regex = new RegExp(escapedValue + "+", "i");
 
   return languages.filter(language => regex.test(language.full_name));
 }
