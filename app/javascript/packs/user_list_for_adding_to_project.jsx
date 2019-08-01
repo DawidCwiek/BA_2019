@@ -25,7 +25,6 @@ export class UsersListForAdding extends React.Component {
     }
 
     const regex = new RegExp(escapedValue + "+", "i");
-    console.log(regex)
     return users_data.filter(user => regex.test(user.full_name));
   };
 
