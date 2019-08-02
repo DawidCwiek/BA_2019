@@ -168,7 +168,7 @@ render() {
           {this.state.column_order.map((columnId, index) => {
             const column = this.state.columns[columnId];
             const tasks = column.tasks_order.map(taskId => this.state.task[taskId]);
-            return <Column key={column.id} column={column} task={tasks} index={index} />;
+            return <Column key={column.id} column={column} task={tasks} index={index} projectId={this.props.project}/>;
         })}
         {provided.placeholder}
         </Container>

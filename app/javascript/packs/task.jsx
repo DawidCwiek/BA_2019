@@ -9,6 +9,12 @@ const Container = styled.div`
     margin-bottom: 8px;
     background-color: ${props => (props.isDragging ? '#ae9dd2' : 'white' )}
 `;
+const E = styled.div`
+    backbround-color: black;
+    border: 1px solid lightgrey;
+    padding-left: 50px;
+`
+
 
 export default class Task extends React.Component{
     render(){
@@ -20,7 +26,9 @@ export default class Task extends React.Component{
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                         isDragging={snapshot.isDragging}
-                     >
+                        onClick = {() => 
+                        window.location.assign(`/manage_io/task/${this.props.task.id.replace('task-', '')}`)
+                        }>
                      {this.props.task.title}
                      </Container>
                 )}

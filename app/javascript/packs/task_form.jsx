@@ -87,7 +87,10 @@ class Task_Form extends React.Component {
 					if(e.response.data.errors["key"] !== "undefined"){
 						this.setState({errors: {key: "The key must be unique"}});
 					}
-				})
+        })
+        .then(
+          window.location.assign(`/manage_io/${this.props.project.id}`)
+        )
       }
     }
 

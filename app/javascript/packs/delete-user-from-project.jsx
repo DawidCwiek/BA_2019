@@ -39,11 +39,7 @@ export class DeleteUser extends React.Component {
 
   render() {
     return (
-      
       <div>
-        <Button onClick={this.toggle} outline color="danger">
-          Delete
-        </Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
