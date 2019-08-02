@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Draggable } from 'react-beautiful-dnd'
 
 const Container = styled.div`
-    word-break: break-all;
+    word-break: normal;
     border: 1px solid lightgrey;
     padding: 8px;
     margin-bottom: 8px;

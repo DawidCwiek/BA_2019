@@ -16,7 +16,7 @@ const Container = styled.div`
   `
 const Title = styled.h4`
   text-align: center;
-  word-break: break-all;
+  word-break: normal;
   padding: 10px;
   height: 100px;
   border-bottom: 1px solid lightgrey;
