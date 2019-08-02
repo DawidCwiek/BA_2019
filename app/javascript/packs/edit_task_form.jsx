@@ -51,7 +51,11 @@ class Task_Form extends React.Component {
 
   setFromValue = (attribute, value) => {
 		this.setState(prev => ({ data: {...prev.data, [attribute]: value} }))
-	}
+  }
+  
+  handleRedirect = () => {
+    window.location.assign(`/manage_io/task/${this.props.task.id}`)
+  }
 
 
     handleSubmit = e => {
@@ -72,6 +76,9 @@ class Task_Form extends React.Component {
                 .content
             }
           }
+        )
+        .then(
+          this.handleRedirect()
         )
       }
     }
@@ -113,6 +120,10 @@ class Task_Form extends React.Component {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen
     }));
+  }
+
+  handleRedirect = () => {
+    // window.location.assign(`/manage_io/task/${this.props.task.id}`);
   }
 
 

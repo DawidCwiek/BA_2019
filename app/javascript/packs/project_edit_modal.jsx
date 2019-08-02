@@ -35,6 +35,9 @@ export class ProjectEditModal extends React.Component {
     this.setState(prev => ({ data: { ...prev.data, [attribute]: value } }));
   };
 
+  handleRedirect = () => {
+    window.location.assign(`/administrators`);
+  }
 
   handleSubmit = e => {
     if (this.handleValidation()) {
@@ -170,7 +173,8 @@ export class ProjectEditModal extends React.Component {
             <ModalFooter>
               <Button color="primary" onClick={() => {
                 (this.handleSubmit(),
-                this.toggle())}} >
+                this.toggle(),
+                this.handleRedirect())}} >
                 Save
               </Button>{" "}
               <Button color="secondary" onClick={this.toggle}>

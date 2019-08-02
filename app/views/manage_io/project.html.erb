@@ -7,6 +7,8 @@
         id: "add-user-to-project",
         data: @project.to_json do %>
       <% end %>
+    <% end %>
+      <%= javascript_pack_tag 'add_user_to_project_modal' %>
       <%= content_tag :div,
         id: "add-column",
         data: @project.to_json do %>
@@ -14,7 +16,6 @@
       <%= javascript_pack_tag 'add_user_to_project_modal' %>
       <%= javascript_pack_tag 'column_form_modal' %>
     </div>
-    <% end %>
   </div>
 
   <%= content_tag :div,
