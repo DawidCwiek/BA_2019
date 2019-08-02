@@ -8,15 +8,16 @@ const Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 6px;
-  min-width: 150px;
-  max-width: 220px;
+  min-width: 200px;
+  max-width: 240px;
+  flex-grow: 1;
   background-color: ${props => (props.isDragging ? '#e7dff6' : '#f9f6ff' )}
   display: flex;
   flex-direction: column;
   `
 const Title = styled.h4`
   text-align: center;
-  word-break: normal;
+  word-break: normal
   padding: 10px;
   height: 100px;
   border-bottom: 1px solid lightgrey;
