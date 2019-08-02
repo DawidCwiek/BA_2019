@@ -17,10 +17,11 @@
       <%= javascript_pack_tag 'column_form_modal' %>
     </div>
   </div>
-
+<div class="overclass">
   <%= content_tag :div,
     id: "dnd-app",
     data: @project.to_json do %>
   <% end %>
   <%= javascript_pack_tag 'dnd-super' %>
+</div>
 </div>
