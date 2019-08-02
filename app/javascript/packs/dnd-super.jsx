@@ -161,7 +161,7 @@ class App extends React.Component {
 render() {
   return (
     <DragDropContext onDragEnd={this.onDragEnd}>
-      <Droppable droppableId="all-columns" direction="horizontal" type="column">
+      <Droppable droppableId="all-columns" direction="horizontal" type="column" overflow="auto">
         {provided => (
           <Container {...provided.droppableProps}
                      ref={provided.innerRef}>
